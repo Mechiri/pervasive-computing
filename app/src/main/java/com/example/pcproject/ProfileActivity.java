@@ -19,7 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     //Variables
     private TextView tvUser;
     private Button bLogout;
-
+    private Button bProfileOutput;
     private FirebaseAuth mAuth;
 
     @Override
@@ -29,9 +29,16 @@ public class ProfileActivity extends AppCompatActivity {
 
         tvUser = findViewById(R.id.textViewUser);
         bLogout = findViewById(R.id.buttonLogout);
-
+        bProfileOutput = findViewById(R.id.buttonOutput);
         mAuth = FirebaseAuth.getInstance();
 
+
+        bProfileOutput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, ProfileOutput.class));
+            }
+        });
         bLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

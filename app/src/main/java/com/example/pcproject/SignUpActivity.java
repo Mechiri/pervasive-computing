@@ -65,7 +65,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     protected void signUp()
     {
+        //Get String from user
         String email = etEmail.getText().toString();
+        //Regex for Email
         String regex = "[A-Za-z0-9.+_%-]+@[A-Za-z0-9-]+\\.[A-Za-z]{2,}";
         boolean regexStatus = false;
 
