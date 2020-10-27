@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "127378706911",
+    "firebase_url": "https://pervasivecomputing-c8afa.firebaseio.com",
+    "project_id": "pervasivecomputing-c8afa",
+    "storage_bucket": "pervasivecomputing-c8afa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127378706911:android:9eaada0d114f880379f46a",
+        "android_client_info": {
+          "package_name": "com.example.pcproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127378706911-i8jrrke8p22rg5qfh4q9kidr5295mo2l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pcproject",
+            "certificate_hash": "49aa09c276d3bfc54e6ab20b48fdd23f723ac00d"
+          }
+        },
+        {
+          "client_id": "127378706911-slf25g6snddnkg3vded75sdf1v09psia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7kJUD4NmLNFf-ChKwrDHhyumXgXdpGrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127378706911-slf25g6snddnkg3vded75sdf1v09psia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
