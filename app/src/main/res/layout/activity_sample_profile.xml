@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SampleProfileActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Button
+                    android:id="@+id/buttonC1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CAPTURE PHOTO" />
+
+                <SeekBar
+                    android:id="@+id/seekBar11"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar12"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <SeekBar
+                    android:id="@+id/seekBar13"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar14"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar15"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar16"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar17"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar18"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar19"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <SeekBar
+                    android:id="@+id/seekBar20"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName1"
+                    android:layout_width="match_parent"
+                    android:layout_height="83dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SUBMIT" />
+
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SHOW RESULTS" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Button
+                    android:id="@+id/buttonC2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CAPTURE PHOTO" />
+
+                <SeekBar
+                    android:id="@+id/seekBar21"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar22"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar23"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar24"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar25"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar26"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar27"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar28"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar29"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <SeekBar
+                    android:id="@+id/seekBar30"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName2"
+                    android:layout_width="match_parent"
+                    android:layout_height="83dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+                <Button
+                    android:id="@+id/button21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SUBMIT" />
+
+                <Button
+                    android:id="@+id/button22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SHOW RESULTS" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Button
+                    android:id="@+id/buttonC3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CAPTURE PHOTO" />
+
+                <SeekBar
+                    android:id="@+id/seekBar31"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar32"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar33"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar34"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar35"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar36"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar37"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar38"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar39"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <SeekBar
+                    android:id="@+id/seekBar40"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName3"
+                    android:layout_width="match_parent"
+                    android:layout_height="83dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+                <Button
+                    android:id="@+id/button31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SUBMIT" />
+
+                <Button
+                    android:id="@+id/button32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SHOW RESULTS" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <Button
+                    android:id="@+id/buttonC4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CAPTURE PHOTO" />
+
+                <SeekBar
+                    android:id="@+id/seekBar41"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar42"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar43"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar44"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar45"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar46"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar47"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar48"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+                <SeekBar
+                    android:id="@+id/seekBar49"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <SeekBar
+                    android:id="@+id/seekBar50"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="398dp"
+                    android:layout_height="35dp"
+                    android:max="100"
+                    android:progress="3" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName4"
+                    android:layout_width="match_parent"
+                    android:layout_height="83dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name" />
+
+                <Button
+                    android:id="@+id/button41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SUBMIT" />
+
+                <Button
+                    android:id="@+id/button42"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SHOW RESULTS" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

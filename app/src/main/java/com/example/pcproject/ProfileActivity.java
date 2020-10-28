@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         bProfileOutput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, ProfileOutput.class));
+                startActivity(new Intent(ProfileActivity.this, SampleProfileActivity.class));
             }
         });
         bLogout.setOnClickListener(new View.OnClickListener() {
