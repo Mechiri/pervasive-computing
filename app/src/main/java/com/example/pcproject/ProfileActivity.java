@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,6 +32,15 @@ public class ProfileActivity extends AppCompatActivity {
         bLogout = findViewById(R.id.buttonLogout);
         bProfileOutput = findViewById(R.id.buttonOutput);
         mAuth = FirebaseAuth.getInstance();
+
+        FloatingActionButton add = (FloatingActionButton) findViewById(R.id.addButton);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, EventForm.class));
+            }
+        });
 
 
         bProfileOutput.setOnClickListener(new View.OnClickListener() {
