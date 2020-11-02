@@ -19,7 +19,9 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.Constants;
@@ -28,10 +30,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -39,7 +45,10 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class SampleProfileActivity extends AppCompatActivity {
@@ -50,9 +59,16 @@ public class SampleProfileActivity extends AppCompatActivity {
     private Button bProfile1Capture;
     private static final int CAMERA_REQUEST_CODE1 = 11, SELECT_FILE_CODE1 = 12;
     private StorageReference storageReference;
-    private FirebaseAuth mAuth;
     private File photoFile = null;
     private ProgressDialog mProgress;
+
+    private ArrayList<SeekBar> seekBars = new ArrayList<SeekBar>();
+    private EditText editText;
+    Button button11;
+    Button bOutput;
+
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +78,39 @@ public class SampleProfileActivity extends AppCompatActivity {
 
         mProfile1Image = findViewById(R.id.imageView1);
         bProfile1Capture = findViewById(R.id.buttonC1);
+        mProgress = new ProgressDialog(this);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        mProgress = new ProgressDialog(this);
+        db = FirebaseFirestore.getInstance();
+
+
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar11)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar12)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar13)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar14)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar15)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar16)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar17)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar18)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar19)));
+        seekBars.add(((SeekBar) findViewById(R.id.seekBar20)));
+        editText = findViewById(R.id.editTextTextPersonName1);
+        button11 = findViewById(R.id.button11);
+        bOutput = findViewById(R.id.button12);
+
+        bOutput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SampleProfileActivity.this, ProfileOutput.class));
+            }
+        });
+        button11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upLoadAllData("profile1");
+            }
+        });
 
         bProfile1Capture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +119,50 @@ public class SampleProfileActivity extends AppCompatActivity {
                 SelectImage();
             }
         });
+    }
+
+    private void upLoadAllData(String sProfile)
+    {
+        ArrayList<Integer> seekBarValues = new ArrayList<Integer>();
+        for (SeekBar seekbar : seekBars) {
+            seekBarValues.add(seekbar.getProgress());
+        }
+        String logs = editText.getText().toString();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("SeekBarValues", seekBarValues);
+        userData.put("Logs", logs);
+        userData.put("timestamp", FieldValue.serverTimestamp());
+        Log.d(TAG,"upLoadAllData: coming!");
+        db.collection(currentUser.getEmail()).document(sProfile).set(userData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(SampleProfileActivity.this, "Uploaded Data", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SampleProfileActivity.this, "Error in Uploading Data", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Upload Failure");
+                    }
+                });
+                /*
+        db.collection(currentUser.getEmail()).add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d(TAG, "Previous Location Added: "+documentReference.getId());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error Occurred: " + e.getMessage());
+            }
+        });
+
+                 */
     }
 
     private void SelectImage()

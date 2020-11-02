@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -21,7 +24,9 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView tvUser;
     private Button bLogout;
     private Button bProfileOutput;
+
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         bLogout = findViewById(R.id.buttonLogout);
         bProfileOutput = findViewById(R.id.buttonOutput);
         mAuth = FirebaseAuth.getInstance();
+
 
         FloatingActionButton add = (FloatingActionButton) findViewById(R.id.addButton);
 
