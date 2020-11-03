@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginBottom="80dp"
+    android:layout_marginTop="80dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/initalText"
+        android:layout_width="238dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="147dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="70dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/secondText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/secondText"
+        android:layout_width="137dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="259dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initalText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
