@@ -1,6 +1,7 @@
 package com.example.pcproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -22,6 +23,11 @@ public class initialSurvey extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_survey);
+
+        surveypage1fragment surveypage1fragment = new surveypage1fragment();
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().add(R.id.mainLayout, surveypage1fragment).commit();
+
 
         //buttonSurveyAction = findViewById(R.id.surveyButton);
 

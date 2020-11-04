@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".surveypage3fragment">
+
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="263dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="22dp"
+        android:text="If you had an ideal relationship, how would it make you feel?"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/idealTextInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/idealTextInput"
+        android:layout_width="273dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="63dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:hint="Relieved, relaxed, fun..."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/nextSurveyB3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <Button
+        android:id="@+id/nextSurveyB3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="282dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="322dp"
+        android:background="@drawable/nextbuttonborder_active"
+        android:text=">"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idealTextInput" />
+</androidx.constraintlayout.widget.ConstraintLayout>
