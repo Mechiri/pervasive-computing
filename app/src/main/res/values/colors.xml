@@ -8,4 +8,5 @@
     <color name="pressed">#7CE1AB</color>
     <color name="secondary">#C7F2BD</color>
     <color name="gray">#D7D7D7</color>
+    <color name="white">#FFFFFF</color>
 </resources>
