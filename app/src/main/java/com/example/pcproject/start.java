@@ -68,7 +68,7 @@ public class start extends AppCompatActivity {
                 }
                 else
                 {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ActiveLogin.class));
                 }
             }
         });
@@ -76,14 +76,14 @@ public class start extends AppCompatActivity {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                startActivity(new Intent(getApplicationContext(), ActiveSignUp.class));
             }
         });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), ActiveLogin.class));
             }
         });
 
