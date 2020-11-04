@@ -31,9 +31,12 @@
         <activity android:name=".ProfileOutput" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ActiveLogin"/>
+        <activity android:name=".ActivePassword"/>
+        <activity android:name=".ActiveSignUp"/>
+        <activity android:name=".ActiveUserName"/>
+        <activity android:name=".initialSurvey"/>
     </application>
 
 </manifest>
