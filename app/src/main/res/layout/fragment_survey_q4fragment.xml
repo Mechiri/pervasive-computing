@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".surveyQ4fragment">
+
+
+    <Button
+        android:id="@+id/Q4E"
+        android:layout_width="261dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="54dp"
+        android:background="@drawable/choicebordershape"
+        android:text="I feel loved when being hugged or touched"
+        android:textColor="@color/primary"
+        app:layout_constraintBottom_toTopOf="@+id/Q4surveyB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Q4D" />
+
+    <Button
+        android:id="@+id/Q4D"
+        android:layout_width="261dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/choicebordershape"
+        android:text="I feel loved when people do things to help me"
+        android:textColor="@color/primary"
+        app:layout_constraintBottom_toTopOf="@+id/Q4E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <Button
+        android:id="@+id/Q4surveyB"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="279dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="266dp"
+        android:background="@drawable/nextbuttonborder_inactive"
+        android:text=">"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Q1E" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="268dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="42dp"
+        android:text="Please pick the option that best reflects your preferences."
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Q1A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

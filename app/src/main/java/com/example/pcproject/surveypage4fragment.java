@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class surveypage3fragment extends Fragment {
+public class surveypage4fragment extends Fragment {
 
     private Button nextB;
 
-    public surveypage3fragment() {
+    public surveypage4fragment() {
         // Required empty public constructor
     }
 
@@ -22,15 +22,15 @@ public class surveypage3fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_surveypage3fragment, container, false);
-        nextB = v.findViewById(R.id.nextSurveyB3);
+        View v = inflater.inflate(R.layout.fragment_surveypage4fragment, container, false);
+        nextB = v.findViewById(R.id.nextSurveyB4);
 
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveypage4fragment surveypage4fragment = new surveypage4fragment();
+                surveypage5fragment surveypage5fragment = new surveypage5fragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveypage4fragment);
+                transaction.replace(R.id.mainLayout, surveypage5fragment);
                 transaction.commit();
             }
         });
