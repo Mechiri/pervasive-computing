@@ -11,14 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
-public class surveyQ4fragment extends Fragment {
-
+public class surveyQ12fragment extends Fragment {
     private Button nextB;
-    private Button Q4D;
-    private Button Q4E;
+    private Button Q12E;
+    private Button Q12D;
 
-    public surveyQ4fragment() {
+    public surveyQ12fragment() {
         // Required empty public constructor
     }
 
@@ -26,32 +24,32 @@ public class surveyQ4fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_survey_q4fragment, container, false);
-        nextB = v.findViewById(R.id.Q4surveyB);
-        Q4D = v.findViewById(R.id.Q4D);
-        Q4E = v.findViewById(R.id.Q4E);
+        View v = inflater.inflate(R.layout.fragment_survey_q12fragment, container, false);
+        nextB = v.findViewById(R.id.Q12surveyB);
+        Q12E = v.findViewById(R.id.Q12E);
+        Q12D = v.findViewById(R.id.Q12D);
 
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveyQ5fragment surveyQ5fragment = new surveyQ5fragment();
+                surveyQ13fragment surveyQ13fragment = new surveyQ13fragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveyQ5fragment);
+                transaction.replace(R.id.mainLayout, surveyQ13fragment);
                 transaction.commit();
             }
         });
 
-        Q4D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        Q4E.setOnClickListener(new View.OnClickListener() {
+        Q12E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Q12D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
 

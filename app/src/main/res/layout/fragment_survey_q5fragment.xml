@@ -4,26 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".surveyQ2fragment">
-
+    tools:context=".surveyQ5fragment">
 
     <Button
-        android:id="@+id/Q2D"
+        android:id="@+id/Q5C"
         android:layout_width="261dp"
         android:layout_height="58dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="41dp"
         android:background="@drawable/choicebordershape"
-        android:text="I feel loved when given practical help"
+        android:text="I feel loved when I receive a gift from someone"
         android:textColor="@color/selectedtextcolor"
-        app:layout_constraintBottom_toTopOf="@+id/Q2surveyB"
+        app:layout_constraintBottom_toTopOf="@+id/Q5surveyB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Q2B" />
+        app:layout_constraintTop_toBottomOf="@+id/Q5E" />
 
     <Button
-        android:id="@+id/Q2surveyB"
+        android:id="@+id/Q5E"
+        android:layout_width="261dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/choicebordershape"
+        android:text="I feel loved when being held in someones arms"
+        android:textColor="@color/selectedtextcolor"
+        app:layout_constraintBottom_toTopOf="@+id/Q5C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <Button
+        android:id="@+id/Q5surveyB"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="279dp"
@@ -37,36 +51,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Q2D" />
-
-    <Button
-        android:id="@+id/Q2B"
-        android:layout_width="261dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="42dp"
-        android:background="@drawable/choicebordershape"
-        android:text="I like to spend one-on-one time"
-        android:textColor="@color/selectedtextcolor"
-        app:layout_constraintBottom_toTopOf="@+id/Q2D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/Q5C" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textView22"
         android:layout_width="268dp"
         android:layout_height="55dp"
         android:layout_marginStart="71dp"
         android:layout_marginTop="122dp"
         android:layout_marginEnd="72dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="44dp"
         android:text="Please pick the option that best reflects your preferences."
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Q1A"
+        app:layout_constraintBottom_toTopOf="@+id/Q5E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
