@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,13 +11,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class surveypage4fragment extends Fragment {
 
+    private surveyPage4FragmentListener page4FragmentListener;
     private Button nextB;
+    private EditText desiresTextInput;
 
     public surveypage4fragment() {
         // Required empty public constructor
+    }
+
+    public interface surveyPage4FragmentListener
+    {
+        void onInputPage4Next(String mString);
     }
 
     @Override
@@ -24,17 +34,31 @@ public class surveypage4fragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_surveypage4fragment, container, false);
         nextB = v.findViewById(R.id.nextSurveyB4);
+        desiresTextInput = v.findViewById(R.id.desiresTextInput);
 
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveypage5fragment surveypage5fragment = new surveypage5fragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveypage5fragment);
-                transaction.commit();
+                page4FragmentListener.onInputPage4Next(desiresTextInput.getText().toString());
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveypage4fragment.surveyPage4FragmentListener) {
+            page4FragmentListener = (surveypage4fragment.surveyPage4FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyPage4FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

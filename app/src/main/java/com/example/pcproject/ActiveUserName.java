@@ -63,7 +63,8 @@ public class ActiveUserName extends AppCompatActivity {
 
         if(!userName.isEmpty())
         {
-            appUser = new AppUser(userName);
+            appUser = new AppUser();
+            appUser.setUserName(userName);
 
             String userId = mAuth.getCurrentUser().getEmail();
             Map<String, Object> userData = new HashMap<>();

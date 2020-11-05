@@ -2,19 +2,27 @@ package com.example.pcproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-public class initialSurvey extends AppCompatActivity implements surveyPage1Fragment.surveyPage1FragmentListener{
+public class initialSurvey extends AppCompatActivity implements surveyPage1Fragment.surveyPage1FragmentListener, surveypage2fragment.surveyPage2FragmentListener, surveypage3fragment.surveyPage3FragmentListener, surveypage4fragment.surveyPage4FragmentListener, surveypage5fragment.surveyPage5FragmentListener, surveypage6fragment.surveyPage6FragmentListener{
 
     private static final String TAG = "initialSurvey";
 
     private surveyPage1Fragment page1Fragment;
     private surveypage2fragment page2Fragment;
+    private surveypage3fragment page3Fragment;
+    private surveypage4fragment page4Fragment;
+    private surveypage5fragment page5Fragment;
+    private surveypage6fragment page6Fragment;
+    private surveyQ1fragment surveyQ1Fragment;
 
     FragmentManager fragmentManager;
+
+    //User Variables(AppIntention, IdeaRelationshipFeel, RelationshipDesire)
+    private AppUser appUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,7 @@ public class initialSurvey extends AppCompatActivity implements surveyPage1Fragm
 
         fragmentManager=getSupportFragmentManager();
         page1Fragment = new surveyPage1Fragment();
+        appUser = new AppUser();
 
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
@@ -32,33 +41,10 @@ public class initialSurvey extends AppCompatActivity implements surveyPage1Fragm
         });
         getSupportFragmentManager().beginTransaction()
             .add(R.id.mainLayout, page1Fragment).commit();
-
-
-        //buttonSurveyAction = findViewById(R.id.surveyButton);
-
-        /*setupOnboardingItems();
-
-        final ViewPager2 surveyViewPager = findViewById(R.id.surveyViewPager);
-        surveyViewPager.setAdapter(surveyAdapter);
-
-        buttonSurveyAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(surveyViewPager.getCurrentItem() + 1 < surveyAdapter.getItemCount())
-                {
-                    surveyViewPager.setCurrentItem(surveyViewPager.getCurrentItem()+1);
-                }
-                else {
-                    Toast.makeText(initialSurvey.this, "DONE", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
     }
     @Override
     protected void onStart() {
         super.onStart();
-
-
     }
 
     @Override
@@ -70,29 +56,89 @@ public class initialSurvey extends AppCompatActivity implements surveyPage1Fragm
             .commit();
     }
 
-    /*
-    private void setupOnboardingItems() {
-        List<surveyItem> surveyItems = new ArrayList<>();
-        surveyItem q1 = new surveyItem();
-        q1.setQuestion("Please pick the opinion that best reflects your preferences");
-        q1.setChoice1("I like to receive notes of affirmation from you.");
-        q1.setChoice2("I like it when you hug me.");
 
-        surveyItem q2 = new surveyItem();
-        q2.setQuestion("Please pick the opinion that best reflects your preferences");
-        q2.setChoice1("I like to spend one-on-one time with you.");
-        q2.setChoice2("I feel loved when you give me practical help.");
+    @Override
+    public void onInputPage2Sent(String mString) {
+        Log.d(TAG,"onInputPage2Sent coming.....1");
 
-        surveyItem q3 = new surveyItem();
-        q3.setQuestion("Please pick the opinion that best reflects your preferences");
-        q3.setChoice1("I like it when you give me gifts.");
-        q3.setChoice2("I like taking long walks with you.");
+        if(!mString.isEmpty())
+        {
+            appUser.setAppIntention(mString);
+        }
+        else
+        {
+            throw new RuntimeException(this.toString()
+                    + "The AppIntention should not be empty");
+        }
+    }
 
-        surveyItems.add(q1);
-        surveyItems.add(q2);
-        surveyItems.add(q3);
+    @Override
+    public void onInputPage2Next() {
+        if(appUser.getAppIntention() != null)
+        {
+            Log.d(TAG,"User Intention for this App:" + appUser.getAppIntention());
+            page3Fragment = new surveypage3fragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainLayout, page3Fragment)
+                    .commit();
+        }
+        else
+        {
+            Toast.makeText(this, "Please select above option", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        surveyAdapter = new surveyAdapter(surveyItems);
-    }*/
+    @Override
+    public void onInputPage3Next(String mString) {
+        Log.d(TAG,"onInputPage3Sent coming.....1");
+        if(!mString.isEmpty())
+        {
+            appUser.setIdealRelationshipFeel(mString);
+            Log.d(TAG,"User IdeaRelationshipFeel:" + appUser.getIdealRelationshipFeel());
+            page4Fragment = new surveypage4fragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainLayout, page4Fragment)
+                    .commit();
+        }
+        else
+        {
+            Toast.makeText(this, "Please fill above option", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    @Override
+    public void onInputPage4Next(String mString) {
+        Log.d(TAG,"onInputPage4Sent coming.....1");
+        if(!mString.isEmpty())
+        {
+            appUser.setRelationshipDesire(mString);
+            Log.d(TAG,"User RelationshipDesire:" + appUser.getRelationshipDesire());
+            page5Fragment = new surveypage5fragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainLayout, page5Fragment)
+                    .commit();
+        }
+        else
+        {
+            Toast.makeText(this, "Please fill above option", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onInputPage5Next() {
+        Log.d(TAG,"onInputPage5Sent coming.....1");
+        page6Fragment = new surveypage6fragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.mainLayout, page6Fragment)
+                .commit();
+    }
+
+    @Override
+    public void onInputPage6Next() {
+        Log.d(TAG,"onInputPage6Sent coming.....1");
+        surveyQ1Fragment = new surveyQ1fragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.mainLayout, surveyQ1Fragment)
+                .commit();
+    }
 }
