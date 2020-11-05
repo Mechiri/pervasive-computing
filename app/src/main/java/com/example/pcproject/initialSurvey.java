@@ -2,31 +2,36 @@ package com.example.pcproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
+public class initialSurvey extends AppCompatActivity implements surveyPage1Fragment.surveyPage1FragmentListener{
 
-public class initialSurvey extends AppCompatActivity {
+    private static final String TAG = "initialSurvey";
 
-    //private surveyAdapter surveyAdapter;
-    //private Button buttonSurveyAction;
+    private surveyPage1Fragment page1Fragment;
+    private surveypage2fragment page2Fragment;
+
+    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_survey);
 
-        surveypage1fragment surveypage1fragment = new surveypage1fragment();
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.mainLayout, surveypage1fragment).commit();
+        fragmentManager=getSupportFragmentManager();
+        page1Fragment = new surveyPage1Fragment();
+
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                Log.d(TAG, "Fragment count in back stack: "+fragmentManager.getBackStackEntryCount());
+            }
+        });
+        getSupportFragmentManager().beginTransaction()
+            .add(R.id.mainLayout, page1Fragment).commit();
 
 
         //buttonSurveyAction = findViewById(R.id.surveyButton);
@@ -49,7 +54,21 @@ public class initialSurvey extends AppCompatActivity {
             }
         });*/
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+
+    }
+
+    @Override
+    public void onInputPage1Sent() {
+        Log.d(TAG,"onInputPage1Sent coming.....1");
+        page2Fragment = new surveypage2fragment();
+        getSupportFragmentManager().beginTransaction()
+            .replace(R.id.mainLayout, page2Fragment)
+            .commit();
+    }
 
     /*
     private void setupOnboardingItems() {
