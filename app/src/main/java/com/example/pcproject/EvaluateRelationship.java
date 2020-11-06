@@ -39,11 +39,11 @@ public class EvaluateRelationship {
 
 
 
-        Integer WaRatio = (int)Math.round(waRatio);
-        Integer QtRatio = (int)Math.round(qtRatio);
-        Integer RgRatio = (int)Math.round(rgRatio);
-        Integer AsRatio = (int)Math.round(asRatio);
-        Integer PtRatio = (int)Math.round(ptRatio);
+        Integer WaRatio = (int)Math.round(waRatio*100);
+        Integer QtRatio = (int)Math.round(qtRatio*100);
+        Integer RgRatio = (int)Math.round(rgRatio*100);
+        Integer AsRatio = (int)Math.round(asRatio*100);
+        Integer PtRatio = (int)Math.round(ptRatio*100);
 
         Log.d(TAG, "Love Languages overall:" + "WA:" + ((float)(100.0f* (waRatio/(float)(20.0f)))) +" QT:"
                 +((Float)(100* (waRatio/(Float)(25.0f)))).intValue() + " RG:"

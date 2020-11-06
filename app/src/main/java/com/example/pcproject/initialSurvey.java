@@ -3,6 +3,7 @@ package com.example.pcproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -774,8 +775,16 @@ public class initialSurvey extends AppCompatActivity implements
                 calledActsOfService();
 
             resultLanguages = null;
-            //appUser.calculateLoveLanguagesRatio();
+            appUser.calculateLoveLanguagesRatio();
             appUser.uploadAllData(this);
+
+            Intent intent = new Intent(initialSurvey.this, SurveyResultSample.class);
+            intent.putExtra("wordsOfAffirmation", appUser.getWordsOfAffirmation());
+            intent.putExtra("qualityTime", appUser.getQualityTime());
+            intent.putExtra("receivingGifts", appUser.getReceivingGifts());
+            intent.putExtra("actsOfService", appUser.getActsOfService());
+            intent.putExtra("physicalTouch", appUser.getPhysicalTouch());
+            startActivity(intent);
         }
         else
         {
