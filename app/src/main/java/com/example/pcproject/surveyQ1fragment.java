@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 public class surveyQ1fragment extends Fragment {
 
+    private surveyQ1FragmentListener q1FragmentListener;
     private Button nextB;
     private Button Q1A;
     private Button Q1E;
@@ -20,7 +23,12 @@ public class surveyQ1fragment extends Fragment {
     public surveyQ1fragment() {
         // Required empty public constructor
     }
-
+    public interface surveyQ1FragmentListener
+    {
+        void calledQ1A(String string);
+        void calledQ1E(String string);
+        void onInputQ1Next();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,16 +42,14 @@ public class surveyQ1fragment extends Fragment {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveyQ2fragment surveyQ2fragment = new surveyQ2fragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveyQ2fragment);
-                transaction.commit();
+                q1FragmentListener.onInputQ1Next();
             }
         });
 
         Q1A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q1FragmentListener.calledQ1A("Q1A");
                 Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
@@ -51,10 +57,27 @@ public class surveyQ1fragment extends Fragment {
         Q1E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q1FragmentListener.calledQ1E("Q1E");
                 Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveyQ1fragment.surveyQ1FragmentListener) {
+            q1FragmentListener = (surveyQ1fragment.surveyQ1FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyQ1FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

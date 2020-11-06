@@ -36,7 +36,6 @@ public class surveypage2fragment extends Fragment {
         void onInputPage2Next();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

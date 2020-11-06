@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,12 +15,20 @@ import android.widget.Toast;
 
 public class surveyQ3fragment extends Fragment {
 
+    private surveyQ3FragmentListener q3FragmentListener;
     private Button nextB;
     private Button Q3C;
     private Button Q3B;
 
     public surveyQ3fragment() {
         // Required empty public constructor
+    }
+
+    public interface surveyQ3FragmentListener
+    {
+        void calledQ3C(String string);
+        void calledQ3B(String string);
+        void onInputQ3Next();
     }
 
     @Override
@@ -33,16 +43,14 @@ public class surveyQ3fragment extends Fragment {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveyQ4fragment surveyQ4fragment = new surveyQ4fragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveyQ4fragment);
-                transaction.commit();
+                q3FragmentListener.onInputQ3Next();
             }
         });
 
         Q3C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q3FragmentListener.calledQ3C("Q3C");
                 Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
             }
         });
@@ -50,10 +58,27 @@ public class surveyQ3fragment extends Fragment {
         Q3B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q3FragmentListener.calledQ3B("Q3B");
                 Toast.makeText(getActivity(), "Quality Time", Toast.LENGTH_LONG).show();
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveyQ3fragment.surveyQ3FragmentListener) {
+            q3FragmentListener = (surveyQ3fragment.surveyQ3FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyQ3FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

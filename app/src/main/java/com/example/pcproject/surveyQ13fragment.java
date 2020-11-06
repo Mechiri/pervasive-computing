@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 
 public class surveyQ13fragment extends Fragment {
+    private surveyQ13FragmentListener q13FragmentListener;
     private Button nextB;
     private Button Q13A;
     private Button Q13C;
@@ -21,7 +24,12 @@ public class surveyQ13fragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    public interface surveyQ13FragmentListener
+    {
+        void calledQ13A(String string);
+        void calledQ13C(String string);
+        void onInputQ13Next();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,16 +42,14 @@ public class surveyQ13fragment extends Fragment {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveyQ14fragment surveyQ14fragment = new surveyQ14fragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveyQ14fragment);
-                transaction.commit();
+                q13FragmentListener.onInputQ13Next();
             }
         });
 
         Q13A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q13FragmentListener.calledQ13A("Q13A");
                 Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
@@ -51,10 +57,27 @@ public class surveyQ13fragment extends Fragment {
         Q13C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q13FragmentListener.calledQ13C("Q13C");
                 Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveyQ13fragment.surveyQ13FragmentListener) {
+            q13FragmentListener = (surveyQ13fragment.surveyQ13FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyQ13FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

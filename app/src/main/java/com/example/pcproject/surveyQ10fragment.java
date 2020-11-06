@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class surveyQ10fragment extends Fragment {
+    private surveyQ10FragmentListener q10FragmentListener;
     private Button nextB;
     private Button Q10D;
     private Button Q10A;
@@ -19,7 +22,12 @@ public class surveyQ10fragment extends Fragment {
     public surveyQ10fragment() {
         // Required empty public constructor
     }
-
+    public interface surveyQ10FragmentListener
+    {
+        void calledQ10D(String string);
+        void calledQ10A(String string);
+        void onInputQ10Next();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,16 +40,14 @@ public class surveyQ10fragment extends Fragment {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveyQ11fragment surveyQ11fragment = new surveyQ11fragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveyQ11fragment);
-                transaction.commit();
+                q10FragmentListener.onInputQ10Next();
             }
         });
 
         Q10D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q10FragmentListener.calledQ10D("Q10D");
                 Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
@@ -49,10 +55,27 @@ public class surveyQ10fragment extends Fragment {
         Q10A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q10FragmentListener.calledQ10A("Q10A");
                 Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveyQ10fragment.surveyQ10FragmentListener) {
+            q10FragmentListener = (surveyQ10fragment.surveyQ10FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyQ10FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class surveyQ12fragment extends Fragment {
+    private surveyQ12FragmentListener q12FragmentListener;
     private Button nextB;
     private Button Q12E;
     private Button Q12D;
@@ -19,7 +22,12 @@ public class surveyQ12fragment extends Fragment {
     public surveyQ12fragment() {
         // Required empty public constructor
     }
-
+    public interface surveyQ12FragmentListener
+    {
+        void calledQ12E(String string);
+        void calledQ12D(String string);
+        void onInputQ12Next();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,16 +40,14 @@ public class surveyQ12fragment extends Fragment {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                surveyQ13fragment surveyQ13fragment = new surveyQ13fragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, surveyQ13fragment);
-                transaction.commit();
+                q12FragmentListener.onInputQ12Next();
             }
         });
 
         Q12E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q12FragmentListener.calledQ12E("Q12E");
                 Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
             }
         });
@@ -49,10 +55,26 @@ public class surveyQ12fragment extends Fragment {
         Q12D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q12FragmentListener.calledQ12D("Q12D");
                 Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
 
         return v;
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveyQ12fragment.surveyQ12FragmentListener) {
+            q12FragmentListener = (surveyQ12fragment.surveyQ12FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyQ12FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

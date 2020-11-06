@@ -1,7 +1,9 @@
 package com.example.pcproject;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 
 public class surveyQ15fragment extends Fragment {
+    private surveyQ15FragmentListener q15FragmentListener;
     private Button nextB;
     private Button Q15A;
     private Button Q15D;
@@ -19,7 +22,12 @@ public class surveyQ15fragment extends Fragment {
     public surveyQ15fragment() {
         // Required empty public constructor
     }
-
+    public interface surveyQ15FragmentListener
+    {
+        void calledQ15A(String string);
+        void calledQ15D(String string);
+        void onInputQ15Next();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,13 +40,14 @@ public class surveyQ15fragment extends Fragment {
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                q15FragmentListener.onInputQ15Next();
             }
         });
 
         Q15A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q15FragmentListener.calledQ15A("Q15A");
                 Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
@@ -46,10 +55,27 @@ public class surveyQ15fragment extends Fragment {
         Q15D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                q15FragmentListener.calledQ15D("Q15D");
                 Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof surveyQ15fragment.surveyQ15FragmentListener) {
+            q15FragmentListener = (surveyQ15fragment.surveyQ15FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "The activity must implement surveyQ15FragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

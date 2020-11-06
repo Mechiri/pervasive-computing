@@ -68,7 +68,7 @@ public class ActiveUserName extends AppCompatActivity {
 
             String userId = mAuth.getCurrentUser().getEmail();
             Map<String, Object> userData = new HashMap<>();
-            userData.put("username", userName);
+            userData.put("userName", userName);
             userData.put("timestamp", FieldValue.serverTimestamp());
             Log.d(TAG,"uploadUserName: coming!");
             db.collection(userId).document("myData").set(userData)
