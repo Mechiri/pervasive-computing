@@ -11,8 +11,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -29,7 +27,7 @@ public class SurveyResultSample extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey_result_sample);
 
-        piechart = findViewById(R.id.loveLanguagesDisplay);
+        piechart = findViewById(R.id.loveLanguagesDisplay1);
         pieChartDisplay();
     }
 

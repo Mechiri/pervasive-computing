@@ -46,13 +46,13 @@
         android:layout_marginEnd="67dp"
         android:layout_marginBottom="16dp"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/loveLanguagesDisplay"
+        app:layout_constraintBottom_toTopOf="@+id/loveLanguagesDisplay1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loveLangTextView" />
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/loveLanguagesDisplay"
+        android:id="@+id/loveLanguagesDisplay1"
         android:layout_width="268dp"
         android:layout_height="241dp"
         android:layout_marginStart="71dp"
@@ -76,5 +76,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loveLanguagesDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/loveLanguagesDisplay1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

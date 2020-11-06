@@ -767,18 +767,21 @@ public class initialSurvey extends AppCompatActivity implements
 
     @Override
     public void onInputQ15Next() {
+        Log.d(TAG, "onInputQ15Next Uploading .............. 1");
         if(resultLanguages != null && !resultLanguages.isEmpty())
         {
             if(resultLanguages.equals("Q15A"))
                 calledWordsOfAffirmation();
             if(resultLanguages.equals("Q15D"))
                 calledActsOfService();
-
+            Log.d(TAG, "onInputQ15Next Uploading .............. 5");
             resultLanguages = null;
+            Log.d(TAG, "onInputQ15Next Uploading .............. 4");
             appUser.calculateLoveLanguagesRatio();
+            Log.d(TAG, "Before Uploading .............. 1");
             appUser.uploadAllData(this);
-
-            Intent intent = new Intent(initialSurvey.this, SurveyResultSample.class);
+            Log.d(TAG, "After Uploading .............. 1");
+            Intent intent = new Intent(initialSurvey.this, SurveyResult.class);
             intent.putExtra("wordsOfAffirmation", appUser.getWordsOfAffirmation());
             intent.putExtra("qualityTime", appUser.getQualityTime());
             intent.putExtra("receivingGifts", appUser.getReceivingGifts());
@@ -791,7 +794,7 @@ public class initialSurvey extends AppCompatActivity implements
             Toast.makeText(this, "Please choose above option", Toast.LENGTH_SHORT).show();
         }
 
-        Log.d(TAG, "Love Languages:" + "WA:" + appUser.getWordsOfAffirmation() +" QT:"
+        Log.d(TAG, "Love Languages --:" + "WA:" + appUser.getWordsOfAffirmation() +" QT:"
                 +appUser.getQualityTime() + " RG:"
                 +appUser.getReceivingGifts() + " AS:"
                 +appUser.getActsOfService() + " PT"
