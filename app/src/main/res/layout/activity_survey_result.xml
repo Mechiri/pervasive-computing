@@ -6,75 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".SurveyResult">
 
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="10dp"
-        android:text="Your primary love language is"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/loveLangTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/loveLangTextView"
-        android:layout_width="168dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="199dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/primary"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/loveLangDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33" />
-
-    <TextView
-        android:id="@+id/loveLangDescription"
-        android:layout_width="277dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="16dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/loveLanguagesDisplay1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loveLangTextView" />
-
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/loveLanguagesDisplay1"
-        android:layout_width="268dp"
-        android:layout_height="241dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/toDashboardB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loveLangDescription" />
-
-    <Button
-        android:id="@+id/toDashboardB"
-        android:layout_width="246dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="82dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="37dp"
-        android:background="@color/primary"
-        android:text="Go to dashboard"
-        android:textColor="@color/white"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loveLanguagesDisplay1" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="348dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="10dp"
+                android:text="Your primary love language is"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/loveLangTextView"
+                android:layout_width="327dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="199dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/loveLangDescription"
+                android:layout_width="321dp"
+                android:layout_height="275dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="18sp" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/loveLanguagesDisplay1"
+                android:layout_width="303dp"
+                android:layout_height="293dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="22dp">
+
+            </com.github.mikephil.charting.charts.PieChart>
+
+            <Button
+                android:id="@+id/toDashboardB"
+                android:layout_width="246dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="82dp"
+                android:layout_marginEnd="83dp"
+                android:layout_marginBottom="37dp"
+                android:background="@color/primary"
+                android:text="Go to dashboard"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
