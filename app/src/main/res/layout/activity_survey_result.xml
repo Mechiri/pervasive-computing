@@ -6,109 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".SurveyResult">
 
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="348dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="10dp"
-        android:text="Your primary love language is"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toStartOf="@+id/scrollView2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="343dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="46dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/loveLangTextView"
-                android:layout_width="match_parent"
-                android:layout_height="82dp"
-                android:textColor="@color/primary"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="355dp"
-        android:layout_height="91dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="57dp"
-        app:layout_constraintBottom_toTopOf="@+id/loveLanguagesDisplay1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/loveLangDescription"
-                android:layout_width="match_parent"
-                android:layout_height="129dp"
-                android:textSize="18sp" />
-        </LinearLayout>
-    </ScrollView>
-
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/loveLanguagesDisplay1"
-        android:layout_width="354dp"
-        android:layout_height="278dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="398dp"
+        android:layout_height="556dp"
+        android:layout_marginBottom="26dp"
         app:layout_constraintBottom_toTopOf="@+id/toDashboardB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
+        app:layout_constraintTop_toTopOf="parent">
 
-    </com.github.mikephil.charting.charts.PieChart>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/surveyResultsHeading"
+                android:layout_width="match_parent"
+                android:layout_height="109dp"
+                android:text="Your primary love language is"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerSurveyResults"
+                android:layout_width="408dp"
+                android:layout_height="281dp" />
+
+            <LinearLayout
+                android:id="@+id/layoutSurveyIndicator2"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:orientation="horizontal"></LinearLayout>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/loveLanguagesDisplay1"
+                android:layout_width="match_parent"
+                android:layout_height="354dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/toDashboardB"
         android:layout_width="246dp"
         android:layout_height="55dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="50dp"
         android:background="@color/primary"
         android:text="Go to dashboard"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loveLanguagesDisplay1" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

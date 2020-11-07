@@ -1,12 +1,18 @@
 package com.example.pcproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -16,14 +22,15 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SurveyResult extends AppCompatActivity {
 
     private static final String TAG = "SurveyResult";
 
+    private surveyResultsAdapter SurveyResultsAdapter;
+    private LinearLayout layoutSurveyResultsIndicators;
     private Button dashboardB;
-    private TextView loveLanguage;
-    private TextView loveLanguageDescription;
 
     private String affirmationDesc = "This love language expresses love with words that build up your partner. Verbal compliments don't have to be complicated. Compliments and an \"I love you\" can go a long way. On the other hand, negative or insulting comments can hurt you and it could take them longer to forgive than others.";
     private String serviceDesc = "Actions speak louder than words\". Cooking a meal, doing the laundry, and picking up a prescription are all acts of service. They require some thought, time, and effort. All of these things should be done with positivity to be considered an expression of love. Actions out of obligation or with a negative tone are something else entirely.";
@@ -40,8 +47,16 @@ public class SurveyResult extends AppCompatActivity {
     private PieData pieData;
 
     private ArrayList<Integer> result = new ArrayList<>();
-    private String stringTag;
-    private String stringDes;
+    private String stringTagWoA;
+    private String stringDesWoA;
+    private String stringTagQT;
+    private String stringDesQT;
+    private String stringTagRG;
+    private String stringDesRG;
+    private String stringTagAoS;
+    private String stringDesAoS;
+    private String stringTagPT;
+    private String stringDesPT;
     int largest = 0, largestValue = 0;
 
     ArrayList<PieEntry> visitors = new ArrayList<>();
@@ -51,9 +66,8 @@ public class SurveyResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey_result);
 
+        layoutSurveyResultsIndicators = findViewById(R.id.layoutSurveyIndicator2);
         dashboardB = findViewById(R.id.toDashboardB);
-        loveLanguage = findViewById(R.id.loveLangTextView);
-        loveLanguageDescription = findViewById(R.id.loveLangDescription);
         piechart = findViewById(R.id.loveLanguagesDisplay1);
 
         Intent iCurrentIntent = getIntent();
@@ -62,7 +76,6 @@ public class SurveyResult extends AppCompatActivity {
         result.add(iCurrentIntent.getIntExtra("receivingGifts", 0));
         result.add(iCurrentIntent.getIntExtra("actsOfService", 0));
         result.add(iCurrentIntent.getIntExtra("physicalTouch", 0));
-
 
         for ( int i = 0; i < result.size(); i++ )
         {
@@ -73,70 +86,95 @@ public class SurveyResult extends AppCompatActivity {
 
         if(result.get(0) == largestValue)
         {
-            stringTag = "Words Of Affirmation\n";
-            stringDes = affirmationDesc +"\n";
+            stringTagWoA = "Words Of Affirmation\n";
+            stringDesWoA = affirmationDesc +"\n";
         }
         if(result.get(1) == largestValue)
         {
-            if(stringTag == null)
-            {
-                stringTag = "Quality Time\n";
-                stringDes = timeDesc +"\n";
-            }
-            else
-            {
-                stringTag += "Quality Time\n";
-                stringDes += timeDesc +"\n";
-            }
+                stringTagQT = "Quality Time\n";
+                stringDesQT = timeDesc +"\n";
         }
         if(result.get(2) == largestValue)
         {
-            if(stringTag == null)
-            {
-                stringTag = "Receiving Gifts\n";
-                stringDes = giftsDesc +"\n";
-            }
-            else
-            {
-                stringTag += "Receiving Gifts\n";
-                stringDes += giftsDesc +"\n";
-            }
+                stringTagRG = "Receiving Gifts\n";
+                stringDesRG = giftsDesc +"\n";
         }
         if(result.get(3) == largestValue)
         {
-            if(stringTag == null)
-            {
-                stringTag = "Acts Of Service\n";
-                stringDes = serviceDesc +"\n";
-            }
-            else
-            {
-                stringTag += "Acts Of Service\n";
-                stringDes += serviceDesc +"\n";
-            }
-
+                stringTagAoS = "Acts Of Service\n";
+                stringDesAoS = serviceDesc +"\n";
         }
         if(result.get(4) == largestValue)
         {
-            if(stringTag == null)
-            {
-                stringTag = "Physical Touch\n";
-                stringDes = touchDesc +"\n";
-            }
-            else
-            {
-                stringTag += "Physical Touch\n";
-                stringDes += touchDesc +"\n";
-            }
-
+                stringTagPT = "Physical Touch\n";
+                stringDesPT = touchDesc + "\n";
         }
-        loveLanguage.setText(stringTag);
-        loveLanguageDescription.setText(stringDes);
+
+        setSurveyResultsItems();
+        final ViewPager2 surveyResultsViewPager = findViewById(R.id.viewPagerSurveyResults);
+        surveyResultsViewPager.setAdapter(SurveyResultsAdapter);
+
+        surveyResultsIndicators();
+        setCurrentSurveyResultIndicator(0);
+
+        surveyResultsViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                setCurrentSurveyResultIndicator(position);
+            }
+        });
 
         Log.d(TAG, "Coming Here .............. 4");
         pieChartDisplay();
-    }
 
+        dashboardB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //next activity
+            }
+        });
+    }
+    private void setSurveyResultsItems()
+    {
+        List<onBoardingItem> onBoardingItems = new ArrayList<>();
+        if(stringTagWoA != null)
+        {
+            onBoardingItem layout1 = new onBoardingItem();
+            layout1.setInitial(stringTagWoA);
+            layout1.setSecond(stringDesWoA);
+            onBoardingItems.add(layout1);
+        }
+        if(stringTagQT != null)
+        {
+            onBoardingItem layout2 = new onBoardingItem();
+            layout2.setInitial(stringTagQT);
+            layout2.setSecond(stringDesQT);
+            onBoardingItems.add(layout2);
+        }
+        if(stringTagRG != null)
+        {
+            onBoardingItem layout3 = new onBoardingItem();
+            layout3.setInitial(stringTagRG);
+            layout3.setSecond(stringDesRG);
+            onBoardingItems.add(layout3);
+        }
+        if(stringTagAoS != null)
+        {
+            onBoardingItem layout4 = new onBoardingItem();
+            layout4.setInitial(stringTagAoS);
+            layout4.setSecond(stringDesAoS);
+            onBoardingItems.add(layout4);
+        }
+        if(stringTagPT != null)
+        {
+            onBoardingItem layout5 = new onBoardingItem();
+            layout5.setInitial(stringTagPT);
+            layout5.setSecond(stringDesPT);
+            onBoardingItems.add(layout5);
+        }
+        SurveyResultsAdapter = new surveyResultsAdapter(onBoardingItems);
+    }
     void pieChartDisplay()
     {
         Log.d(TAG, "Coming Here .............. 5");
@@ -157,5 +195,45 @@ public class SurveyResult extends AppCompatActivity {
         piechart.setCenterText("Love Languages");
         piechart.getDescription().setEnabled(false);
         piechart.animate();
+    }
+
+    private void surveyResultsIndicators(){
+        ImageView[] indicators = new ImageView[SurveyResultsAdapter.getItemCount()];
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.setMargins(8, 0, 8, 0);
+        for(int i = 0; i < indicators.length; i++)
+        {
+            indicators[i] = new ImageView(getApplicationContext());
+            indicators[i].setImageDrawable(ContextCompat.getDrawable(
+                    getApplicationContext(),
+                    R.drawable.inactive_dot
+            ));
+            indicators[i].setLayoutParams(layoutParams);
+            layoutSurveyResultsIndicators.addView(indicators[i]);
+        }
+    }
+
+    private void setCurrentSurveyResultIndicator(int index){
+        int childCount = layoutSurveyResultsIndicators.getChildCount();
+        for (int i = 0; i < childCount; i ++)
+        {
+            ImageView imageView = (ImageView)layoutSurveyResultsIndicators.getChildAt(i);
+            if(i == index)
+            {
+                imageView.setImageDrawable(ContextCompat.getDrawable(
+                        getApplicationContext(),
+                        R.drawable.selected_dot
+                ));
+            }
+            else
+            {
+                imageView.setImageDrawable(ContextCompat.getDrawable(
+                        getApplicationContext(),
+                        R.drawable.inactive_dot
+                ));
+            }
+        }
     }
 }

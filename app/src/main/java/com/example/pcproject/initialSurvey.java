@@ -457,9 +457,9 @@ public class initialSurvey extends AppCompatActivity implements
         if(resultLanguages != null && !resultLanguages.isEmpty())
         {
             if(resultLanguages.equals("Q7A"))
-                calledQualityTime();
+                calledWordsOfAffirmation();
             if(resultLanguages.equals("Q7C"))
-                calledPhysicalTouch();
+                calledReceivingGifts();
 
             resultLanguages = null;
             surveyQ8fragment = new surveyQ8fragment();
