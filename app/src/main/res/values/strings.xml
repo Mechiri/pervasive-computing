@@ -2,10 +2,10 @@
     <string name="app_name">pcProject</string>
 
     <string name="lovelanguagelist">
-        <ol>1. Acts of Service</ol><br/>
-        <ol>2. Quality Time</ol><br/>
-        <ol>3. Physical Touch</ol><br/>
-        <ol>4. Words of Affirmation</ol><br/>
+        <ol>1. Acts of Service</ol><br />
+        <ol>2. Quality Time</ol><br />
+        <ol>3. Physical Touch</ol><br />
+        <ol>4. Words of Affirmation</ol><br />
         <ol>5. Receiving Gifts</ol>
     </string>
 
