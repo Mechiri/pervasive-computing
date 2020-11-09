@@ -1,9 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".reflectionEventFragment">
 
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="203dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="208dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Add Event"
+        android:textColor="@color/darkgreen"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView38"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="11dp"
+        android:text="What did you talk about?"
+        android:textColor="@color/darkgreen"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/reflectionConvoTopics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <EditText
+        android:id="@+id/reflectionConvoTopics"
+        android:layout_width="347dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Conversation Topics"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/textView42"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="11dp"
+        android:text="What did they do that you really like?"
+        android:textColor="@color/darkgreen"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/reflectionActionsLiked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reflectionConvoTopics" />
+
+    <EditText
+        android:id="@+id/reflectionActionsLiked"
+        android:layout_width="347dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Actions"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/textView43"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="15dp"
+        android:text="What happened that you didn't like?"
+        android:textColor="@color/darkgreen"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/reflectionActionsNotLiked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reflectionActionsLiked" />
+
+    <EditText
+        android:id="@+id/reflectionActionsNotLiked"
+        android:layout_width="347dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Actions"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/textView44"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="16dp"
+        android:text="What happened that was notable?"
+        android:textColor="@color/darkgreen"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/reflectionNotableEvents"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reflectionActionsNotLiked" />
+
+    <EditText
+        android:id="@+id/reflectionNotableEvents"
+        android:layout_width="347dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="38dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Notable Events"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/finishEventB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+    <Button
+        android:id="@+id/finishEventB"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="59dp"
+        android:background="@drawable/nextbuttonborder_active"
+        android:text=">"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reflectionNotableEvents" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

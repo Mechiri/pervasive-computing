@@ -5,4 +5,215 @@
     android:layout_height="match_parent"
     tools:context=".fightEventFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="203dp"
+                android:layout_height="68dp"
+                android:layout_marginEnd="208dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="Add Event"
+                android:textColor="@color/darkgreen"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:paddingBottom="5dp"
+                android:text="Where did you go?"
+                android:textColor="@color/darkgreen"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="90dp" />
+
+            <EditText
+                android:id="@+id/datePlace"
+                android:layout_width="288dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/primary"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Place"
+                android:inputType="textMultiLine"
+                android:paddingBottom="5dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="127dp" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:paddingBottom="5dp"
+                android:text="What did you do?"
+                android:textColor="@color/darkgreen"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="198dp" />
+
+            <EditText
+                android:id="@+id/dateActions"
+                android:layout_width="347dp"
+                android:layout_height="74dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/primary"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Actions"
+                android:inputType="textMultiLine"
+                android:paddingBottom="5dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="231dp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:paddingBottom="5dp"
+                android:text="How long was the date?"
+                android:textColor="@color/darkgreen"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="313dp" />
+
+            <EditText
+                android:id="@+id/dateLength"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/primary"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Hours"
+                android:inputType="textMultiLine"
+                android:paddingBottom="5dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="344dp" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:paddingBottom="5dp"
+                android:text="Rate the Date Overall"
+                android:textColor="@color/darkgreen"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="37dp"
+                tools:layout_editor_absoluteY="399dp" />
+
+            <SeekBar
+                android:id="@+id/dateOverallBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:max="100"
+                android:paddingBottom="5dp"
+                android:progress="3"
+                android:thumb="@drawable/seek_bar_circle"
+                tools:layout_editor_absoluteX="37dp"
+                tools:layout_editor_absoluteY="437dp" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:paddingBottom="5dp"
+                android:text="Rate the Conversation"
+                android:textColor="@color/darkgreen"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="499dp" />
+
+            <SeekBar
+                android:id="@+id/dateConversationBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="350dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:max="100"
+                android:paddingBottom="5dp"
+                android:progress="3"
+                android:thumb="@drawable/seek_bar_circle"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="530dp" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:paddingBottom="5dp"
+                android:text="Other Notes?"
+                android:textColor="@color/darkgreen"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="577dp" />
+
+            <EditText
+                android:id="@+id/dateOtherNotes"
+                android:layout_width="347dp"
+                android:layout_height="74dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/primary"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Notes"
+                android:inputType="textMultiLine"
+                android:paddingBottom="5dp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="601dp" />
+
+            <Button
+                android:id="@+id/finishEventB"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="330dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/nextbuttonborder_active"
+                android:text=">"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="335dp"
+                tools:layout_editor_absoluteY="655dp" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
