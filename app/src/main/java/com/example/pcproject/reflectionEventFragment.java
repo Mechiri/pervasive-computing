@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class reflectionEventFragment extends Fragment {
+
+    private static final String TAG = "reflectionEventFragment";
     private reflectionEventFragmentListener reflectionEventFragmentListener;
 
     private Button finishEventB;
@@ -33,6 +36,7 @@ public class reflectionEventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG,"reflectionEventFragment onCreateView coming.....1");
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_reflection_event, container, false);
         finishEventB = v.findViewById(R.id.finishEventB);

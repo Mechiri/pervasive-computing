@@ -45,7 +45,10 @@ public class mainEventFragment extends Fragment {
 
     public interface mainEventFragmentListener
     {
+        //for next button
         void onInputMainEventSent();
+        //to get spinner selection
+        void onInputItemSelected(String itemSelected);
     }
 
     @Override
@@ -104,6 +107,7 @@ public class mainEventFragment extends Fragment {
                 if(item != null)
                 {
                     itemSelected = item.toString();
+                    mainEventFragmentListener.onInputItemSelected(itemSelected);
                     Toast.makeText(getActivity(), item.toString(), Toast.LENGTH_LONG).show();
                 }
                 else
@@ -121,21 +125,7 @@ public class mainEventFragment extends Fragment {
         nextEventB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(itemSelected == "Reflection")
-                {
-                    /*
-                    reflectionFragment = new reflectionEventFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.eventMainLayout, reflectionFragment)
-                            .commit();
-                     */
-                    mainEventFragmentListener.onInputMainEventSent();
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "Select an Event", Toast.LENGTH_LONG).show();
-                }
-
+                mainEventFragmentListener.onInputMainEventSent();
             }
         });
 

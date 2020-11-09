@@ -17,6 +17,8 @@ public class EventForm extends AppCompatActivity implements
     private mainEventFragment mainEvent;
     private reflectionEventFragment reflectionFragment;
 
+    private String itemSelection;
+
     FragmentManager fragmentManager;
 
 
@@ -47,11 +49,21 @@ public class EventForm extends AppCompatActivity implements
 
     @Override
     public void onInputMainEventSent() {
-        Log.d(TAG,"onInputPage1Sent coming.....1");
-        reflectionFragment = new reflectionEventFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.mainLayout, reflectionFragment)
-                .commit();
+        Log.d(TAG, "onInputMainEventSent coming.....1");
+        if(itemSelection.equals("Reflection")) {
+            Log.d(TAG, "onInputMainEventSent Relection selected.....1");
+            //Pass R.id.eventMainLayout than MainLayout
+            reflectionFragment = new reflectionEventFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.eventMainLayout, reflectionFragment)
+                    .commit();
+        }
+    }
+
+    @Override
+    public void onInputItemSelected(String itemSelected) {
+        Log.d(TAG,"onInputItemSelected"+itemSelected+" coming.....1");
+        itemSelection = itemSelected;
     }
 
     @Override
