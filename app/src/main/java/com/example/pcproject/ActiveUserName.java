@@ -53,6 +53,7 @@ public class ActiveUserName extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkUserName();
+                startActivity(new Intent(ActiveUserName.this, WelcomePage.class));
             }
         });
     }

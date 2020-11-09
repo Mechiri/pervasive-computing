@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -37,9 +39,25 @@ public class WelcomePage extends AppCompatActivity {
 
         String userId = mAuth.getCurrentUser().getEmail();
 
-        //userName = db.collection(userId).document("myData").get("username").toString();
+        db.collection(userId)
+                .document("myData")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            userName = documentSnapshot.getString("userName");
+                            Toast.makeText(WelcomePage.this, "got username", Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(WelcomePage.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
-        //name.setText("Hi, " + userName);
+        name.setText("Hi, " + userName);
 
         surveyB.setOnClickListener(new View.OnClickListener() {
             @Override
