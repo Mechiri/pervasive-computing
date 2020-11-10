@@ -181,7 +181,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="60dp"
                 android:paddingBottom="5dp"
-                android:text="Other Notes?"
+                android:text="Other Notes"
                 android:textColor="@color/darkgreen"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="32dp"

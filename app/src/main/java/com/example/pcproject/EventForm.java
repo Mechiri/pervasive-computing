@@ -4,13 +4,22 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
 public class EventForm extends AppCompatActivity implements
         mainEventFragment.mainEventFragmentListener,
-        reflectionEventFragment.reflectionEventFragmentListener
+        reflectionEventFragment.reflectionEventFragmentListener,
+        dateEventFragment.dateEventFragmentListener,
+        fightEventFragment.fightEventFragmentListener,
+        otherEventFragment.otherEventFragmentListener
 {
     private static final String TAG = "EVENT FORM";
     private mainEventFragment mainEvent;
     private reflectionEventFragment reflectionFragment;
+    private dateEventFragment dateFragment;
+    private fightEventFragment fightFragment;
+    private otherEventFragment otherFragment;
+    private eventAddedFragment addedFragment;
+
     private String itemSelection;
     FragmentManager fragmentManager;
     @Override
@@ -35,23 +44,36 @@ public class EventForm extends AppCompatActivity implements
     @Override
     public void onInputMainEventSent() {
         Log.d(TAG, "onInputMainEventSent coming.....1");
-        if(itemSelection.equals("Reflection")) {
-            Log.d(TAG, "onInputMainEventSent Relection selected.....1");
-            //Pass R.id.eventMainLayout than MainLayout
-            reflectionFragment = new reflectionEventFragment();
+        if(itemSelection.equals("Date")) {
+            dateFragment = new dateEventFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.eventMainLayout, reflectionFragment)
+                    .replace(R.id.eventMainLayout, dateFragment)
+                    .commit();
+        }
+        else if(itemSelection.equals("Fight")) {
+            fightFragment = new fightEventFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.eventMainLayout, fightFragment)
+                    .commit();
+        }
+        else if(itemSelection.equals("Other")) {
+            otherFragment = new otherEventFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.eventMainLayout, otherFragment)
                     .commit();
         }
     }
     @Override
     public void onInputItemSelected(String itemSelected) {
-        Log.d(TAG,"onInputItemSelected"+itemSelected+" coming.....1");
         itemSelection = itemSelected;
     }
     @Override
     public void onInputReflectionEventSent(String convoTopics) {
-        Log.d(TAG,"onInputPage3Sent coming.....1");
+        Log.d(TAG,"onReflectionEventSent coming.....3");
+        addedFragment = new eventAddedFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.eventMainLayout, addedFragment)
+                .commit();
         /*if(!convoTopics.isEmpty())
         {
             appUser.setIdealRelationshipFeel(convoTopics);
@@ -65,5 +87,32 @@ public class EventForm extends AppCompatActivity implements
         {
             Toast.makeText(this, "Please fill above option", Toast.LENGTH_SHORT).show();
         }*/
+    }
+
+    @Override
+    public void onInputDateEventSent() {
+        Log.d(TAG, "onInputDateEventSent coming....2");
+        reflectionFragment = new reflectionEventFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.eventMainLayout, reflectionFragment)
+                .commit();
+    }
+
+    @Override
+    public void onInputFightEventSent() {
+        Log.d(TAG, "onInputDateEventSent coming....2");
+        reflectionFragment = new reflectionEventFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.eventMainLayout, reflectionFragment)
+                .commit();
+    }
+
+    @Override
+    public void onInputOtherEventSent() {
+        Log.d(TAG, "onInputDateEventSent coming....2");
+        reflectionFragment = new reflectionEventFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.eventMainLayout, reflectionFragment)
+                .commit();
     }
 }

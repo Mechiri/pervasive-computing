@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
 public class mainEventFragment extends Fragment {
     private mainEventFragmentListener mainEventFragmentListener;
     private static final String TAG = "DATE";
@@ -75,7 +76,6 @@ public class mainEventFragment extends Fragment {
         };
         List<String> events = new ArrayList<String>();
         events.add("Event Type");
-        events.add("Reflection");
         events.add("Date");
         events.add("Fight");
         events.add("Other");
