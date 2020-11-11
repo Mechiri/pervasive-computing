@@ -29,27 +29,11 @@
         android:layout_height="233dp"
         android:layout_marginStart="42dp"
         android:layout_marginEnd="43dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="269dp"
         android:src="@drawable/checkmark"
-        app:layout_constraintBottom_toTopOf="@+id/eventDoneB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView46" />
-
-    <Button
-        android:id="@+id/eventDoneB"
-        android:layout_width="140dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="135dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="142dp"
-        android:background="@color/primary"
-        android:text="Done"
-        android:textColor="@color/white"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

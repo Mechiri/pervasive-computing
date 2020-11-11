@@ -6,23 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".LandingPage">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewLanding"
-        android:layout_width="410dp"
-        android:layout_height="562dp"
-        android:layout_marginBottom="16dp"
+    <Button
+        android:id="@+id/userProfileB"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="341dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/nextbuttonborder_active"
+        android:text="P"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="411dp"
+        android:layout_height="492dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toTopOf="@+id/addPartnerB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userProfileB" />
+        app:layout_constraintTop_toBottomOf="@+id/userProfileB">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewLanding"
+                android:layout_width="match_parent"
+                android:layout_height="565dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="16dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/addPartnerB"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="341dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/nextbuttonborder_active"
         android:text="+"
         android:textColor="@color/white"
@@ -30,22 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewLanding" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
-    <Button
-        android:id="@+id/userProfileB"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="341dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/nextbuttonborder_active"
-        android:text="P"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewLanding"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
