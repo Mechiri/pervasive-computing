@@ -42,6 +42,7 @@ public class ActiveLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SignIn();
+                startActivity(new Intent(ActiveLogin.this, LandingPage.class));
             }
         });
 

@@ -201,8 +201,8 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/addTraitB"
-                android:layout_width="wrap_content"
+                android:id="@+id/addPartnerTraitB"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
@@ -211,6 +211,7 @@
                 android:background="@drawable/seek_bar_circle"
                 android:paddingTop="5dp"
                 android:text="+"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="32sp" />
 
@@ -226,7 +227,7 @@
 
             <Button
                 android:id="@+id/addPictureB"
-                android:layout_width="match_parent"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
@@ -239,7 +240,7 @@
 
             <Button
                 android:id="@+id/nextEventB"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="330dp"
                 android:layout_marginTop="5dp"

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addPartnerForm">
+
+    <EditText
+        android:id="@+id/addPartnerOccupation"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:hint="Occupation"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView48"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPartnerLastName" />
+
+    <EditText
+        android:id="@+id/addPartnerLastName"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="11dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/addPartnerOccupation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPartnerFirstName" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="203dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Add Partner"
+        android:textColor="@color/darkgreen"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addPartnerFirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/addPartnerFirstName"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/addPartnerLastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+    <TextView
+        android:id="@+id/addPartnerBDate"
+        android:layout_width="152dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="226dp"
+        android:layout_marginBottom="17dp"
+        android:hint="MM / DD / YYYY"
+        android:paddingLeft="5dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView49"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="289dp"
+        android:layout_marginBottom="10dp"
+        android:text="Birthday"
+        android:textColor="@color/darkgreen"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/addPartnerBDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPartnerOccupation" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="238dp"
+        android:layout_marginBottom="13dp"
+        android:text="Traits Known"
+        android:textColor="@color/darkgreen"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/addPartnerTraitB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPartnerBDate" />
+
+    <Button
+        android:id="@+id/addPartnerTraitB"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="338dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/seek_bar_circle"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+    <TextView
+        android:id="@+id/textView50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="265dp"
+        android:layout_marginBottom="15dp"
+        android:text="Add Photo"
+        android:textColor="@color/darkgreen"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/addPartnerPhotoB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPartnerTraitB" />
+
+    <Button
+        android:id="@+id/addPartnerPhotoB"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="338dp"
+        android:layout_marginBottom="179dp"
+        android:background="@drawable/seek_bar_circle"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView50" />
+
+    <Button
+        android:id="@+id/addPartnerFormB"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="331dp"
+        android:layout_marginTop="378dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/nextbuttonborder_active"
+        android:text=">"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPartnerOccupation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

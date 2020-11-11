@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200sp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="10dp" >
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/partnerProfilePic"
+        android:layout_width="115dp"
+        android:layout_height="118dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="42dp"
+        android:src="@drawable/loading"
+        app:civ_border_color="@color/darkgreen"
+        app:civ_border_width="2dp"
+        app:civ_shadow="false"
+        app:civ_shadow_color="@color/primary"
+        app:civ_shadow_radius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/partnerNameLandingPage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/partnerNameLandingPage"
+        android:layout_width="155dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="104dp"
+        android:text="Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/partnerProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/partnerStatus" />
+
+    <TextView
+        android:id="@+id/numberOfEvents"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="121dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/event_number_circle"
+        android:gravity="center"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/partnerStatus" />
+
+    <TextView
+        android:id="@+id/partnerStatus"
+        android:layout_width="64dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="302dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/partner_status_border"
+        android:gravity="center"
+        android:text="ongoing"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/partnerNameLandingPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

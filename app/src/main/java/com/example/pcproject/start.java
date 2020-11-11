@@ -51,6 +51,7 @@ public class start extends AppCompatActivity {
             }
         });
 
+
         setupOnboardingItems();
 
         final ViewPager2 onboardingViewPager = findViewById(R.id.viewPager);
