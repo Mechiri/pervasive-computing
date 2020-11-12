@@ -1,11 +1,16 @@
 package com.example.pcproject;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +19,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,21 +31,31 @@ import java.util.List;
 
 public class mainEventFragment extends Fragment {
     private mainEventFragmentListener mainEventFragmentListener;
-    private static final String TAG = "DATE";
+    private static final String TAG = "mainEventFragment";
     private TextView eventDate;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
     private String itemSelected;
     private Button nextEventB;
     private Button addTraitB;
     private Button addPictureB;
+    private EditText etEventName;
+    private EditText etPartnerName;
+    private EditText etAddTrait;
+
+    private SeekBar sbQualityTime;
+    private SeekBar sbWordsOfAffirmation;
+    private SeekBar sbReceivingGifts;
+    private SeekBar sbActsOfService;
+    private SeekBar sbPhysicalTouch;
+    private ImageView mEventPictures;
+
     public mainEventFragment() {
         // Required empty public constructor
     }
     public interface mainEventFragmentListener
     {
-        //for next button
-        void onInputMainEventSent();
-        //to get spinner selection
+        void onInputPictures(ImageView mEventPictures);
+        void onInputMainEventSent(String eventName, String partnerName, String Date1, Integer wordsOfAffirmation,Integer qualityTime,Integer receivingGifts, Integer actsOfService,Integer physicalTouch, String newTraits);
         void onInputItemSelected(String itemSelected);
     }
     @Override
@@ -45,10 +63,37 @@ public class mainEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main_event, container, false);
-        addTraitB = v.findViewById(R.id.addFightTopicB);
+        addTraitB = v.findViewById(R.id.addPartnerTraitB);
         addPictureB = v.findViewById(R.id.addPictureB);
         nextEventB = v.findViewById(R.id.nextEventB);
         eventDate = v.findViewById(R.id.eventDate);
+        etEventName = v.findViewById(R.id.eventName);
+        etPartnerName = v.findViewById(R.id.partnerName);
+        etAddTrait = v.findViewById(R.id.editTextTextPersonTraits);
+        etAddTrait.setVisibility(View.GONE);
+
+        sbQualityTime = v.findViewById(R.id.timesBar);
+        sbWordsOfAffirmation = v.findViewById(R.id.convsBar);
+        sbReceivingGifts = v.findViewById(R.id.giftsBar);
+        sbActsOfService = v.findViewById(R.id.servicesBar);
+        sbPhysicalTouch = v.findViewById(R.id.touchsBar);
+        mEventPictures = v.findViewById(R.id.eventPicture);
+
+        addTraitB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etAddTrait.setVisibility(View.VISIBLE);
+            }
+        });
+
+        addPictureB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEventPictures.setVisibility(View.VISIBLE);
+                mainEventFragmentListener.onInputPictures(mEventPictures);
+            }
+        });
+
         eventDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +101,7 @@ public class mainEventFragment extends Fragment {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
+                Log.d(TAG, "eventDate: "+month+" "+ day+" "+year+" End");
                 DatePickerDialog dialog = new DatePickerDialog(
                         getActivity(),
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -105,11 +151,47 @@ public class mainEventFragment extends Fragment {
         nextEventB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainEventFragmentListener.onInputMainEventSent();
+                Log.d(TAG, "nextEventB...............coming1");
+                String eventName = etEventName.getText().toString();
+                String partnerName = etPartnerName.getText().toString();
+                String date = eventDate.getText().toString();
+
+                Integer wordsOfAffirmation = sbWordsOfAffirmation.getProgress();
+                Integer qualityTime = sbQualityTime.getProgress();
+                Integer receivingGifts = sbReceivingGifts.getProgress();
+                Integer actsOfService = sbActsOfService.getProgress();
+                Integer physicalTouch = sbPhysicalTouch.getProgress();
+
+                String newTraits = etAddTrait.getText().toString();
+
+                Log.d(TAG, "eventName: "+eventName);
+                if( ((eventName != null) && !eventName.isEmpty()) && ((partnerName != null) && !partnerName.isEmpty()) && ((date != null) && !date.isEmpty()))
+                {
+                    Log.d(TAG, "nextEventB...............success");
+                    mainEventFragmentListener.onInputMainEventSent(eventName, partnerName, date, wordsOfAffirmation, qualityTime, receivingGifts, actsOfService, physicalTouch, newTraits);
+                }
+                else
+                {
+                    if(eventName.isEmpty())
+                    {
+                        etEventName.setError("Event Name Should not be empty");
+                    }
+                    if(partnerName.isEmpty())
+                    {
+                        etPartnerName.setError("Partner Name Should not be empty");
+                    }
+                    if(date.isEmpty())
+                    {
+                        Toast.makeText(getActivity(), "Date Should not be empty", Toast.LENGTH_SHORT).show();
+                        //eventDate.setError("Date Should not be empty");
+                    }
+                    Log.d(TAG, "nextEventB...............empty");
+                }
             }
         });
         return v;
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

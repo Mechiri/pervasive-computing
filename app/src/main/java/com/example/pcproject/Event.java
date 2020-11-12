@@ -1,14 +1,29 @@
 package com.example.pcproject;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Event {
-
-    //Attributes
+    private static final String TAG = "Event";
+    //Attribute
+    private String eventId;
     private String eventName;
     private String partnerName;
-    private Date eventDate;
+    private String eventDate;
     private String eventType;
 
     private Integer wordsOfAffirmation;
@@ -17,7 +32,7 @@ public class Event {
     private Integer actsOfService;
     private Integer physicalTouch;
 
-    private ArrayList<String> newTraitsLearned;
+    private String newTraitsLearned;
     private ArrayList<String> pictures;
 
     private String talkAbout;
@@ -29,7 +44,12 @@ public class Event {
     private FightEvent fightEvent;
     private OtherEvent otherEvent;
 
+    //Database Variables
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+
     public Event() {
+        this.eventId = null;
         this.eventName = null;
         this.partnerName = null;
         this.eventDate = null;
@@ -49,6 +69,18 @@ public class Event {
         this.dateEvent =  new DateEvent();
         this.fightEvent = new FightEvent();
         this.otherEvent = new OtherEvent();
+
+        //Initialize Database
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public String getEventName() {
@@ -67,11 +99,11 @@ public class Event {
         this.partnerName = partnerName;
     }
 
-    public Date getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -123,11 +155,11 @@ public class Event {
         this.physicalTouch = physicalTouch;
     }
 
-    public ArrayList<String> getNewTraitsLearned() {
+    public String getNewTraitsLearned() {
         return newTraitsLearned;
     }
 
-    public void setNewTraitsLearned(ArrayList<String> newTraitsLearned) {
+    public void setNewTraitsLearned(String newTraitsLearned) {
         this.newTraitsLearned = newTraitsLearned;
     }
 
@@ -193,5 +225,105 @@ public class Event {
 
     public void setOtherEvent(OtherEvent otherEvent) {
         this.otherEvent = otherEvent;
+    }
+
+    void fetchDataFromDatabase()
+    {
+
+    }
+    void uploadDataToDatabase(final Context context)
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        Map<String, Object> eventData = new HashMap<>();
+
+        if((eventName != null) && (!eventName.isEmpty()))
+        {
+            if((eventDate != null) && (!eventDate.isEmpty()))
+            {
+                eventId = eventName+eventDate.toString();
+                eventData.put("eventId", eventId);
+                eventData.put("eventName", eventName);
+                eventData.put("eventDate", eventDate);
+            }
+        }
+        if((eventId != null) && (!eventId.isEmpty()) && (partnerName != null) && (!partnerName.isEmpty()))
+        {
+            eventData.put("partnerName", partnerName);
+            if((eventType != null) && (!eventType.isEmpty()))
+            {
+                eventData.put("eventType", eventType);
+            }
+            if(wordsOfAffirmation != null)
+            {
+                eventData.put("wordsOfAffirmation", wordsOfAffirmation);
+            }
+            if(qualityTime != null)
+            {
+                eventData.put("qualityTime", qualityTime);
+            }
+            if(receivingGifts != null)
+            {
+                eventData.put("receivingGifts", receivingGifts);
+            }
+            if(actsOfService != null)
+            {
+                eventData.put("actsOfService", actsOfService);
+            }
+            if(physicalTouch != null)
+            {
+                eventData.put("physicalTouch", physicalTouch);
+            }
+            if((newTraitsLearned != null) && (!newTraitsLearned.isEmpty()))
+            {
+                eventData.put("newTraitsLearned", newTraitsLearned);
+            }
+            if((talkAbout != null) && (!talkAbout.isEmpty()))
+            {
+                eventData.put("talkAbout", talkAbout);
+            }
+            if((youReallyLiked != null) && (!youReallyLiked.isEmpty()))
+            {
+                eventData.put("youReallyLiked", youReallyLiked);
+            }
+            if((youDidNotLiked != null) && (!youDidNotLiked.isEmpty()))
+            {
+                eventData.put("youDidNotLiked", youDidNotLiked);
+            }
+            if((notable != null) && (!notable.isEmpty()))
+            {
+                eventData.put("notable", notable);
+            }
+            if(dateEvent != null)
+            {
+                //
+            }
+            if(fightEvent != null)
+            {
+            }
+            if(otherEvent != null)
+            {
+            }
+            eventData.put("timestamp", FieldValue.serverTimestamp());
+
+            db.collection(userId).document(partnerName+eventId).set(eventData)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "Uploaded Event Data", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Database: Uploaded Event Data");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Error in Uploading Data", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Database: Uploaded Event Data Falure");
+                        }
+                    });
+        }
+        else {
+            Toast.makeText(context, "Partner, EventName, EventDate not be empty", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Partner, EventName, EventDate not be empty");
+        }
     }
 }

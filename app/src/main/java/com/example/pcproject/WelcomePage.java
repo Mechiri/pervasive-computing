@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class WelcomePage extends AppCompatActivity {
+
+    private static final String TAG = "WelcomePage";
     private Button surveyB;
     private TextView name;
 
@@ -38,7 +41,7 @@ public class WelcomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         String userId = mAuth.getCurrentUser().getEmail();
-
+        Log.d(TAG, "OnCreate ...... coming 1");
         db.collection(userId)
                 .document("myData")
                 .get()
@@ -48,16 +51,21 @@ public class WelcomePage extends AppCompatActivity {
                         if(documentSnapshot.exists())
                         {
                             userName = documentSnapshot.getString("userName");
+                            name.setText("Hi, " + userName);
+                            Log.d(TAG, "Username: "+userName+" End");
                             Toast.makeText(WelcomePage.this, "got username", Toast.LENGTH_LONG).show();
                         }
                         else
                         {
+                            Log.d(TAG, "Not a exists in the document Snapshot");
                             Toast.makeText(WelcomePage.this, "Something went wrong", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
 
-        name.setText("Hi, " + userName);
+
+        Log.d(TAG, "OnCreate ...... coming 2");
+        //name.setText("Hi, " + userName);
 
         surveyB.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -768,6 +768,7 @@ public class initialSurvey extends AppCompatActivity implements
     @Override
     public void onInputQ15Next() {
         Log.d(TAG, "onInputQ15Next Uploading .............. 1");
+
         if(resultLanguages != null && !resultLanguages.isEmpty())
         {
             if(resultLanguages.equals("Q15A"))
