@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -240,7 +241,7 @@ public class Event {
         {
             if((eventDate != null) && (!eventDate.isEmpty()))
             {
-                eventId = eventName+eventDate.toString();
+                eventId = eventName+eventDate.replace('/','-');
                 eventData.put("eventId", eventId);
                 eventData.put("eventName", eventName);
                 eventData.put("eventDate", eventDate);
@@ -295,20 +296,24 @@ public class Event {
             }
             if(dateEvent != null)
             {
-                //
+                eventData.put("dateEvent", dateEvent);
             }
             if(fightEvent != null)
             {
+                eventData.put("fightEvent", fightEvent);
             }
             if(otherEvent != null)
             {
+                eventData.put("otherEvent", otherEvent);
             }
             eventData.put("timestamp", FieldValue.serverTimestamp());
 
-            db.collection(userId).document(partnerName+eventId).set(eventData)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+            db.collection(userId).document(partnerName)
+                    .collection(eventId)
+                    .add(eventData)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
+                        public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(context, "Uploaded Event Data", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Database: Uploaded Event Data");
                         }
@@ -317,7 +322,7 @@ public class Event {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(context, "Error in Uploading Data", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "Database: Uploaded Event Data Falure");
+                            Log.d(TAG, "Database: Uploaded Event Data Failure");
                         }
                     });
         }

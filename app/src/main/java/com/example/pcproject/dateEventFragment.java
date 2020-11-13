@@ -23,7 +23,7 @@ public class dateEventFragment extends Fragment {
     private EditText dateLength;
     private SeekBar overall;
     private SeekBar conversation;
-    private EditText otherNotes;
+    private EditText otherNotes1;
 
 
     public dateEventFragment() {
@@ -32,7 +32,7 @@ public class dateEventFragment extends Fragment {
 
     public interface dateEventFragmentListener
     {
-        void onInputDateEventSent();
+        void onInputDateEventSent( String whereDidYouGo, String whatDidYouDo, String howLongDate, Integer dateRate, Integer conversationRate, String otherNotes );
     }
 
     @Override
@@ -46,12 +46,20 @@ public class dateEventFragment extends Fragment {
         dateLength = v.findViewById(R.id.dateLength);
         overall = v.findViewById(R.id.dateOverallBar);
         conversation = v.findViewById(R.id.dateConversationBar);
-        otherNotes = v.findViewById(R.id.dateOtherNotes);
+        otherNotes1 = v.findViewById(R.id.dateOtherNotes);
 
         nextEventB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dateEventFragmentListener.onInputDateEventSent();
+
+                String whereDidYouGo = datePlace.getText().toString();
+                String whatDidYouDo =  dateActions.getText().toString();
+                String howLongDate = dateLength.getText().toString();
+                Integer dateRate  = overall.getProgress();
+                Integer conversationRate = conversation.getProgress();
+                String otherNotes = otherNotes1.getText().toString();
+
+                dateEventFragmentListener.onInputDateEventSent( whereDidYouGo, whatDidYouDo, howLongDate, dateRate, conversationRate, otherNotes );
             }
         });
 

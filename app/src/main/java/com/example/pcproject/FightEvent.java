@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class FightEvent {
     //Attributes
-    private ArrayList<String> fightAbout;
-    private Integer resolution;
+    private String fightAbout;
+    private String resolution;
     private Integer madePersonal;
     private Integer fightHurtful;
     private Integer theyHandleFight;
@@ -22,19 +22,19 @@ public class FightEvent {
         this.otherNotes = null;
     }
 
-    public ArrayList<String> getFightAbout() {
+    public String getFightAbout() {
         return fightAbout;
     }
 
-    public void setFightAbout(ArrayList<String> fightAbout) {
+    public void setFightAbout(String fightAbout) {
         this.fightAbout = fightAbout;
     }
 
-    public Integer getResolution() {
+    public String getResolution() {
         return resolution;
     }
 
-    public void setResolution(Integer resolution) {
+    public void setResolution(String resolution) {
         this.resolution = resolution;
     }
 

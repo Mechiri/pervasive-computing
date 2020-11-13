@@ -2,7 +2,7 @@ package com.example.pcproject;
 
 public class OtherEvent {
     //Attributes
-    private Integer eventStatus;
+    private String eventStatus;
     private String title;
     private String describeEvent;
     private Integer rateOverallExperience;
@@ -16,11 +16,11 @@ public class OtherEvent {
         this.otherNotes = null;
     }
 
-    public Integer getEventStatus() {
+    public String getEventStatus() {
         return eventStatus;
     }
 
-    public void setEventStatus(Integer eventStatus) {
+    public void setEventStatus(String eventStatus) {
         this.eventStatus = eventStatus;
     }
 

@@ -208,7 +208,7 @@ public class EventForm extends AppCompatActivity implements
             Log.d(TAG, "onInputMainEventSent:"+" EventName: "+ eventName +" partnerName: "+ partnerName+ " Date: "+ Date1);
             Log.d(TAG, "onInputMainEventSent:"+" wordsOfAffirmation: "+ wordsOfAffirmation +" qualityTime: "+ qualityTime+ " actsOfService: "+ actsOfService+" receivingGifts: "+ receivingGifts+ " physicalTouch: "+ physicalTouch);
             Log.d(TAG, "setNewTraitsLearned:"+" newTraits: "+ newTraits);
-            /*
+
             if(itemSelection.equals("Date")) {
                 dateFragment = new dateEventFragment();
                 getSupportFragmentManager().beginTransaction()
@@ -227,12 +227,6 @@ public class EventForm extends AppCompatActivity implements
                         .replace(R.id.eventMainLayout, otherFragment)
                         .commit();
             }
-
-             */
-        }
-        else
-        {
-
         }
     }
 
@@ -241,31 +235,82 @@ public class EventForm extends AppCompatActivity implements
     public void onInputItemSelected(String itemSelected) {
         itemSelection = itemSelected;
     }
+
+
     @Override
-    public void onInputReflectionEventSent(String convoTopics) {
+    public void onInputReflectionEventSent(String talkAbout, String youReallyLiked, String youDidNotLiked, String notable) {
         Log.d(TAG,"onReflectionEventSent coming.....3");
+
+        event.setTalkAbout(talkAbout);
+        event.setYouReallyLiked(youReallyLiked);
+        event.setYouDidNotLiked(youDidNotLiked);
+        event.setNotable(notable);
+
+        Log.d(TAG, "event.setTalkAbout(talkAbout): " + event.getTalkAbout());
+        Log.d(TAG, "event.setYouReallyLiked(youReallyLiked): " + event.getYouReallyLiked());
+        Log.d(TAG, "event.setYouDidNotLiked(youDidNotLiked): " + event.getYouDidNotLiked());
+        Log.d(TAG, "event.setNotable(notable): " + event.getNotable());
+
+        //Upload all event to database
+        event.uploadDataToDatabase(this);
+
         addedFragment = new eventAddedFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.eventMainLayout, addedFragment)
                 .commit();
-        /*if(!convoTopics.isEmpty())
-        {
-            appUser.setIdealRelationshipFeel(convoTopics);
-            Log.d(TAG,"Reflection Convo Topics" + appUser.getIdealRelationshipFeel());
-            eventAdded = new eventAddedfragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.mainLayout, eventAdded)
-                    .commit();
-        }
-        else
-        {
-            Toast.makeText(this, "Please fill above option", Toast.LENGTH_SHORT).show();
-        }*/
+
     }
 
     @Override
-    public void onInputDateEventSent() {
+    public void onInputDateEventSent( String whereDidYouGo, String whatDidYouDo, String howLongDate, Integer dateRate, Integer conversationRate, String otherNotes ) {
+
+        event.getDateEvent().setWhereDidYouGo(whereDidYouGo);
+        event.getDateEvent().setWhatDidYouDo(whatDidYouDo);
+        event.getDateEvent().setHowLongDate(howLongDate);
+        event.getDateEvent().setDateRate(dateRate);
+        event.getDateEvent().setConversationRate(conversationRate);
+        event.getDateEvent().setOtherNotes(otherNotes);
+
         Log.d(TAG, "onInputDateEventSent coming....2");
+
+        Log.d(TAG, "event.getDateEvent().setWhereDidYouGo(whereDidYouGo): " + event.getDateEvent().getWhereDidYouGo());
+        Log.d(TAG, "event.getDateEvent().setWhatDidYouDo(whatDidYouDo): "+ event.getDateEvent().getWhatDidYouDo());
+        Log.d(TAG, "event.getDateEvent().setHowLongDate(howLongDate): "+event.getDateEvent().getHowLongDate());
+        Log.d(TAG, "event.getDateEvent().setDateRate(dateRate): "+event.getDateEvent().getDateRate());
+        Log.d(TAG, "event.getDateEvent().setConversationRate(conversationRate): "+event.getDateEvent().getConversationRate());
+        Log.d(TAG, "event.getDateEvent().setOtherNotes(otherNotes): "+event.getDateEvent().getOtherNotes());
+
+
+        reflectionFragment = new reflectionEventFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.eventMainLayout, reflectionFragment)
+                .commit();
+
+    }
+
+    @Override
+    public void onInputFightEventSent(String fightAbout, String resolution, Integer madePersonal, Integer fightHurtful, Integer theyHandleFight, Integer youHandledFight, String otherNotes) {
+
+        event.getFightEvent().setFightAbout(fightAbout);
+        event.getFightEvent().setResolution(resolution);
+        event.getFightEvent().setMadePersonal(madePersonal);
+        event.getFightEvent().setFightHurtful(fightHurtful);
+        event.getFightEvent().setTheyHandleFight(theyHandleFight);
+        event.getFightEvent().setYouHandledFight(youHandledFight);
+        event.getFightEvent().setOtherNotes(otherNotes);
+
+        Log.d(TAG,"event.getFightEvent().setFightAbout(fightAbout): "+ event.getFightEvent().getFightAbout());
+        Log.d(TAG,"event.getFightEvent().setResolution(resolution): "+ event.getFightEvent().getResolution());
+        Log.d(TAG,"event.getFightEvent().setMadePersonal(madePersonal): "+ event.getFightEvent().getMadePersonal());
+        Log.d(TAG,"event.getFightEvent().setFightHurtful(fightHurtful): "+ event.getFightEvent().getFightHurtful());
+        Log.d(TAG,"event.getFightEvent().setTheyHandleFight(theyHandleFight): "+ event.getFightEvent().getTheyHandleFight());
+        Log.d(TAG,"event.getFightEvent().setYouHandledFight(youHandledFight): "+ event.getFightEvent().getYouHandledFight());
+        Log.d(TAG,"event.getFightEvent().setOtherNotes(otherNotes): "+ event.getFightEvent().getOtherNotes());
+
+
+        Log.d(TAG, "onInputDateEventSent coming....2");
+
+
         reflectionFragment = new reflectionEventFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.eventMainLayout, reflectionFragment)
@@ -273,20 +318,27 @@ public class EventForm extends AppCompatActivity implements
     }
 
     @Override
-    public void onInputFightEventSent() {
+    public void onInputOtherEventSent(String eventStatus, String title, String describeEvent, Integer rateOverallExperience, String otherNotes) {
         Log.d(TAG, "onInputDateEventSent coming....2");
-        reflectionFragment = new reflectionEventFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.eventMainLayout, reflectionFragment)
-                .commit();
-    }
 
-    @Override
-    public void onInputOtherEventSent() {
-        Log.d(TAG, "onInputDateEventSent coming....2");
+        event.getOtherEvent().setEventStatus(eventStatus);
+        event.getOtherEvent().setTitle(title);
+        event.getOtherEvent().setDescribeEvent(describeEvent);
+        event.getOtherEvent().setRateOverallExperience(rateOverallExperience);
+        event.getOtherEvent().setOtherNotes(otherNotes);
+
+        Log.d(TAG, "event.getOtherEvent().setEventStatus(eventStatus): "+ event.getOtherEvent().getEventStatus());
+        Log.d(TAG, "event.getOtherEvent().setTitle(title): "+ event.getOtherEvent().getTitle());
+        Log.d(TAG, "event.getOtherEvent().setDescribeEvent(describeEvent): "+ event.getOtherEvent().getDescribeEvent());
+        Log.d(TAG, "event.getOtherEvent().setRateOverallExperience(rateOverallExperience): "+ event.getOtherEvent().getRateOverallExperience());
+        Log.d(TAG, "event.getOtherEvent().setOtherNotes(otherNotes): "+ event.getOtherEvent().getOtherNotes());
+
+
         reflectionFragment = new reflectionEventFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.eventMainLayout, reflectionFragment)
                 .commit();
+
+
     }
 }

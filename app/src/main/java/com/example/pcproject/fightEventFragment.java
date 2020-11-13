@@ -17,6 +17,7 @@ public class fightEventFragment extends Fragment {
     private static final String TAG = "fightEventFragment";
     private fightEventFragment.fightEventFragmentListener fightEventFragmentListener;
 
+    private EditText etFightAbout;
     private Button nextB;
     private Button addFightTopicB;
     private Button fightResYes;
@@ -28,13 +29,15 @@ public class fightEventFragment extends Fragment {
     private SeekBar fightYouHandleBar;
     private EditText fightOtherNotes;
 
+    private String resolution;
+
     public fightEventFragment() {
         // Required empty public constructor
     }
 
     public interface fightEventFragmentListener
     {
-        void onInputFightEventSent();
+        void onInputFightEventSent(String fightAbout, String resolution, Integer madePersonal, Integer fightHurtful, Integer theyHandleFight, Integer youHandledFight, String otherNotes);
     }
 
     @Override
@@ -42,6 +45,7 @@ public class fightEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fight_event, container, false);
+        etFightAbout = v.findViewById(R.id.editTextFightAbout);
         nextB = v.findViewById(R.id.finishEventB);
         addFightTopicB = v.findViewById(R.id.addFightTopicB);
         fightResYes = v.findViewById(R.id.fightResYes);
@@ -53,10 +57,43 @@ public class fightEventFragment extends Fragment {
         fightYouHandleBar = v.findViewById(R.id.fightYouHandleBar);
         fightOtherNotes = v.findViewById(R.id.fightOtherNotes);
 
+        addFightTopicB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etFightAbout.setVisibility(View.VISIBLE);
+            }
+        });
+        fightResYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resolution = "Yes";
+            }
+        });
+        fightResNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resolution = "No";
+            }
+        });
+        fightResUndecided.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resolution = "UnDecided";
+            }
+        });
+
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fightEventFragmentListener.onInputFightEventSent();
+
+                String fightAbout = etFightAbout.getText().toString();
+                Integer madePersonal = fightPersonalBar.getProgress();
+                Integer fightHurtful = fightHurtfulBar.getProgress();
+                Integer theyHandleFight = fightPartnerHandleBar.getProgress();
+                Integer youHandledFight = fightYouHandleBar.getProgress();
+                String otherNotes = fightOtherNotes.getText().toString();
+
+                fightEventFragmentListener.onInputFightEventSent(fightAbout, resolution, madePersonal, fightHurtful, theyHandleFight, youHandledFight, otherNotes);
             }
         });
 

@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
+import java.sql.DataTruncation;
+
 public class otherEventFragment extends Fragment {
     private static final String TAG = "otherEventFragment";
     private otherEventFragment.otherEventFragmentListener otherEventFragmentListener;
@@ -26,13 +28,15 @@ public class otherEventFragment extends Fragment {
     private SeekBar otherEventOverallBar;
     private EditText otherEventNotes;
 
+    private String eventStatus;
+
     public otherEventFragment() {
         // Required empty public constructor
     }
 
     public interface otherEventFragmentListener
     {
-        void onInputOtherEventSent();
+        void onInputOtherEventSent(String eventStatus, String title, String describeEvent, Integer rateOverallExperience, String otherNotes);
     }
 
     @Override
@@ -49,10 +53,35 @@ public class otherEventFragment extends Fragment {
         otherEventOverallBar = v.findViewById(R.id.otherEventOverallBar);
         otherEventNotes = v.findViewById(R.id.otherEventNotes);
 
+        otherEventPositive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventStatus = "Positive";
+            }
+        });
+        otherEventNegative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventStatus = "Negative";
+            }
+        });
+        otherEventNeutral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventStatus = "Neutral";
+            }
+        });
+
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                otherEventFragmentListener.onInputOtherEventSent();
+
+                String title = otherEventTitle.getText().toString();
+                String describeEvent = otherEventDesc.getText().toString();
+                Integer rateOverallExperience = otherEventOverallBar.getProgress();
+                String otherNotes = otherEventNotes.getText().toString();
+
+                otherEventFragmentListener.onInputOtherEventSent(eventStatus, title, describeEvent, rateOverallExperience, otherNotes);
             }
         });
 

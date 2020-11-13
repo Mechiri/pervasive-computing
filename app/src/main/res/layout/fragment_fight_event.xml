@@ -39,19 +39,34 @@
                 tools:layout_editor_absoluteX="32dp"
                 tools:layout_editor_absoluteY="90dp" />
 
-            <Button
-                android:id="@+id/addFightTopicB"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="350dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/seek_bar_circle"
-                android:paddingTop="5dp"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="32sp" />
+                android:layout_marginRight="60dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextFightAbout"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:ems="10"
+                    android:hint="Fight About"
+                    android:visibility="gone"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/addFightTopicB"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/seek_bar_circle"
+                    android:paddingTop="5dp"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="32sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView39"

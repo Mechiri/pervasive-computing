@@ -23,7 +23,7 @@ public class reflectionEventFragment extends Fragment {
     }
     public interface reflectionEventFragmentListener
     {
-        void onInputReflectionEventSent(String convoTopics);
+        void onInputReflectionEventSent(String talkAbout, String youReallyLiked, String youDidNotLiked, String notable);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +39,13 @@ public class reflectionEventFragment extends Fragment {
         finishEventB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reflectionEventFragmentListener.onInputReflectionEventSent(reflectionConvoTopics.getText().toString());
+
+                String talkAbout = reflectionConvoTopics.getText().toString();
+                String youReallyLiked = reflectionActionsLiked.getText().toString();
+                String youDidNotLiked = reflectionActionsNotLiked.getText().toString();
+                String notable = reflectionNotableEvents.getText().toString();
+
+                reflectionEventFragmentListener.onInputReflectionEventSent(talkAbout, youReallyLiked, youDidNotLiked, notable);
             }
         });
         return v;
