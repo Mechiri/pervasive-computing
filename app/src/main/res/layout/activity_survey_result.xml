@@ -33,16 +33,16 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerSurveyResults"
                 android:layout_width="408dp"
-                android:layout_height="281dp" />
+                android:layout_height="350dp" >
+
+            </androidx.viewpager2.widget.ViewPager2>
 
             <LinearLayout
                 android:id="@+id/layoutSurveyIndicator2"
                 android:layout_width="123dp"
                 android:layout_height="38dp"
-                android:orientation="horizontal"
-                android:layout_marginLeft="15dp">
-
-            </LinearLayout>
+                android:layout_marginLeft="170dp"
+                android:orientation="horizontal"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/loveLanguagesDisplay1"
