@@ -7,5 +7,7 @@
     <color name="primary">#5DEEA0</color>
     <color name="pressed">#7CE1AB</color>
     <color name="gray">#D7D7D7</color>
+    <color name="darkgray">#858585</color>
     <color name="white">#FFFFFF</color>
+    <color name="profileBackground">#C7F2BD</color>
 </resources>

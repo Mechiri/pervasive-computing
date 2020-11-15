@@ -131,7 +131,7 @@ public class SurveyResult extends AppCompatActivity {
         dashboardB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //next activity
+                startActivity(new Intent(SurveyResult.this, LandingPage.class));
             }
         });
     }
