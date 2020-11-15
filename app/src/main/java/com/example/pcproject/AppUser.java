@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,12 +34,16 @@ public class AppUser {
     private Integer actsOfService;
     private Integer physicalTouch;
 
+    private Integer totalCountPartnerProfiles;
+
     //Evaluate
     EvaluateRelationship evaluateRelationship;
 
     //Database Variables
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
+
+
 
     public AppUser() {
         userName = null;
@@ -52,9 +57,19 @@ public class AppUser {
         actsOfService = 0;
         physicalTouch = 0;
 
+        totalCountPartnerProfiles = 0;
+
         //Initialize Database
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+    }
+
+    public Integer getTotalCountPartnerProfiles() {
+        return totalCountPartnerProfiles;
+    }
+
+    public void setTotalCountPartnerProfiles(Integer totalCountPartnerProfiles) {
+        this.totalCountPartnerProfiles = totalCountPartnerProfiles;
     }
 
     public String getIdealRelationshipFeel() {
@@ -152,10 +167,12 @@ public class AppUser {
             userData.put("actsOfService", actsOfService);
         if(physicalTouch != 0)
             userData.put("physicalTouch", physicalTouch);
+        if(totalCountPartnerProfiles != null)
+            userData.put("totalCountPartnerProfiles", totalCountPartnerProfiles);
 
         userData.put("timestamp", FieldValue.serverTimestamp());
 
-        db.collection(userId).document("myData").set(userData)
+        db.collection(userId).document("myData").update(userData)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -183,5 +200,56 @@ public class AppUser {
         receivingGifts = result.get("receivingGifts");
         actsOfService = result.get("actsOfService");
         physicalTouch = result.get("physicalTouch");
+    }
+
+    void retrieveTotalCountPartnerProfiles()
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        db.collection(userId).document("myData").get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+
+                            //totalCountPartnerProfiles = (Integer) ((Long)documentSnapshot.get("totalCountPartnerProfiles")).intValue();
+                            setTotalCountPartnerProfiles((Integer) ((Long)documentSnapshot.get("totalCountPartnerProfiles")).intValue());
+                            Log.d(TAG, "Total Partner Counts AppUser: "+(Integer) ((Long)documentSnapshot.get("totalCountPartnerProfiles")).intValue());
+                        }
+                        else
+                        {
+                            Log.d(TAG, "AppUser: retrieveTotalCountPartnerProfiles Document Not exist");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "AppUser: retrieveTotalCountPartnerProfiles  Failed");
+                    }
+                });
+    }
+
+    void updateTotalCountPartnerProfiles(final Context context)
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("totalCountPartnerProfiles", totalCountPartnerProfiles);
+
+        db.collection(userId).document("myData").update(userData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Updated User Count", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Updated User Count");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Error in Updated User Count", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Updated User Count");
+                    }
+                });
     }
 }
