@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200sp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/eventPic"
+        android:layout_width="113dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/partnerEventDate"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/partnerEventTitle"
+        android:layout_width="173dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="193dp"
+        android:layout_marginBottom="11dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/partnerEventDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/partnerEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="278dp"
+        android:layout_marginBottom="7dp"
+        android:text="MM/DD/YYYY"
+        app:layout_constraintBottom_toTopOf="@+id/eventPic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/partnerEventTitle" />
+
+    <SeekBar
+        android:id="@+id/physicalTouchSeekBar"
+        android:layout_width="190dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="94dp"
+        android:max="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="94dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/physicalTouchSeekBar"
+        app:layout_constraintStart_toEndOf="@+id/eventPic"
+        app:layout_constraintTop_toBottomOf="@+id/partnerEventTitle"
+        app:srcCompat="@drawable/physicaltouch" />
+</androidx.constraintlayout.widget.ConstraintLayout>
