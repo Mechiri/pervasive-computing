@@ -10,4 +10,7 @@
     <color name="darkgray">#858585</color>
     <color name="white">#FFFFFF</color>
     <color name="profileBackground">#C7F2BD</color>
+    <color name="badIndicator">#EE0202</color>
+    <color name="okIndicator">#FFF389</color>
+    <color name="goodIndicator">#5DEEA0</color>
 </resources>

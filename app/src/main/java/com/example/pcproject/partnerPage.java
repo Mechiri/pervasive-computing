@@ -6,9 +6,11 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -19,11 +21,21 @@ public class partnerPage extends AppCompatActivity {
     private ViewPager partnerViewPager;
     private TabItem eventTab, partnerProfileTab;
     public PageAdapter pagerAdapter;
+    private Button userProfileB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_page);
+
+        userProfileB = findViewById(R.id.userProfileB);
+
+        userProfileB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(partnerPage.this, userProfile.class));
+            }
+        });
 
         tabLayout = (TabLayout) findViewById(R.id.PartnerTabLayout);
         eventTab = (TabItem) findViewById(R.id.eventTab);

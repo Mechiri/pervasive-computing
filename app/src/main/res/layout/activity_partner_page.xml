@@ -9,6 +9,18 @@
     android:orientation="vertical"
     tools:context=".partnerPage">
 
+    <Button
+        android:id="@+id/userProfileB"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/nextbuttonborder_active"
+        android:text="P"
+        android:textColor="@color/white"
+        android:textSize="36sp" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/PartnerTabLayout"
         android:layout_width="match_parent"
