@@ -8,7 +8,8 @@
         <ol>4. Words of Affirmation</ol><br />
         <ol>5. Receiving Gifts</ol>
     </string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_partner_page">partnerPage</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 </resources>
