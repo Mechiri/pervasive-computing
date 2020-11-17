@@ -66,6 +66,8 @@ public class addPartnerForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d(TAG, "onCreate.....Coming");
         setContentView(R.layout.activity_add_partner_form);
         appUser = new AppUser();
         partner = new Partner();
@@ -83,7 +85,7 @@ public class addPartnerForm extends AppCompatActivity {
         //retrieve partner profile counts
         appUser.retrieveTotalCountPartnerProfiles();
 
-
+        Log.d(TAG, "onCreate.....Coming....................1");
         addPartnerTraits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +99,7 @@ public class addPartnerForm extends AppCompatActivity {
                 SelectImage();
             }
         });
-
+        Log.d(TAG, "onCreate.....Coming....................2");
         addPartnerBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,7 +125,7 @@ public class addPartnerForm extends AppCompatActivity {
                 addPartnerBirthday.setText(date);
             }
         };
-
+        Log.d(TAG, "onCreate.....Coming....................3");
         addPartnerFormB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,17 +142,17 @@ public class addPartnerForm extends AppCompatActivity {
 
                 if(!firstName.isEmpty() && !lastName.isEmpty() && !birthDate.isEmpty())
                 {
-                    uploadPicture(firstName+lastName, birthDate);
-                    partner.uploadAllDataToDatabase(addPartnerForm.this);
-
                     //update count of profiles
                     Integer integer = appUser.getTotalCountPartnerProfiles();
-                    appUser.setTotalCountPartnerProfiles( integer + 1);
+                    integer = integer+1;
+                    //Set Parent Name
+                    partner.setParentName("Partner"+integer);
+                    partner.uploadAllDataToDatabase(addPartnerForm.this);
+                    uploadPicture("Partner", integer.toString());
+                    appUser.setTotalCountPartnerProfiles(integer);
                     integer = appUser.getTotalCountPartnerProfiles();
                     appUser.updateTotalCountPartnerProfiles(addPartnerForm.this);
                     Log.d(TAG, "Total Partner Counts: "+integer);
-
-
                 }
                 else
                 {
@@ -168,6 +170,9 @@ public class addPartnerForm extends AppCompatActivity {
                         //eventDate.setError("Date Should not be empty");
                     }
                 }
+
+                Intent intent = new Intent(addPartnerForm.this, LandingPage.class);
+                startActivity(intent);
             }
         });
     }
@@ -223,14 +228,14 @@ public class addPartnerForm extends AppCompatActivity {
         }
     }
 
-    private void uploadPicture(String partnerName, String birthDate) {
+    private void uploadPicture(String partnerName, String id) {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
 
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        String Date2 = birthDate.replace('/','-');
+        String Date2 = id.replace('/','-');
         Log.d(TAG, "uploadPicture ........... Date: "+Date2);
         StorageReference riversRef = storageReference.child(currentUser.getEmail()).child(partnerName+Date2).child("IMG_" + "Profile");
         if((partnerImageView != null) && (partnerImageView.getDrawable() != null) )

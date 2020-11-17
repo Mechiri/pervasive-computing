@@ -21,7 +21,9 @@ public class Partner {
     private static final String TAG = "Partner";
 
     //Attributes
+    private String parentName;
     private String firstName;
+
     private String lastName;
     private String occupation;
     private String birthDate;
@@ -40,6 +42,7 @@ public class Partner {
     private FirebaseAuth mAuth;
 
     public Partner() {
+        this.parentName = null;
         this.firstName = null;
         this.lastName = null;
         this.occupation = null;
@@ -56,6 +59,14 @@ public class Partner {
         //Initialize Database
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 
     public String getFirstName() {
@@ -156,6 +167,7 @@ public class Partner {
             partnerProfileData.put("firstName",firstName);
             partnerProfileData.put("lastName", lastName);
             partnerProfileData.put("birthDate", birthDate);
+            partnerProfileData.put("parentName", parentName);
 
             if(occupation != null && !occupation.isEmpty())
             {
@@ -192,11 +204,12 @@ public class Partner {
             partnerProfileData.put("timestamp", FieldValue.serverTimestamp());
 
             String profileId = firstName+lastName+birthDate.replace('/','-');
-            db.collection(userId).document(profileId)
-                    .set(partnerProfileData)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+            db.collection(userId).document("PartnerProfiles")
+                    .collection(parentName)
+                    .add(partnerProfileData)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
+                        public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(context, "Uploaded Partner Data", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Database: Uploaded Partner Data");
                         }

@@ -1,5 +1,6 @@
 package com.example.pcproject;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +33,9 @@ public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecy
             partnerProfilePic = itemView.findViewById(R.id.partnerProfilePic);
         }
 
-        private void setItem(int partnerPicIndex, String name, String numEvents, String status)
+        private void setItem(Bitmap partnerPicIndex, String name, String numEvents, String status)
         {
-            partnerProfilePic.setImageResource(partnerPicIndex);
+            partnerProfilePic.setImageBitmap(partnerPicIndex);
             partnerName.setText(name);
             numOfEvents.setText(numEvents);
             partnerStatus.setText(status);
@@ -57,7 +58,7 @@ public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecy
 
     @Override
     public void onBindViewHolder(@NonNull partnerRecyclerViewAdapter.Viewholder holder, int position) {
-        int res = partners.get(position).getImg();
+        Bitmap res = partners.get(position).getImg();
         String partnerName = partners.get(position).getPartnerName();
         String numOfEvents = partners.get(position).getNumOfEvents();
         String partnerStatus = partners.get(position).getPartnerStatus();

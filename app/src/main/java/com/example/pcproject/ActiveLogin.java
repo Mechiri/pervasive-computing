@@ -27,6 +27,8 @@ public class ActiveLogin extends AppCompatActivity {
     private TextView textViewSignUp;
     private FirebaseAuth mAuth;
 
+    AppUser appUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +38,15 @@ public class ActiveLogin extends AppCompatActivity {
         textLayoutPassword = findViewById(R.id.textLayoutPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewSignUp = findViewById(R.id.textViewSignUp);
+        appUser = new AppUser();
         mAuth = FirebaseAuth.getInstance();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SignIn();
-                startActivity(new Intent(ActiveLogin.this, LandingPage.class));
+                Intent intent = new Intent(ActiveLogin.this, LandingPage.class);
+                startActivity(intent);
             }
         });
 

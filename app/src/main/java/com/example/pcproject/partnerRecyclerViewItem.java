@@ -1,13 +1,15 @@
 package com.example.pcproject;
 
+import android.graphics.Bitmap;
+
 public class partnerRecyclerViewItem {
 
-    private int img;
+    private Bitmap img;
     private String partnerName;
     private String numOfEvents;
     private String partnerStatus;
 
-    public partnerRecyclerViewItem(int img, String name, String numEvents, String status)
+    public partnerRecyclerViewItem(Bitmap img, String name, String numEvents, String status)
     {
         this.img = img;
         this.partnerName = name;
@@ -15,11 +17,11 @@ public class partnerRecyclerViewItem {
         this.partnerStatus = status;
     }
 
-    public int getImg() {
+    public Bitmap getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(Bitmap img) {
         this.img = img;
     }
 
