@@ -72,7 +72,7 @@ public class LandingPage extends AppCompatActivity {
         userProfileB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //here
+                startActivity(new Intent(LandingPage.this, userProfile.class));
             }
         });
 

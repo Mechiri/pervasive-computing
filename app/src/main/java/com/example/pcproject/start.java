@@ -30,6 +30,7 @@ public class start extends AppCompatActivity {
 
     //temp
     private Button tempB;
+    private Button partnerB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +44,19 @@ public class start extends AppCompatActivity {
 
         //temp
         tempB = findViewById(R.id.tempB);
+        partnerB = findViewById(R.id.partnerB);
 
         tempB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), EventForm.class));
+            }
+        });
+
+        partnerB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), partnerPage.class));
             }
         });
 

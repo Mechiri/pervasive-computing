@@ -19,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addPartnerForm"></activity>
+        <activity android:name=".partnerPage"></activity>
+        <activity android:name=".futureDev" />
+        <activity android:name=".userProfile" />
+        <activity android:name=".addPartnerForm" />
         <activity android:name=".LandingPage" />
         <activity android:name=".WelcomePage" />
         <activity android:name=".SurveyResult" />
