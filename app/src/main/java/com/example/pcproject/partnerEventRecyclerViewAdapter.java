@@ -1,6 +1,5 @@
 package com.example.pcproject;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,36 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.internal.$Gson$Preconditions;
-
 import java.util.List;
 
 public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partnerEventRecyclerViewAdapter.Viewholder> {
+
+    class Viewholder extends RecyclerView.ViewHolder
+    {
+        private TextView eventTitle;
+        private TextView eventDate;
+        private ImageView eventPic;
+        private SeekBar physicalTouch;
+
+        public Viewholder(@NonNull View itemView) {
+            super(itemView);
+
+            eventTitle = itemView.findViewById(R.id.partnerEventTitle);
+            eventDate = itemView.findViewById(R.id.partnerEventDate);
+            eventPic = itemView.findViewById(R.id.partnerEventPic);
+            physicalTouch = itemView.findViewById(R.id.physicalTouchSeekBar);
+
+            physicalTouch.setEnabled(false);
+        }
+
+        private void setItem(int eventPicIndex, String title, String date, Integer status)
+        {
+            eventPic.setImageResource(eventPicIndex);
+            eventTitle.setText(title);
+            eventDate.setText(date);
+            physicalTouch.setProgress(status);
+        }
+    }
 
     private List<partnerEventRecyclerViewItem> partnerEvents;
 
@@ -43,32 +67,5 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
     @Override
     public int getItemCount() {
         return partnerEvents.size();
-    }
-
-    class Viewholder extends RecyclerView.ViewHolder
-    {
-        private TextView eventTitle;
-        private TextView eventDate;
-        private ImageView eventPic;
-        private SeekBar physicalTouch;
-
-        public Viewholder(@NonNull View itemView) {
-            super(itemView);
-
-            eventTitle = itemView.findViewById(R.id.partnerEventTitle);
-            eventDate = itemView.findViewById(R.id.partnerEventDate);
-            eventPic = itemView.findViewById(R.id.eventPic);
-            physicalTouch = itemView.findViewById(R.id.physicalTouchSeekBar);
-
-            physicalTouch.setEnabled(false);
-        }
-
-        private void setItem(int eventPicIndex, String title, String date, Integer status)
-        {
-            eventPic.setImageResource(eventPicIndex);
-            eventTitle.setText(title);
-            eventDate.setText(date);
-            physicalTouch.setProgress(status);
-        }
     }
 }

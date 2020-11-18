@@ -49,7 +49,7 @@ public class surveyQ7fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q7FragmentListener.calledQ7A("Q7A");
-                Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -57,7 +57,7 @@ public class surveyQ7fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q7FragmentListener.calledQ7C("Q7C");
-                Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
             }
         });
 

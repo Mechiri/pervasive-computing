@@ -48,7 +48,7 @@ public class surveyQ15fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q15FragmentListener.calledQ15A("Q15A");
-                Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -56,7 +56,7 @@ public class surveyQ15fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q15FragmentListener.calledQ15D("Q15D");
-                Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
 

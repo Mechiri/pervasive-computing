@@ -11,14 +11,13 @@
         android:id="@+id/textView54"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
         android:layout_marginEnd="272dp"
         android:layout_marginBottom="60dp"
         android:text="Help Support"
         android:textColor="@color/darkgray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/textView53" />
 
     <TextView
@@ -41,32 +40,33 @@
         android:id="@+id/textView53"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="4dp"
         android:text="Account Settings"
         android:textColor="@color/darkgray"
         app:layout_constraintBottom_toTopOf="@+id/textView54"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/relationExp" />
 
     <Button
         android:id="@+id/profileBackB"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="55dp"
         android:layout_marginBottom="119dp"
-        android:background="@drawable/backbuttonborder"
+        android:background="@drawable/rotebackbutton"
         android:text=""
         android:textColor="@color/primary"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/relationExp"
         app:layout_constraintEnd_toStartOf="@+id/textView52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.448" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/relationExp"
@@ -85,7 +85,7 @@
             android:layout_width="145dp"
             android:layout_height="125dp"
             android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/checkmark" />
+            app:srcCompat="@drawable/relationshipexpectations" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
             android:layout_width="145dp"
             android:layout_height="125dp"
             android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/checkmark" />
+            app:srcCompat="@drawable/lovelanguages" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,5 +125,33 @@
             android:text="Love Languages"
             android:textColor="@color/darkgreen"
             android:textSize="26sp" />
+
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/textView53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relationExp"
+        app:srcCompat="@drawable/settingsbutton" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/helpbutton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

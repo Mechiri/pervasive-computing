@@ -53,7 +53,7 @@ public class surveyQ8fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q8FragmentListener.calledQ8E("Q8E");
-                Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -61,7 +61,7 @@ public class surveyQ8fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q8FragmentListener.calledQ8A("Q8A");
-                Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Words of Affirmation", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -51,7 +51,7 @@ public class surveyQ2fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q2FragmentListener.calledQ2B("Q2B");
-                Toast.makeText(getActivity(), "Quality Time", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Quality Time", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -59,7 +59,7 @@ public class surveyQ2fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q2FragmentListener.calledQ2D("Q2D");
-                Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
 
