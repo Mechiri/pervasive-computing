@@ -13,9 +13,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 public class eventTab extends Fragment {
 
     private RecyclerView rView;
+    List<partnerEventRecyclerViewItem> partnerEvents;
 
     public eventTab() {
         // Required empty public constructor
@@ -26,20 +29,12 @@ public class eventTab extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_event_tab, container, false);
-
         rView = v.findViewById(R.id.partnerEventRecyclerView);
-
+        partnerEventRecyclerViewAdapter a = new partnerEventRecyclerViewAdapter(partnerEvents);
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         layout.setOrientation(LinearLayoutManager.VERTICAL);
-
         rView.setLayoutManager(layout);
-
-        List<partnerEventRecyclerViewItem> partnerEvents = new ArrayList<>();
-
-        partnerEvents.add(new partnerEventRecyclerViewItem("Test Event 1", "11/14/2020", R.drawable.loading, 80));
-        partnerEvents.add(new partnerEventRecyclerViewItem("Test Event 2", "11/16/2020", R.drawable.loading, 20));
-
-        partnerEventRecyclerViewAdapter a = new partnerEventRecyclerViewAdapter(partnerEvents);
+        rView.setAdapter(a);
         /*rView.setAdapter(a);
         a.notifyDataSetChanged();*/
 
@@ -47,5 +42,30 @@ public class eventTab extends Fragment {
         a.notifyDataSetChanged();*/
 
         return v;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        partnerEvents = new ArrayList<>();
+        partnerEvents.add(new partnerEventRecyclerViewItem(
+                "Test Event 1",
+                "11/14/2020",
+                R.drawable.loading,
+                80,
+                20,
+                50,
+                30,
+                90));
+        partnerEvents.add(new partnerEventRecyclerViewItem(
+                "Test Event 2",
+                "11/16/2020",
+                R.drawable.loading,
+                20,
+                50,
+                5,
+                70,
+                85));
     }
 }
