@@ -48,7 +48,7 @@ public class surveyQ9fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q9FragmentListener.calledQ9B("Q9B");
-                Toast.makeText(getActivity(), "Quality Time", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Quality Time", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -56,7 +56,7 @@ public class surveyQ9fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q9FragmentListener.calledQ9C("Q9C");
-                Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -51,7 +51,7 @@ public class surveyQ5fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q5FragmentListener.calledQ5E("Q5E");
-                Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -59,7 +59,7 @@ public class surveyQ5fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q5FragmentListener.calledQ5C("Q5C");
-                Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Receiving Gifts", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -59,7 +59,7 @@ public class surveypage2fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 page2FragmentListener.onInputPage2Sent("Marriage");
-                Toast.makeText(getActivity(), "Marriage Selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Marriage Selected", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -67,7 +67,7 @@ public class surveypage2fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 page2FragmentListener.onInputPage2Sent("Relationship");
-                Toast.makeText(getActivity(), "Relationship Selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Relationship Selected", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -75,7 +75,7 @@ public class surveypage2fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 page2FragmentListener.onInputPage2Sent("Casual");
-                Toast.makeText(getActivity(), "Casual Selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Casual Selected", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -83,7 +83,7 @@ public class surveypage2fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 page2FragmentListener.onInputPage2Sent("Hookup");
-                Toast.makeText(getActivity(), "Hook Up Selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Hook Up Selected", Toast.LENGTH_SHORT).show();
             }
         });
 

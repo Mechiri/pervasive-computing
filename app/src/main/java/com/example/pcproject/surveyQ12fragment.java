@@ -48,7 +48,7 @@ public class surveyQ12fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q12FragmentListener.calledQ12E("Q12E");
-                Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Physical Touch", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -56,7 +56,7 @@ public class surveyQ12fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 q12FragmentListener.calledQ12D("Q12D");
-                Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Acts of Service", Toast.LENGTH_LONG).show();
             }
         });
 
