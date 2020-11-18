@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -17,16 +18,25 @@ import com.google.android.material.tabs.TabLayout;
 
 public class partnerPage extends AppCompatActivity {
 
+    private static final String TAG = "partnerPage";
+
     private TabLayout tabLayout;
     private ViewPager partnerViewPager;
     private TabItem eventTab, partnerProfileTab;
     public PageAdapter pagerAdapter;
     private Button userProfileB;
+    private String partnerProfileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_page);
+
+        Intent intent = getIntent();
+        final String name = intent.getStringExtra("ProfileName");
+        partnerProfileName = name;
+
+        Log.d(TAG, "onCreate: PartnerProfileName = "+partnerProfileName);
 
         userProfileB = findViewById(R.id.userProfileB);
 
@@ -40,7 +50,6 @@ public class partnerPage extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.PartnerTabLayout);
         eventTab = (TabItem) findViewById(R.id.eventTab);
         partnerProfileTab = (TabItem) findViewById(R.id.partnerProfileTab);
-
         partnerViewPager =findViewById(R.id.partnerViewPager);
 
         pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());

@@ -8,13 +8,23 @@ public class partnerRecyclerViewItem {
     private String partnerName;
     private String numOfEvents;
     private String partnerStatus;
+    private String profileName;
 
-    public partnerRecyclerViewItem(Bitmap img, String name, String numEvents, String status)
+    public partnerRecyclerViewItem(Bitmap img, String name, String numEvents, String status, String profileName)
     {
         this.img = img;
         this.partnerName = name;
         this.numOfEvents = numEvents;
         this.partnerStatus = status;
+        this.profileName = profileName;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 
     public Bitmap getImg() {

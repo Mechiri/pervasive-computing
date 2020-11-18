@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="520dp"
+    android:layout_marginTop="200dp"
     tools:context=".eventTab">
 
 
     <ScrollView
         android:id="@+id/scrollView4"
         android:layout_width="409dp"
-        android:layout_height="647dp"
+        android:layout_height="450dp"
         android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toTopOf="@+id/addPartnerB"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,9 +26,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/partnerEventRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="660dp">
+                android:layout_height="450dp">
 
             </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
     </ScrollView>
 
@@ -35,9 +37,10 @@
         android:id="@+id/addPartnerB"
         android:layout_width="54dp"
         android:layout_height="54dp"
-        android:layout_marginStart="325dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/nextbuttonborder_active"
         android:text="+"
         android:textColor="@color/white"

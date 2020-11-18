@@ -275,7 +275,7 @@ public class LandingPage extends AppCompatActivity {
             bitmap = partnersPictures.get(partnerName);
             if(bitmap != null)
             {
-                partnersOld.add(new partnerRecyclerViewItem(bitmap, partnerDetails.getFirstName()+" "+partnerDetails.getLastName(), partnerDetails.getTotalEvents().toString(), "ongoing"));
+                partnersOld.add(new partnerRecyclerViewItem(bitmap, partnerDetails.getFirstName()+" "+partnerDetails.getLastName(), partnerDetails.getTotalEvents().toString(), "ongoing", partnerDetails.getParentName()));
             }
             else
             {
@@ -283,7 +283,7 @@ public class LandingPage extends AppCompatActivity {
             }
         }
 
-        partnerRecyclerViewAdapter a = new partnerRecyclerViewAdapter(partnersOld);
+        partnerRecyclerViewAdapter a = new partnerRecyclerViewAdapter(LandingPage.this, partnersOld);
         rView.setAdapter(a);
         a.notifyDataSetChanged();
     }

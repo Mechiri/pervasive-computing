@@ -7,7 +7,8 @@
     android:layout_marginLeft="15dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="15dp"
-    android:layout_marginBottom="10dp" >
+    android:layout_marginBottom="10dp"
+    android:id="@+id/partnerProfiles">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/partnerProfilePic"
