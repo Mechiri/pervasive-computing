@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200sp"
+    android:layout_height="220sp"
     android:layout_marginLeft="15dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="15dp"
@@ -28,7 +27,7 @@
         android:layout_width="173dp"
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="193dp"
         android:layout_marginBottom="11dp"
         android:textSize="18sp"
@@ -54,11 +53,11 @@
         android:id="@+id/physicalTouchSeekBar"
         android:layout_width="190dp"
         android:layout_height="26dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="54dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="1dp"
         android:max="100"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/wordsOfAffirSeekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,12 +66,114 @@
         android:id="@+id/imageView9"
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="94dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
         app:layout_constraintEnd_toStartOf="@+id/physicalTouchSeekBar"
-        app:layout_constraintStart_toEndOf="@+id/eventPic"
+        app:layout_constraintStart_toEndOf="@+id/partnerEventDate"
         app:layout_constraintTop_toBottomOf="@+id/partnerEventTitle"
         app:srcCompat="@drawable/physicaltouch" />
+
+    <SeekBar
+        android:id="@+id/wordsOfAffirSeekBar"
+        android:layout_width="190dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="3dp"
+        android:max="100"
+        app:layout_constraintBottom_toTopOf="@+id/giftsSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/physicalTouchSeekBar" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView11"
+        app:layout_constraintEnd_toStartOf="@+id/wordsOfAffirSeekBar"
+        app:layout_constraintStart_toEndOf="@+id/eventPic"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:srcCompat="@drawable/wordsofaffirmation" />
+
+    <SeekBar
+        android:id="@+id/giftsSeekBar"
+        android:layout_width="190dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="3dp"
+        android:max="100"
+        app:layout_constraintBottom_toTopOf="@+id/actsOfServiceSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toBottomOf="@+id/wordsOfAffirSeekBar" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView12"
+        app:layout_constraintEnd_toStartOf="@+id/giftsSeekBar"
+        app:layout_constraintStart_toEndOf="@+id/eventPic"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/gifts" />
+
+    <SeekBar
+        android:id="@+id/actsOfServiceSeekBar"
+        android:layout_width="190dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="3dp"
+        android:max="100"
+        app:layout_constraintBottom_toTopOf="@+id/qualityTimeSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView12"
+        app:layout_constraintTop_toBottomOf="@+id/giftsSeekBar" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView13"
+        app:layout_constraintEnd_toStartOf="@+id/actsOfServiceSeekBar"
+        app:layout_constraintStart_toEndOf="@+id/eventPic"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:srcCompat="@drawable/actsofservice" />
+
+    <SeekBar
+        android:id="@+id/qualityTimeSeekBar"
+        android:layout_width="190dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="12dp"
+        android:max="100"
+        app:layout_constraintBottom_toTopOf="@+id/moreInfoB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView12"
+        app:layout_constraintTop_toBottomOf="@+id/actsOfServiceSeekBar" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qualityTimeSeekBar"
+        app:layout_constraintStart_toEndOf="@+id/eventPic"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:srcCompat="@drawable/qualitytime" />
+
+    <Button
+        android:id="@+id/moreInfoB"
+        android:layout_width="27dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="338dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/threedots"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qualityTimeSeekBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

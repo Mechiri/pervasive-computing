@@ -36,8 +36,24 @@ public class eventTab extends Fragment {
 
         List<partnerEventRecyclerViewItem> partnerEvents = new ArrayList<>();
 
-        partnerEvents.add(new partnerEventRecyclerViewItem("Test Event 1", "11/14/2020", R.drawable.loading, 80));
-        partnerEvents.add(new partnerEventRecyclerViewItem("Test Event 2", "11/16/2020", R.drawable.loading, 20));
+        partnerEvents.add(new partnerEventRecyclerViewItem(
+                "Test Event 1",
+                "11/14/2020",
+                R.drawable.loading,
+                80,
+                20,
+                50,
+                30,
+                90));
+        partnerEvents.add(new partnerEventRecyclerViewItem(
+                "Test Event 2",
+                "11/16/2020",
+                R.drawable.loading,
+                20,
+                50,
+                5,
+                70,
+                85));
 
         partnerEventRecyclerViewAdapter a = new partnerEventRecyclerViewAdapter(partnerEvents);
         /*rView.setAdapter(a);
