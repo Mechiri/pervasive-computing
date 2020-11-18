@@ -52,7 +52,7 @@ public class partnerPage extends AppCompatActivity {
         partnerProfileTab = (TabItem) findViewById(R.id.partnerProfileTab);
         partnerViewPager =findViewById(R.id.partnerViewPager);
 
-        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), partnerProfileName, this);
         partnerViewPager.setAdapter(pagerAdapter);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -204,12 +205,14 @@ public class Partner {
             partnerProfileData.put("timestamp", FieldValue.serverTimestamp());
 
             String profileId = firstName+lastName+birthDate.replace('/','-');
-            db.collection(userId).document("PartnerProfiles")
+            db.collection(userId)
+                    .document("PartnerProfiles")
                     .collection(parentName)
-                    .add(partnerProfileData)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    .document(parentName+"Data")
+                    .set(partnerProfileData)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onSuccess(DocumentReference documentReference) {
+                        public void onSuccess(Void aVoid) {
                             Toast.makeText(context, "Uploaded Partner Data", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Database: Uploaded Partner Data");
                         }
@@ -227,6 +230,132 @@ public class Partner {
             Toast.makeText(context, "Partner First, Last Name and BirthDate not be empty", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Partner First, Last Name and BirthDate not be empty");
         }
-
     }
+
+    void retrieveTotalEventCounts(String partnerProfileName)
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        db.collection(userId)
+                .document("PartnerProfiles")
+                .collection(partnerProfileName)
+                .document(partnerProfileName+"Data")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+
+                            //totalCountPartnerProfiles = (Integer) ((Long)documentSnapshot.get("totalCountPartnerProfiles")).intValue();
+                            setTotalEvents((Integer) ((Long)documentSnapshot.get("totalEvents")).intValue());
+                            Log.d(TAG, "Total Partner's Event Counts: "+(Integer) ((Long)documentSnapshot.get("totalEvents")).intValue());
+                        }
+                        else
+                        {
+                            Log.d(TAG, "Partner: retrieveTotalEventCounts Document Not exist");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "Partner: retrieveTotalEventCounts Document Failed");
+                    }
+                });
+    }
+
+    void updateTotalEventCounts(final Context context, String partnerProfileName)
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        Map<String, Object> partnerProfileData = new HashMap<>();
+        partnerProfileData.put("totalEvents",totalEvents);
+
+        db.collection(userId)
+                .document("PartnerProfiles")
+                .collection(partnerProfileName)
+                .document(partnerProfileName+"Data")
+                .update(partnerProfileData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Uploaded TotalEventCounts", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Uploaded TotalEventCounts");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Uploaded TotalEventCounts Failed", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Uploaded TotalEventCounts Failed");
+                    }
+                });
+    }
+
+    void retrieveLoveLanguages(String partnerProfileName)
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        db.collection(userId)
+                .document("PartnerProfiles")
+                .collection(partnerProfileName)
+                .document(partnerProfileName+"Data")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            //totalCountPartnerProfiles = (Integer) ((Long)documentSnapshot.get("totalCountPartnerProfiles")).intValue();
+                            setWordsOfAffirmation((Integer) ((Long)documentSnapshot.get("wordsOfAffirmation")).intValue());
+                            setQualityTime((Integer) ((Long)documentSnapshot.get("qualityTime")).intValue());
+                            setReceivingGifts((Integer) ((Long)documentSnapshot.get("receivingGifts")).intValue());
+                            setActsOfService((Integer) ((Long)documentSnapshot.get("actsOfService")).intValue());
+                            setPhysicalTouch((Integer) ((Long)documentSnapshot.get("physicalTouch")).intValue());
+
+                            Log.d(TAG, "Fetched Love Languages");
+                        }
+                        else
+                        {
+                            Log.d(TAG, "Partner: Love Languages in Document Not exist");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "Failed fetching Love Languages");
+                    }
+                });
+    }
+
+    void updateLoveLanguages(final Context context, String partnerProfileName)
+    {
+        String userId = mAuth.getCurrentUser().getEmail();
+        Map<String, Object> partnerProfileData = new HashMap<>();
+        partnerProfileData.put("wordsOfAffirmation",wordsOfAffirmation);
+        partnerProfileData.put("qualityTime",qualityTime);
+        partnerProfileData.put("receivingGifts",receivingGifts);
+        partnerProfileData.put("actsOfService",actsOfService);
+        partnerProfileData.put("physicalTouch",physicalTouch);
+
+        db.collection(userId)
+                .document("PartnerProfiles")
+                .collection(partnerProfileName)
+                .document(partnerProfileName+"Data")
+                .update(partnerProfileData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Uploaded LoveLanguages", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Uploaded LoveLanguages");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Uploaded LoveLanguages Failed", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Database: Uploaded LoveLanguages Failed");
+                    }
+                });
+    }
+
 }

@@ -26,6 +26,7 @@ public class Event {
     private String partnerName;
     private String eventDate;
     private String eventType;
+    private String parentName;
 
     private Integer wordsOfAffirmation;
     private Integer qualityTime;
@@ -49,6 +50,8 @@ public class Event {
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
+
+
     public Event() {
         this.eventId = null;
         this.eventName = null;
@@ -66,6 +69,7 @@ public class Event {
         this.youReallyLiked = null;
         this.youDidNotLiked = null;
         this.notable = null;
+        this.parentName = null;
 
         this.dateEvent =  new DateEvent();
         this.fightEvent = new FightEvent();
@@ -74,6 +78,14 @@ public class Event {
         //Initialize Database
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 
     public String getEventId() {
@@ -232,7 +244,7 @@ public class Event {
     {
 
     }
-    void uploadDataToDatabase(final Context context)
+    void uploadDataToDatabase(final Context context,String partnerProfileName, String eventName)
     {
         String userId = mAuth.getCurrentUser().getEmail();
         Map<String, Object> eventData = new HashMap<>();
@@ -306,14 +318,23 @@ public class Event {
             {
                 eventData.put("otherEvent", otherEvent);
             }
+            if(parentName != null)
+            {
+                eventData.put("parentName", parentName);
+            }
+
             eventData.put("timestamp", FieldValue.serverTimestamp());
 
-            db.collection(userId).document(partnerName)
-                    .collection(eventId)
-                    .add(eventData)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            db.collection(userId)
+                    .document("PartnerProfiles")
+                    .collection(partnerProfileName)
+                    .document(partnerProfileName+"Data")
+                    .collection(eventName)
+                    .document(eventName+"Data")
+                    .set(eventData)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onSuccess(DocumentReference documentReference) {
+                        public void onSuccess(Void aVoid) {
                             Toast.makeText(context, "Uploaded Event Data", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Database: Uploaded Event Data");
                         }

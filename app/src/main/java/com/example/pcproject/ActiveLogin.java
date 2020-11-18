@@ -45,8 +45,6 @@ public class ActiveLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SignIn();
-                Intent intent = new Intent(ActiveLogin.this, LandingPage.class);
-                startActivity(intent);
             }
         });
 
@@ -104,6 +102,8 @@ public class ActiveLogin extends AppCompatActivity {
                                 //0.30 Activity
                                 //Intent intent = new Intent(ActiveUserName.this,<write 0.30 class name>);
                                 //startActivity();
+                                Intent intent = new Intent(ActiveLogin.this, LandingPage.class);
+                                startActivity(intent);
                             }
                             else
                             {

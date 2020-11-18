@@ -1,5 +1,7 @@
 package com.example.pcproject;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -10,10 +12,15 @@ import java.util.ArrayList;
 public class PageAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
-    private eventTab eventTabs = new eventTab();
+    private eventTab eventTabs;
+    private String partnerProfileName;
+    private Context context;
 
-    public <numTabs> PageAdapter(@NonNull FragmentManager fm, int numTabs) {
+    public <numTabs> PageAdapter(@NonNull FragmentManager fm, int numTabs, String partnerProfileName, Context context) {
         super(fm);
+        this.context = context;
+        this.partnerProfileName = partnerProfileName;
+        eventTabs = new eventTab(context, partnerProfileName);
         this.numOfTabs = numTabs;
     }
 

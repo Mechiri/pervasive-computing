@@ -1,14 +1,18 @@
 package com.example.pcproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +21,18 @@ import javax.annotation.Nullable;
 
 public class eventTab extends Fragment {
 
+    private static final String TAG = "eventTab";
+
+    private Context context;
     private RecyclerView rView;
     List<partnerEventRecyclerViewItem> partnerEvents;
+    private Button addPartnerEventB;
+    private String partnerProfileName;
 
-    public eventTab() {
+    public eventTab(Context context, String partnerProfileName) {
         // Required empty public constructor
+        this.context = context;
+        this.partnerProfileName = partnerProfileName;
     }
 
     @Override
@@ -35,6 +46,18 @@ public class eventTab extends Fragment {
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         rView.setLayoutManager(layout);
         rView.setAdapter(a);
+
+        addPartnerEventB = v.findViewById(R.id.addPartnerEventB);
+
+        addPartnerEventB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, EventForm.class);
+                intent.putExtra("ProfileName", partnerProfileName);
+                Log.d(TAG, "Partner Profile Name: "+partnerProfileName+" coming.........1");
+                startActivity(intent);
+            }
+        });
         /*rView.setAdapter(a);
         a.notifyDataSetChanged();*/
 

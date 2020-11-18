@@ -37,7 +37,8 @@ public class EventForm extends AppCompatActivity implements
         reflectionEventFragment.reflectionEventFragmentListener,
         dateEventFragment.dateEventFragmentListener,
         fightEventFragment.fightEventFragmentListener,
-        otherEventFragment.otherEventFragmentListener
+        otherEventFragment.otherEventFragmentListener,
+        eventAddedFragment.eventCreatedListener
 {
     private static final String TAG = "EVENT FORM";
     private mainEventFragment mainEvent;
@@ -46,6 +47,8 @@ public class EventForm extends AppCompatActivity implements
     private fightEventFragment fightFragment;
     private otherEventFragment otherFragment;
     private eventAddedFragment addedFragment;
+    private String partnerProfileName;
+
 
     private static final int CAMERA_REQUEST_CODE1 = 11, SELECT_FILE_CODE1 = 12;
     private ImageView mEventPicture;
@@ -54,6 +57,7 @@ public class EventForm extends AppCompatActivity implements
     private StorageReference storageReference;
 
     Event event;
+    private Partner partner;
 
     private String itemSelection;
     FragmentManager fragmentManager;
@@ -61,12 +65,22 @@ public class EventForm extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        final String name = intent.getStringExtra("ProfileName");
+        partnerProfileName = name;
+        Log.d(TAG, "Partner Profile Name: "+partnerProfileName+ "coming.........2");
+
         storageReference = FirebaseStorage.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
         event = new Event();
         setContentView(R.layout.activity_event_form);
         mainEvent = new mainEventFragment();
+
+        partner = new Partner();
+        partner.retrieveTotalEventCounts(partnerProfileName);
+        partner.retrieveLoveLanguages(partnerProfileName);
+
         fragmentManager = getSupportFragmentManager();
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
@@ -74,6 +88,7 @@ public class EventForm extends AppCompatActivity implements
                 Log.d(TAG, "Fragment count in back stack " + fragmentManager.getBackStackEntryCount());
             }
         });
+
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.eventMainLayout, mainEvent).commit();
     }
@@ -140,16 +155,14 @@ public class EventForm extends AppCompatActivity implements
 
     }
 
-    private void uploadPicture(String partnerName, String eventName, String Date1) {
+    private void uploadPicture(String partnerProfileName, String eventName) {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
 
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        String Date2 = Date1.replace('/','-');
-        Log.d(TAG, "uploadPicture ........... Date: "+Date2);
-        StorageReference riversRef = storageReference.child(currentUser.getEmail()).child(partnerName).child("IMG_" + eventName + Date1.replace('/','-'));
+        StorageReference riversRef = storageReference.child(currentUser.getEmail()).child(partnerProfileName).child(eventName).child("IMG_" + eventName);
         if(mEventPicture != null)
         {
             Bitmap imageBitmap = ((BitmapDrawable)mEventPicture.getDrawable()).getBitmap();
@@ -191,6 +204,8 @@ public class EventForm extends AppCompatActivity implements
     @Override
     public void onInputMainEventSent(String eventName, String partnerName, String Date1, Integer wordsOfAffirmation,Integer qualityTime,Integer receivingGifts, Integer actsOfService,Integer physicalTouch, String newTraits) {
         Log.d(TAG, "onInputMainEventSent...............coming1");
+        Log.d(TAG, "PartnerProfileName: "+partnerProfileName+" Coming to EventForm........1");
+        Log.d(TAG, "Partner Total Event Counts: "+partner.getTotalEvents()+" Coming to EventForm........1");
         if( ((eventName!=null) && !eventName.isEmpty()) && ((partnerName!=null) && !partnerName.isEmpty()) && ((Date1!=null) && !Date1.isEmpty()) )
         {
             event.setEventName(eventName);
@@ -204,7 +219,11 @@ public class EventForm extends AppCompatActivity implements
             event.setPhysicalTouch(physicalTouch);
             event.setNewTraitsLearned(newTraits);
 
-            uploadPicture(partnerName, eventName, Date1);
+            Integer totalEvents = partner.getTotalEvents();
+            totalEvents += 1;
+            String totalNoEvents = "Event"+totalEvents.toString();
+
+            uploadPicture(partnerProfileName, totalNoEvents);
             Log.d(TAG, "onInputMainEventSent:"+" EventName: "+ eventName +" partnerName: "+ partnerName+ " Date: "+ Date1);
             Log.d(TAG, "onInputMainEventSent:"+" wordsOfAffirmation: "+ wordsOfAffirmation +" qualityTime: "+ qualityTime+ " actsOfService: "+ actsOfService+" receivingGifts: "+ receivingGifts+ " physicalTouch: "+ physicalTouch);
             Log.d(TAG, "setNewTraitsLearned:"+" newTraits: "+ newTraits);
@@ -238,6 +257,14 @@ public class EventForm extends AppCompatActivity implements
 
 
     @Override
+    public void onEventCreationCompleted() {
+        Intent intent = new Intent(EventForm.this, LandingPage.class);
+        intent.putExtra("ProfileName", partnerProfileName);
+        Log.d(TAG, "Partner Profile Name: "+partnerProfileName+" coming.........1");
+        startActivity(intent);
+    }
+
+    @Override
     public void onInputReflectionEventSent(String talkAbout, String youReallyLiked, String youDidNotLiked, String notable) {
         Log.d(TAG,"onReflectionEventSent coming.....3");
 
@@ -252,7 +279,20 @@ public class EventForm extends AppCompatActivity implements
         Log.d(TAG, "event.setNotable(notable): " + event.getNotable());
 
         //Upload all event to database
-        event.uploadDataToDatabase(this);
+        partner.setTotalEvents(partner.getTotalEvents()+1);
+        Integer totalEvents = partner.getTotalEvents();
+        String eventName = "Event"+totalEvents.toString();
+        event.setParentName(eventName);
+        event.uploadDataToDatabase(this, partnerProfileName, eventName);
+
+        //Upload partner totalevents and lovelanguages
+        partner.setWordsOfAffirmation( partner.getWordsOfAffirmation() + event.getWordsOfAffirmation() );
+        partner.setQualityTime( partner.getQualityTime() + event.getQualityTime() );
+        partner.setReceivingGifts( partner.getReceivingGifts() + event.getReceivingGifts() );
+        partner.setActsOfService( partner.getActsOfService() + event.getActsOfService() );
+        partner.setPhysicalTouch( partner.getPhysicalTouch() + event.getPhysicalTouch() );
+        partner.updateTotalEventCounts(this, partnerProfileName);
+        partner.updateLoveLanguages(this,partnerProfileName);
 
         addedFragment = new eventAddedFragment();
         getSupportFragmentManager().beginTransaction()
