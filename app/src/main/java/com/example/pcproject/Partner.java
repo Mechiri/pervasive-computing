@@ -13,7 +13,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -234,6 +237,7 @@ public class Partner {
 
     void retrieveTotalEventCounts(String partnerProfileName)
     {
+        Log.d(TAG, "Partner: retrieveTotalEventCounts  .............Coming!");
         String userId = mAuth.getCurrentUser().getEmail();
         db.collection(userId)
                 .document("PartnerProfiles")
@@ -358,4 +362,46 @@ public class Partner {
                 });
     }
 
+    void getPartnerEventsData(String partnerProfileName, final Map<String, Event> eventMap)
+    {
+        Log.d(TAG, "Total no of events: "+ totalEvents);
+        String userId = mAuth.getCurrentUser().getEmail();
+        String partnerData = partnerProfileName+"Data";
+
+        String partnerEventName = "Event";
+
+        for (int i = 1; i <= totalEvents; i++)
+        {
+            partnerEventName += i;
+            final String partnerEventName1 = partnerEventName;
+            db.collection(userId)
+                    .document("PartnerProfiles")
+                    .collection(partnerProfileName)
+                    .document(partnerData)
+                    .collection(partnerEventName)
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                            for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots)
+                            {
+                                Event event = documentSnapshot.toObject(Event.class);
+                                eventMap.put(partnerEventName1,event);
+                                Log.d(TAG,"Event Tirle: "+partnerEventName1+":"+event.getEventName());
+                                Log.d(TAG,"Event Date: "+partnerEventName1+":"+event.getEventDate());
+                                Log.d(TAG,"Physical Touch: "+partnerEventName1+":"+event.getPhysicalTouch());
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG,"Cannot able to fetch All Events's Data");
+                        }
+                    });
+
+            partnerEventName = partnerEventName.substring(0, partnerEventName.length() - 1);
+        }
+    }
 }

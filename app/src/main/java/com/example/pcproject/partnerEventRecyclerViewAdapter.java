@@ -1,5 +1,6 @@
 package com.example.pcproject;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        int res = partnerEvents.get(position).getEventImg();
+        Bitmap res = partnerEvents.get(position).getEventImg();
         String eventTitle = partnerEvents.get(position).getEventTitle();
         String eventDate = partnerEvents.get(position).getEventDate();
         Integer physicalTouchStatus = partnerEvents.get(position).getPhysicalTouch();
@@ -85,7 +86,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
             qualityTime.setEnabled(false);
         }
 
-        private void setItem(int eventPicIndex,
+        private void setItem(Bitmap eventPicIndex,
                              String title,
                              String date,
                              Integer PTstatus,
@@ -94,7 +95,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
                              Integer AOSstatus,
                              Integer QTstatus)
         {
-            eventPic.setImageResource(eventPicIndex);
+            eventPic.setImageBitmap(eventPicIndex);
             eventTitle.setText(title);
             eventDate.setText(date);
             physicalTouch.setProgress(PTstatus);

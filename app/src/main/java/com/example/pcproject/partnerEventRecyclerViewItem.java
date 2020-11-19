@@ -1,9 +1,11 @@
 package com.example.pcproject;
 
+import android.graphics.Bitmap;
+
 public class partnerEventRecyclerViewItem {
     private String eventTitle;
     private String eventDate;
-    private int eventImg;
+    private Bitmap eventImg;
     private Integer physicalTouch;
     private Integer wordsOfAff;
     private Integer gifts;
@@ -12,7 +14,7 @@ public class partnerEventRecyclerViewItem {
 
     public partnerEventRecyclerViewItem(String eventTitle,
                                         String eventDate,
-                                        int eventImg,
+                                        Bitmap eventImg,
                                         Integer physicalTouch,
                                         Integer wordsOfAff,
                                         Integer gifts,
@@ -44,11 +46,11 @@ public class partnerEventRecyclerViewItem {
         this.eventDate = eventDate;
     }
 
-    public int getEventImg() {
+    public Bitmap getEventImg() {
         return eventImg;
     }
 
-    public void setEventImg(int eventImg) {
+    public void setEventImg(Bitmap eventImg) {
         this.eventImg = eventImg;
     }
 

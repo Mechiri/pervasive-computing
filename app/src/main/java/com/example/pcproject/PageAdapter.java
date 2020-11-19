@@ -1,6 +1,7 @@
 package com.example.pcproject;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
@@ -15,12 +17,16 @@ public class PageAdapter extends FragmentPagerAdapter {
     private eventTab eventTabs;
     private String partnerProfileName;
     private Context context;
+    Map<String, Event> eventMap;
+    private Map<String, Bitmap> eventsPictures;
 
-    public <numTabs> PageAdapter(@NonNull FragmentManager fm, int numTabs, String partnerProfileName, Context context) {
+    public <numTabs> PageAdapter(@NonNull FragmentManager fm, int numTabs, String partnerProfileName, Context context, Map<String, Event> eventMap, Map<String, Bitmap> eventsPictures) {
         super(fm);
         this.context = context;
         this.partnerProfileName = partnerProfileName;
-        eventTabs = new eventTab(context, partnerProfileName);
+        this.eventMap = eventMap;
+        this.eventsPictures = eventsPictures;
+        eventTabs = new eventTab(context, partnerProfileName, eventMap, eventsPictures);
         this.numOfTabs = numTabs;
     }
 
@@ -45,5 +51,13 @@ public class PageAdapter extends FragmentPagerAdapter {
     @Override
     public int getItemPosition(@NonNull Object object) {
         return POSITION_NONE;
+    }
+
+    public eventTab getEventTabs() {
+        return eventTabs;
+    }
+
+    public void setEventTabs(eventTab eventTabs) {
+        this.eventTabs = eventTabs;
     }
 }

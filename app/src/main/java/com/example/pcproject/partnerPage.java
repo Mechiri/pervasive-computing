@@ -7,14 +7,29 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class partnerPage extends AppCompatActivity {
 
@@ -26,6 +41,11 @@ public class partnerPage extends AppCompatActivity {
     public PageAdapter pagerAdapter;
     private Button userProfileB;
     private String partnerProfileName;
+    Map<String, Event> eventMap;
+    private Map<String, Bitmap> eventsPictures;
+    private Partner partner;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +56,15 @@ public class partnerPage extends AppCompatActivity {
         final String name = intent.getStringExtra("ProfileName");
         partnerProfileName = name;
 
+        eventMap =new HashMap<String, Event>();
+        eventsPictures =new HashMap<String, Bitmap>();
+
+
+
+        //getEventPic(partnerProfileName, partner.getTotalEvents());
+
         Log.d(TAG, "onCreate: PartnerProfileName = "+partnerProfileName);
-
         userProfileB = findViewById(R.id.userProfileB);
-
         userProfileB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +77,7 @@ public class partnerPage extends AppCompatActivity {
         partnerProfileTab = (TabItem) findViewById(R.id.partnerProfileTab);
         partnerViewPager =findViewById(R.id.partnerViewPager);
 
-        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), partnerProfileName, this);
+        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), partnerProfileName, this, eventMap, eventsPictures);
         partnerViewPager.setAdapter(pagerAdapter);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -83,4 +108,12 @@ public class partnerPage extends AppCompatActivity {
 
         partnerViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
+
+
+
+
+    /*
+
+
+     */
 }
