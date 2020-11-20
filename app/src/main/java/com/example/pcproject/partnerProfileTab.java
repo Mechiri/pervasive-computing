@@ -187,7 +187,11 @@ public class partnerProfileTab extends Fragment {
         numIndicator = evaluateRelationship.getOverallExperience(partner.getOverallDateRate(), partner.getOtherOverallExperience(), partner.getTotalEvents(), partner.getTotalFights());
         //testing
         //numIndicator = 20;
-        if(numIndicator <= 33)
+        if(numIndicator == 0)
+        {
+            partnerIndicator.setBackgroundResource(R.drawable.partner_default_indicator);
+        }
+        else if(numIndicator <= 33 && numIndicator > 0)
         {
             partnerIndicator.setBackgroundResource(R.drawable.partner_bad_indicator);
         }
