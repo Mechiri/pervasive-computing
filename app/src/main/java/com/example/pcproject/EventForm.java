@@ -79,7 +79,7 @@ public class EventForm extends AppCompatActivity implements
 
         partner = new Partner();
         partner.retrieveTotalEventCounts(partnerProfileName);
-        partner.retrieveLoveLanguages(partnerProfileName);
+        partner.retrieveLoveLanguagesAndExperiences(partnerProfileName);
 
         fragmentManager = getSupportFragmentManager();
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -291,8 +291,21 @@ public class EventForm extends AppCompatActivity implements
         partner.setReceivingGifts( partner.getReceivingGifts() + event.getReceivingGifts() );
         partner.setActsOfService( partner.getActsOfService() + event.getActsOfService() );
         partner.setPhysicalTouch( partner.getPhysicalTouch() + event.getPhysicalTouch() );
+        if(event.getDateEvent().getDateRate() != null)
+        {
+            partner.setOverallDateRate(partner.getOverallDateRate() + event.getDateEvent().getDateRate());
+        }
+        if(event.getFightEvent().getFightHurtful() != null)
+        {
+            partner.setTotalFights(partner.getTotalFights()+1);
+            partner.setHowHurtfulTheFight(partner.getHowHurtfulTheFight() + event.getFightEvent().getFightHurtful());
+        }
+        if(event.getOtherEvent().getRateOverallExperience() != null )
+        {
+            partner.setOtherOverallExperience(partner.getOtherOverallExperience() + event.getOtherEvent().getRateOverallExperience());
+        }
         partner.updateTotalEventCounts(this, partnerProfileName);
-        partner.updateLoveLanguages(this,partnerProfileName);
+        partner.updateLoveLanguagesAndExperiences(this,partnerProfileName);
 
         addedFragment = new eventAddedFragment();
         getSupportFragmentManager().beginTransaction()

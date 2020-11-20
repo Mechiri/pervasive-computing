@@ -41,6 +41,11 @@ public class Partner {
     private Integer actsOfService;
     private Integer physicalTouch;
 
+    private Integer overallDateRate;
+    private Integer howHurtfulTheFight;
+    private Integer totalFights;
+    private Integer otherOverallExperience;
+
     //Database Variables
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
@@ -60,9 +65,22 @@ public class Partner {
         this.actsOfService = 0;
         this.physicalTouch = 0;
 
+        this.overallDateRate = 0;
+        this.howHurtfulTheFight = 0;
+        totalFights = 0;
+        this.otherOverallExperience = 0;
+
         //Initialize Database
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+    }
+
+    public Integer getTotalFights() {
+        return totalFights;
+    }
+
+    public void setTotalFights(Integer totalFights) {
+        this.totalFights = totalFights;
     }
 
     public String getParentName() {
@@ -161,6 +179,30 @@ public class Partner {
         this.physicalTouch = physicalTouch;
     }
 
+    public Integer getOverallDateRate() {
+        return overallDateRate;
+    }
+
+    public void setOverallDateRate(Integer overallDateRate) {
+        this.overallDateRate = overallDateRate;
+    }
+
+    public Integer getHowHurtfulTheFight() {
+        return howHurtfulTheFight;
+    }
+
+    public void setHowHurtfulTheFight(Integer howHurtfulTheFight) {
+        this.howHurtfulTheFight = howHurtfulTheFight;
+    }
+
+    public Integer getOtherOverallExperience() {
+        return otherOverallExperience;
+    }
+
+    public void setOtherOverallExperience(Integer otherOverallExperience) {
+        this.otherOverallExperience = otherOverallExperience;
+    }
+
     void uploadAllDataToDatabase(final Context context)
     {
         if( (firstName != null && !firstName.isEmpty()) && (lastName != null && !lastName.isEmpty()) && (birthDate != null && !birthDate.isEmpty()) )
@@ -205,6 +247,23 @@ public class Partner {
             {
                 partnerProfileData.put("physicalTouch",physicalTouch);
             }
+            if(overallDateRate != null)
+            {
+                partnerProfileData.put("overallDateRate",overallDateRate);
+            }
+            if(howHurtfulTheFight != null)
+            {
+                partnerProfileData.put("howHurtfulTheFight",howHurtfulTheFight);
+            }
+            if(totalFights != null)
+            {
+                partnerProfileData.put("totalFights",totalFights);
+            }
+            if(otherOverallExperience != null)
+            {
+                partnerProfileData.put("otherOverallExperience",otherOverallExperience);
+            }
+
             partnerProfileData.put("timestamp", FieldValue.serverTimestamp());
 
             String profileId = firstName+lastName+birthDate.replace('/','-');
@@ -295,7 +354,7 @@ public class Partner {
                 });
     }
 
-    void retrieveLoveLanguages(String partnerProfileName)
+    void retrieveLoveLanguagesAndExperiences(String partnerProfileName)
     {
         String userId = mAuth.getCurrentUser().getEmail();
         db.collection(userId)
@@ -314,12 +373,16 @@ public class Partner {
                             setReceivingGifts((Integer) ((Long)documentSnapshot.get("receivingGifts")).intValue());
                             setActsOfService((Integer) ((Long)documentSnapshot.get("actsOfService")).intValue());
                             setPhysicalTouch((Integer) ((Long)documentSnapshot.get("physicalTouch")).intValue());
+                            setOverallDateRate((Integer) ((Long)documentSnapshot.get("overallDateRate")).intValue());
+                            setHowHurtfulTheFight((Integer) ((Long)documentSnapshot.get("howHurtfulTheFight")).intValue());
+                            setTotalFights((Integer) ((Long)documentSnapshot.get("totalFights")).intValue());
+                            setOtherOverallExperience((Integer) ((Long)documentSnapshot.get("otherOverallExperience")).intValue());
 
-                            Log.d(TAG, "Fetched Love Languages");
+                            Log.d(TAG, "Fetched Love Languages and Experiences");
                         }
                         else
                         {
-                            Log.d(TAG, "Partner: Love Languages in Document Not exist");
+                            Log.d(TAG, "Partner: Love Languages and Experiences in Document Not exist");
                         }
                     }
                 })
@@ -331,7 +394,7 @@ public class Partner {
                 });
     }
 
-    void updateLoveLanguages(final Context context, String partnerProfileName)
+    void updateLoveLanguagesAndExperiences(final Context context, String partnerProfileName)
     {
         String userId = mAuth.getCurrentUser().getEmail();
         Map<String, Object> partnerProfileData = new HashMap<>();
@@ -340,6 +403,10 @@ public class Partner {
         partnerProfileData.put("receivingGifts",receivingGifts);
         partnerProfileData.put("actsOfService",actsOfService);
         partnerProfileData.put("physicalTouch",physicalTouch);
+        partnerProfileData.put("overallDateRate",overallDateRate);
+        partnerProfileData.put("howHurtfulTheFight",howHurtfulTheFight);
+        partnerProfileData.put("totalFights", totalFights);
+        partnerProfileData.put("otherOverallExperience",otherOverallExperience);
 
         db.collection(userId)
                 .document("PartnerProfiles")

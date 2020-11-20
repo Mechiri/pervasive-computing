@@ -244,7 +244,7 @@ public class Event {
     {
 
     }
-    void uploadDataToDatabase(final Context context,String partnerProfileName, String eventName)
+    void uploadDataToDatabase(final Context context,String partnerProfileName, String eventName1)
     {
         String userId = mAuth.getCurrentUser().getEmail();
         Map<String, Object> eventData = new HashMap<>();
@@ -329,8 +329,8 @@ public class Event {
                     .document("PartnerProfiles")
                     .collection(partnerProfileName)
                     .document(partnerProfileName+"Data")
-                    .collection(eventName)
-                    .document(eventName+"Data")
+                    .collection(eventName1)
+                    .document(eventName1+"Data")
                     .set(eventData)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

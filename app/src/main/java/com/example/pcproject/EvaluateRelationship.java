@@ -37,8 +37,6 @@ public class EvaluateRelationship {
                 +asRatio + " PT:"
                 +ptRatio + " End");
 
-
-
         Integer WaRatio = (int)Math.round(waRatio*100);
         Integer QtRatio = (int)Math.round(qtRatio*100);
         Integer RgRatio = (int)Math.round(rgRatio*100);
@@ -59,5 +57,23 @@ public class EvaluateRelationship {
         result.put("physicalTouch", PtRatio);
 
         return result;
+    }
+
+    public Integer getOverallExperience(Integer overallDateRate, Integer otherOverallExperience, Integer totalEvents, Integer totalFights)
+    {
+        Integer eventsWithoutFight = totalEvents - totalFights;
+        float experience = (overallDateRate + otherOverallExperience) / (eventsWithoutFight * 100.0f);
+        experience = experience*100.0f;
+        Integer overallExperience = Math.round(experience);
+        Log.d(TAG, "Overall Experience: "+overallExperience);
+        return overallExperience;
+    }
+
+    public Integer getLoveLanguagesRatio(Integer loveLanguages, Integer totalEvents)
+    {
+        float result = loveLanguages / ( totalEvents * 100.0f);
+        result = result*100.0f;
+        Log.d(TAG, "LoveLanguages result: "+Math.round(result));
+        return (Math.round(result));
     }
 }

@@ -80,6 +80,8 @@ public class partnerPage extends AppCompatActivity {
         pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), partnerProfileName, this, eventMap, eventsPictures);
         partnerViewPager.setAdapter(pagerAdapter);
 
+        Log.d(TAG,"Map Size: "+eventMap.size()+" coming......................1");
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

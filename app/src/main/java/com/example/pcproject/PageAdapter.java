@@ -15,6 +15,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
     private eventTab eventTabs;
+    private partnerProfileTab partnerProfileTabs;
     private String partnerProfileName;
     private Context context;
     Map<String, Event> eventMap;
@@ -27,6 +28,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         this.eventMap = eventMap;
         this.eventsPictures = eventsPictures;
         eventTabs = new eventTab(context, partnerProfileName, eventMap, eventsPictures);
+        partnerProfileTabs = new partnerProfileTab(partnerProfileName, context);
         this.numOfTabs = numTabs;
     }
 
@@ -37,7 +39,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 0:
                 return eventTabs;
             case 1:
-                return new partnerProfileTab();
+                return partnerProfileTabs;
             default:
                 return null;
         }
