@@ -2,6 +2,8 @@ package com.example.pcproject;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +22,14 @@ import java.util.List;
 
 public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partnerEventRecyclerViewAdapter.Viewholder> {
 
+    private static final String TAG = "partnerEventRecyclerVie";
     private List<partnerEventRecyclerViewItem> partnerEvents;
+    private Context context;
 
-    public partnerEventRecyclerViewAdapter(List<partnerEventRecyclerViewItem> partnerEvents)
+    public partnerEventRecyclerViewAdapter(List<partnerEventRecyclerViewItem> partnerEvents, Context context)
     {
         this.partnerEvents = partnerEvents;
+        this.context = context;
     }
 
     @NonNull
@@ -36,15 +41,35 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        Bitmap res = partnerEvents.get(position).getEventImg();
-        String eventTitle = partnerEvents.get(position).getEventTitle();
-        String eventDate = partnerEvents.get(position).getEventDate();
-        Integer physicalTouchStatus = partnerEvents.get(position).getPhysicalTouch();
-        Integer wordsOfAffStatus = partnerEvents.get(position).getWordsOfAff();
-        Integer giftsStatus = partnerEvents.get(position).getGifts();
-        Integer actsOfServiceStatus = partnerEvents.get(position).getActOfService();
-        Integer qualityTimeStatus = partnerEvents.get(position).getQualityTime();
+        final Bitmap res = partnerEvents.get(position).getEventImg();
+        final String eventTitle = partnerEvents.get(position).getEventTitle();
+        final String eventDate = partnerEvents.get(position).getEventDate();
+        final Integer physicalTouchStatus = partnerEvents.get(position).getPhysicalTouch();
+        final Integer wordsOfAffStatus = partnerEvents.get(position).getWordsOfAff();
+        final Integer giftsStatus = partnerEvents.get(position).getGifts();
+        final Integer actsOfServiceStatus = partnerEvents.get(position).getActOfService();
+        final Integer qualityTimeStatus = partnerEvents.get(position).getQualityTime();
+        final String eventType = partnerEvents.get(position).getEventType();
+        final String traitsLearned = partnerEvents.get(position).getTraitsLearned();
+        final String talkAbout = partnerEvents.get(position).getTalkAbout();
+        final String youReallyLiked = partnerEvents.get(position).getYouReallyLiked();
+        final String youDidNotLiked = partnerEvents.get(position).getYouDidNotLiked();
+        final String partnerProfileName = partnerEvents.get(position).getPartnerProfileName();
+        final String eventName = partnerEvents.get(position).getParentName();
         holder.setItem(res, eventTitle, eventDate, physicalTouchStatus, wordsOfAffStatus, giftsStatus, actsOfServiceStatus, qualityTimeStatus);
+
+        final partnerEventRecyclerViewAdapter.Viewholder viewHolder = holder;
+        viewHolder.moreInfoB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, partnerEvents.get(0).getEventTitle());
+                Intent intent = new Intent(context, EventDetail.class);
+                intent.putExtra("partnerProfileName", partnerProfileName);
+                intent.putExtra("eventName", eventName);
+                intent.putExtra("eventType", eventType);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -81,15 +106,18 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
 
             moreInfoB = itemView.findViewById(R.id.moreInfoB);
 
+            /*
             moreInfoB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Context context = itemView.getContext();
                     Toast.makeText(context, "Button clicked", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(context, EventDetail.class);
-                    context.startActivity(i);
+                    Log.d(TAG, partnerEvents.get(0).getEventTitle());
+                    //Intent i = new Intent(context, EventDetail.class);
+                    //context.startActivity(i);
                 }
             });
+             */
 
             physicalTouch.setEnabled(false);
             wordsOfAff.setEnabled(false);

@@ -11,6 +11,13 @@ public class partnerEventRecyclerViewItem {
     private Integer gifts;
     private Integer actOfService;
     private Integer qualityTime;
+    private String eventType;
+    private String traitsLearned;
+    private String talkAbout;
+    private String youReallyLiked;
+    private String youDidNotLiked;
+    private String partnerProfileName;
+    private String parentName;
 
     public partnerEventRecyclerViewItem(String eventTitle,
                                         String eventDate,
@@ -19,7 +26,14 @@ public class partnerEventRecyclerViewItem {
                                         Integer wordsOfAff,
                                         Integer gifts,
                                         Integer actOfService,
-                                        Integer qualityTime) {
+                                        Integer qualityTime,
+                                        String eventType,
+                                        String traitsLearned,
+                                        String talkAbout,
+                                        String youReallyLiked,
+                                        String youDidNotLiked,
+                                        String partnerProfileName,
+                                        String parentName) {
         this.eventTitle = eventTitle;
         this.eventDate = eventDate;
         this.eventImg = eventImg;
@@ -28,6 +42,69 @@ public class partnerEventRecyclerViewItem {
         this.gifts = gifts;
         this.actOfService = actOfService;
         this.qualityTime = qualityTime;
+        this.eventType = eventType;
+        this.traitsLearned = traitsLearned;
+        this.talkAbout = talkAbout;
+        this.youReallyLiked = youReallyLiked;
+        this.youDidNotLiked = youDidNotLiked;
+        this.partnerProfileName = partnerProfileName;
+        this.parentName = parentName;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public String getPartnerProfileName() {
+        return partnerProfileName;
+    }
+
+    public void setPartnerProfileName(String partnerProfileName) {
+        this.partnerProfileName = partnerProfileName;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+    public String getTraitsLearned() {
+        return traitsLearned;
+    }
+
+    public void setTraitsLearned(String traitsLearned) {
+        this.traitsLearned = traitsLearned;
+    }
+
+    public String getTalkAbout() {
+        return talkAbout;
+    }
+
+    public void setTalkAbout(String talkAbout) {
+        this.talkAbout = talkAbout;
+    }
+
+    public String getYouReallyLiked() {
+        return youReallyLiked;
+    }
+
+    public void setYouReallyLiked(String youReallyLiked) {
+        this.youReallyLiked = youReallyLiked;
+    }
+
+    public String getYouDidNotLiked() {
+        return youDidNotLiked;
+    }
+
+    public void setYouDidNotLiked(String youDidNotLiked) {
+        this.youDidNotLiked = youDidNotLiked;
     }
 
     public String getEventTitle() {

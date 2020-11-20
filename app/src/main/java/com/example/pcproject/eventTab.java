@@ -109,7 +109,7 @@ public class eventTab extends Fragment {
             }
         });
 
-        partnerEventRecyclerViewAdapter1= new partnerEventRecyclerViewAdapter(partnerEvents);
+        partnerEventRecyclerViewAdapter1= new partnerEventRecyclerViewAdapter(partnerEvents, context);
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         rView.setLayoutManager(layout);
@@ -324,6 +324,19 @@ public class eventTab extends Fragment {
         if(bitmap != null)
         {
             Log.d(TAG, "Coming!!!HURRAY........7");
+            String eventType = null;
+            if((eventDetails.getDateEvent().getDateRate() == null) && (eventDetails.getFightEvent().getFightHurtful() == null))
+            {
+                eventType = "Other";
+            }
+            else if((eventDetails.getFightEvent().getFightHurtful() == null) && (eventDetails.getOtherEvent().getRateOverallExperience() == null))
+            {
+                eventType = "Date";
+            }
+            else if((eventDetails.getOtherEvent().getRateOverallExperience() == null) && (eventDetails.getDateEvent().getDateRate() == null))
+            {
+                eventType = "Fight";
+            }
             partnerEvents.add(new partnerEventRecyclerViewItem(
                     eventDetails.getEventName(),
                     eventDetails.getEventDate(),
@@ -332,7 +345,14 @@ public class eventTab extends Fragment {
                     eventDetails.getWordsOfAffirmation(),
                     eventDetails.getReceivingGifts(),
                     eventDetails.getActsOfService(),
-                    eventDetails.getQualityTime()));
+                    eventDetails.getQualityTime(),
+                    eventType,
+                    eventDetails.getNewTraitsLearned(),
+                    eventDetails.getTalkAbout(),
+                    eventDetails.getYouReallyLiked(),
+                    eventDetails.getYouDidNotLiked(),
+                    partnerProfileName,
+                    eventDetails.getParentName()));
         }
 
         //partnerEventRecyclerViewAdapter a = new partnerEventRecyclerViewAdapter(partnerEvents);
