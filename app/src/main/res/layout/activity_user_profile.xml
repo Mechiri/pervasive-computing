@@ -8,7 +8,7 @@
     tools:context=".userProfile">
 
     <TextView
-        android:id="@+id/textView54"
+        android:id="@+id/helpSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="272dp"
@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView53" />
+        app:layout_constraintTop_toBottomOf="@+id/accountSetting" />
 
     <TextView
         android:id="@+id/textView52"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView53"
+        android:id="@+id/accountSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="4dp"
         android:text="Account Settings"
         android:textColor="@color/darkgray"
-        app:layout_constraintBottom_toTopOf="@+id/textView54"
+        app:layout_constraintBottom_toTopOf="@+id/helpSupport"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/relationExp" />
@@ -75,7 +75,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="230dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView53"
+        app:layout_constraintBottom_toTopOf="@+id/accountSetting"
         app:layout_constraintEnd_toStartOf="@+id/loveLang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView52">
@@ -136,7 +136,7 @@
         android:layout_marginTop="230dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
-        app:layout_constraintEnd_toStartOf="@+id/textView53"
+        app:layout_constraintEnd_toStartOf="@+id/accountSetting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relationExp"
         app:srcCompat="@drawable/settingsbutton" />
@@ -149,9 +149,25 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView54"
+        app:layout_constraintEnd_toStartOf="@+id/helpSupport"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
         app:srcCompat="@drawable/helpbutton" />
+
+    <Button
+        android:id="@+id/logoutB"
+        android:layout_width="127dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="148dp"
+        android:background="@color/primary"
+        android:text="Logout"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/accountSetting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loveLang" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/buttonNext"
-        android:layout_width="81dp"
-        android:layout_height="52dp"
+        android:layout_width="82dp"
+        android:layout_height="74dp"
         android:layout_marginStart="293dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="27dp"
@@ -25,9 +25,9 @@
     <TextView
         android:id="@+id/textView9"
         android:layout_width="290dp"
-        android:layout_height="25dp"
+        android:layout_height="30dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="32dp"
         android:text="Create an account"
