@@ -76,7 +76,7 @@ public class ActiveUserName extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(ActiveUserName.this, "Uploaded Username to database", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(ActiveUserName.this, "Uploaded Username to database", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Database: Upload Username");
 
                             //0.30 Activity

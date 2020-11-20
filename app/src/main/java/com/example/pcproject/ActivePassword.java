@@ -72,7 +72,7 @@ public class ActivePassword extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Log.d(TAG, "User created Successfully");
-                                    Toast.makeText(ActivePassword.this, "Creation Successful!", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(ActivePassword.this, "Creation Successful!", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(ActivePassword.this, ActiveUserName.class);
                                     startActivity(intent);
                                 } else {
