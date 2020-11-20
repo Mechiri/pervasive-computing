@@ -28,10 +28,6 @@ public class start extends AppCompatActivity {
     private Button createAccount;
     private TextView login;
 
-    //temp
-    private Button tempB;
-    private Button partnerB;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,25 +37,6 @@ public class start extends AppCompatActivity {
         buttonOnboardingAction = findViewById(R.id.buttonOnboarding);
         createAccount = findViewById(R.id.signupButton);
         login = findViewById(R.id.textViewSignUp1);
-
-        //temp
-        tempB = findViewById(R.id.tempB);
-        partnerB = findViewById(R.id.partnerB);
-
-        tempB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), EventForm.class));
-            }
-        });
-
-        partnerB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), partnerPage.class));
-            }
-        });
-
 
         setupOnboardingItems();
 

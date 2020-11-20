@@ -47,7 +47,7 @@ public class eventAddedFragment extends Fragment {
 
                  */
             }
-        }, 7000);
+        }, 3000);
 
         return v;
     }

@@ -1,5 +1,6 @@
 package com.example.pcproject;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Button;
 import com.google.gson.internal.$Gson$Preconditions;
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +66,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
         //Note sure where to set an onClickListener for this button, but at least it exists
         private Button moreInfoB;
 
-        public Viewholder(@NonNull View itemView) {
+        public Viewholder(@NonNull final View itemView) {
             super(itemView);
 
             eventTitle = itemView.findViewById(R.id.partnerEventTitle);
@@ -78,6 +80,16 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
             qualityTime = itemView.findViewById(R.id.qualityTimeSeekBar);
 
             moreInfoB = itemView.findViewById(R.id.moreInfoB);
+
+            moreInfoB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = itemView.getContext();
+                    Toast.makeText(context, "Button clicked", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context, EventDetail.class);
+                    context.startActivity(i);
+                }
+            });
 
             physicalTouch.setEnabled(false);
             wordsOfAff.setEnabled(false);
