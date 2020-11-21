@@ -18,6 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/*
+    Initial Welcome page after a new user creates an account. This page appears after a user
+    creates an email, a password, and enters a preferred name.
+*/
 public class WelcomePage extends AppCompatActivity {
 
     private static final String TAG = "WelcomePage";
@@ -42,6 +46,8 @@ public class WelcomePage extends AppCompatActivity {
 
         String userId = mAuth.getCurrentUser().getEmail();
         Log.d(TAG, "OnCreate ...... coming 1");
+
+        //Getting user's preferred name from userId variable in the firebase firestore
         db.collection(userId)
                 .document("myData")
                 .get()
@@ -53,7 +59,7 @@ public class WelcomePage extends AppCompatActivity {
                             userName = documentSnapshot.getString("userName");
                             name.setText("Hi, " + userName);
                             Log.d(TAG, "Username: "+userName+" End");
-                            Toast.makeText(WelcomePage.this, "got username", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(WelcomePage.this, "got username", Toast.LENGTH_LONG).show();
                         }
                         else
                         {
@@ -67,6 +73,7 @@ public class WelcomePage extends AppCompatActivity {
         Log.d(TAG, "OnCreate ...... coming 2");
         //name.setText("Hi, " + userName);
 
+        //Starting the initial survey activity new users take to learn about ideal relationship and love languages
         surveyB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

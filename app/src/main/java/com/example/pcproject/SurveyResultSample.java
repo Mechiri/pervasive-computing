@@ -14,6 +14,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+/*
+    Initial sample page to test out user love language survey results
+ */
+
 public class SurveyResultSample extends AppCompatActivity {
 
     //Pie Chart
@@ -31,6 +35,7 @@ public class SurveyResultSample extends AppCompatActivity {
         pieChartDisplay();
     }
 
+    //Adding entries to Pie Chart
     void pieChartDisplay()
     {
 

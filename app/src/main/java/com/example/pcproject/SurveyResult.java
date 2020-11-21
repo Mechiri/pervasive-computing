@@ -24,6 +24,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    Survey Result Page is a shell that displays the user's results from the initial love language survey.
+ */
+
 public class SurveyResult extends AppCompatActivity {
 
     private static final String TAG = "SurveyResult";
@@ -77,6 +81,7 @@ public class SurveyResult extends AppCompatActivity {
         result.add(iCurrentIntent.getIntExtra("actsOfService", 0));
         result.add(iCurrentIntent.getIntExtra("physicalTouch", 0));
 
+        //Function to find the user's love language through the highest point value
         for ( int i = 0; i < result.size(); i++ )
         {
             if ( result.get(i) > result.get(largest))
@@ -84,26 +89,31 @@ public class SurveyResult extends AppCompatActivity {
         }
         largestValue = result.get(largest);
 
+        //Words of Affirmation was the found love language
         if(result.get(0) == largestValue)
         {
             stringTagWoA = "Words Of Affirmation\n";
             stringDesWoA = affirmationDesc +"\n";
         }
+        //Quality Time was the found love language
         if(result.get(1) == largestValue)
         {
                 stringTagQT = "Quality Time\n";
                 stringDesQT = timeDesc +"\n";
         }
+        //Receiving Gifts was the found love language
         if(result.get(2) == largestValue)
         {
                 stringTagRG = "Receiving Gifts\n";
                 stringDesRG = giftsDesc +"\n";
         }
+        //Acts of Service was the found love language
         if(result.get(3) == largestValue)
         {
                 stringTagAoS = "Acts Of Service\n";
                 stringDesAoS = serviceDesc +"\n";
         }
+        //Physical Touch was the found love language
         if(result.get(4) == largestValue)
         {
                 stringTagPT = "Physical Touch\n";
@@ -117,6 +127,7 @@ public class SurveyResult extends AppCompatActivity {
         surveyResultsIndicators();
         setCurrentSurveyResultIndicator(0);
 
+        //Recognizes when user interacts with the ViewPager
         surveyResultsViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -128,6 +139,7 @@ public class SurveyResult extends AppCompatActivity {
         Log.d(TAG, "Coming Here .............. 4");
         pieChartDisplay();
 
+        //Sends user to dashboard/landing page
         dashboardB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +147,8 @@ public class SurveyResult extends AppCompatActivity {
             }
         });
     }
+
+    //Sets the proper love languages found for each user
     private void setSurveyResultsItems()
     {
         List<onBoardingItem> onBoardingItems = new ArrayList<>();
@@ -175,6 +189,8 @@ public class SurveyResult extends AppCompatActivity {
         }
         SurveyResultsAdapter = new surveyResultsAdapter(onBoardingItems);
     }
+
+    //Displays the pie chart with the proper result values for each love language
     void pieChartDisplay()
     {
         Log.d(TAG, "Coming Here .............. 5");
@@ -197,6 +213,7 @@ public class SurveyResult extends AppCompatActivity {
         piechart.animate();
     }
 
+    //Sets up the correct number of ViewPage indicators for the proper number of love language results
     private void surveyResultsIndicators(){
         ImageView[] indicators = new ImageView[SurveyResultsAdapter.getItemCount()];
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -215,6 +232,7 @@ public class SurveyResult extends AppCompatActivity {
         }
     }
 
+    //Sets the proper indicator of which ViewPage a user is currently on
     private void setCurrentSurveyResultIndicator(int index){
         int childCount = layoutSurveyResultsIndicators.getChildCount();
         for (int i = 0; i < childCount; i ++)

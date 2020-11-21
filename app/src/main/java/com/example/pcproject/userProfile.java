@@ -12,6 +12,12 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/*
+    A user's profile page that allows user to access information from initial survey,
+    such as love languages and ideal relationship qualities, and allows user's to
+    logout.
+ */
+
 public class userProfile extends AppCompatActivity {
 
     private Button backB;
@@ -35,6 +41,7 @@ public class userProfile extends AppCompatActivity {
         helpSupport = findViewById(R.id.helpSupport);
         mAuth = FirebaseAuth.getInstance();
 
+        //Sends user back to dashboard landing page of app
         backB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +49,7 @@ public class userProfile extends AppCompatActivity {
             }
         });
 
+        //Sends user to a future development/under construction page of app
         relationshipExp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +57,7 @@ public class userProfile extends AppCompatActivity {
             }
         });
 
+        //Sends user to a future development/under construction page of app
         loveLang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +65,7 @@ public class userProfile extends AppCompatActivity {
             }
         });
 
+        //Button to call logout() function, allowing a user to sign out
         logoutB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +73,7 @@ public class userProfile extends AppCompatActivity {
             }
         });
 
+        //Sends user to a future development/under construction page of app
         accountSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +81,7 @@ public class userProfile extends AppCompatActivity {
             }
         });
 
+        //Sends user to a future development/under construction page of app
         helpSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +90,7 @@ public class userProfile extends AppCompatActivity {
         });
     }
 
+    //function to allow a current user to logout of the app
     protected void logout()
     {
         mAuth.signOut();
