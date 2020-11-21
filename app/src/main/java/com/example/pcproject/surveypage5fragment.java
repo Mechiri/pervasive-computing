@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/*
+    Initial Survey Page 5
+ */
+
 public class surveypage5fragment extends Fragment {
 
     private surveyPage5FragmentListener page5FragmentListener;
@@ -33,6 +37,7 @@ public class surveypage5fragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_surveypage5fragment, container, false);
         nextB = v.findViewById(R.id.nextSurveyB5);
 
+        //Starts the next fragment page in the initial survey
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +48,7 @@ public class surveypage5fragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -54,6 +60,7 @@ public class surveypage5fragment extends Fragment {
         }
     }
 
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

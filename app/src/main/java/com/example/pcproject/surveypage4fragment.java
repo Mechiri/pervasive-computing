@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*
+    Initial Survey Page 4 asking user's what their deepest desires in a relationship
+ */
+
 public class surveypage4fragment extends Fragment {
 
     private surveyPage4FragmentListener page4FragmentListener;
@@ -36,6 +40,7 @@ public class surveypage4fragment extends Fragment {
         nextB = v.findViewById(R.id.nextSurveyB4);
         desiresTextInput = v.findViewById(R.id.desiresTextInput);
 
+        //Starts the next fragment page in the initial survey and records the user's text
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +51,7 @@ public class surveypage4fragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -57,6 +63,7 @@ public class surveypage4fragment extends Fragment {
         }
     }
 
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

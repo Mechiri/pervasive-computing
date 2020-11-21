@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/*
+    Initial Survey Page 6 providing information for love language survey
+ */
 
 public class surveypage6fragment extends Fragment {
 
@@ -34,6 +37,7 @@ public class surveypage6fragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_surveypage6fragment, container, false);
         nextB = v.findViewById(R.id.nextSurveyB6);
 
+        //Starts the next fragment page for love language survey Q1
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +48,7 @@ public class surveypage6fragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -55,6 +60,7 @@ public class surveypage6fragment extends Fragment {
         }
     }
 
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

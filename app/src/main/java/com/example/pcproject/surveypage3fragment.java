@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*
+    Initial Survey Page 3 asking user's what their ideal relationship is
+ */
+
 public class surveypage3fragment extends Fragment {
 
     private surveyPage3FragmentListener page3FragmentListener;
@@ -36,6 +40,7 @@ public class surveypage3fragment extends Fragment {
         nextB = v.findViewById(R.id.nextSurveyB3);
         idealTextInput = v.findViewById(R.id.idealTextInput);
 
+        //Starts the next fragment page in the initial survey and records the user's text
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +51,7 @@ public class surveypage3fragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -57,6 +63,7 @@ public class surveypage3fragment extends Fragment {
         }
     }
 
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

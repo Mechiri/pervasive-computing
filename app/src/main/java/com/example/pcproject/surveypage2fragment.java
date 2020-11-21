@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+/*
+    Initial Survey Page 2 asking user's what they are looking for in a relationship
+ */
 
 public class surveypage2fragment extends Fragment {
 
@@ -48,6 +51,7 @@ public class surveypage2fragment extends Fragment {
         casualB = v.findViewById(R.id.casualB);
         hookUpB = v.findViewById(R.id.hookUpB);
 
+        //Starts the next fragment page in the initial survey
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +59,7 @@ public class surveypage2fragment extends Fragment {
             }
         });
 
+        //calls the proper function to record user's choice
         marriageB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +68,7 @@ public class surveypage2fragment extends Fragment {
             }
         });
 
+        //calls the proper function to record user's choice
         relationshipB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +77,7 @@ public class surveypage2fragment extends Fragment {
             }
         });
 
+        //calls the proper function to record user's choice
         casualB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +86,7 @@ public class surveypage2fragment extends Fragment {
             }
         });
 
+        //calls the proper function to record user's choice
         hookUpB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +99,7 @@ public class surveypage2fragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -102,6 +111,7 @@ public class surveypage2fragment extends Fragment {
         }
     }
 
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();
