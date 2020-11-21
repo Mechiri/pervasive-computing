@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+/*
+    Q2 for initial love language survey
+ */
+
 public class surveyQ2fragment extends Fragment {
 
     private surveyQ2FragmentListener q2FragmentListener;
@@ -40,6 +44,7 @@ public class surveyQ2fragment extends Fragment {
         Q2B = v.findViewById(R.id.Q2B);
         Q2D = v.findViewById(R.id.Q2D);
 
+        //Starts the next fragment page in the initial love language survey
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +52,7 @@ public class surveyQ2fragment extends Fragment {
             }
         });
 
+        //calls the proper function to record user's choice
         Q2B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +61,7 @@ public class surveyQ2fragment extends Fragment {
             }
         });
 
+        //calls the proper function to record user's choice
         Q2D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +73,7 @@ public class surveyQ2fragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -77,6 +85,7 @@ public class surveyQ2fragment extends Fragment {
         }
     }
 
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();
