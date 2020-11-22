@@ -2,6 +2,10 @@ package com.example.pcproject;
 
 import android.graphics.Bitmap;
 
+/*
+    Serves as accessor and mutator methods each partner Event
+ */
+
 public class partnerEventRecyclerViewItem {
     private String eventTitle;
     private String eventDate;

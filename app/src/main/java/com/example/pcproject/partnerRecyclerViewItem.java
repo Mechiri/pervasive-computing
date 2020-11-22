@@ -2,6 +2,10 @@ package com.example.pcproject;
 
 import android.graphics.Bitmap;
 
+/*
+    Serves as accessor and mutator methods each partner
+ */
+
 public class partnerRecyclerViewItem {
 
     private Bitmap img;

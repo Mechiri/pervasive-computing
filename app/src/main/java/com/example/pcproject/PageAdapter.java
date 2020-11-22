@@ -11,6 +11,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.Map;
 
+/*
+    Page adapter for event page tab
+ */
+
 public class PageAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
@@ -21,6 +25,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     Map<String, Event> eventMap;
     private Map<String, Bitmap> eventsPictures;
 
+    //Instantiate objects for partner event tab
     public <numTabs> PageAdapter(@NonNull FragmentManager fm, int numTabs, String partnerProfileName, Context context, Map<String, Event> eventMap, Map<String, Bitmap> eventsPictures) {
         super(fm);
         this.context = context;
@@ -32,6 +37,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         this.numOfTabs = numTabs;
     }
 
+    //Returns the position of the current tab the user is on
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -45,20 +51,24 @@ public class PageAdapter extends FragmentPagerAdapter {
         }
     }
 
+    //Returns the total number of tabs
     @Override
     public int getCount() {
         return numOfTabs;
     }
 
+    //Returns the current item position
     @Override
     public int getItemPosition(@NonNull Object object) {
         return POSITION_NONE;
     }
 
+    //Returns the eventTab
     public eventTab getEventTabs() {
         return eventTabs;
     }
 
+    //Instantiates eventTabs
     public void setEventTabs(eventTab eventTabs) {
         this.eventTabs = eventTabs;
     }

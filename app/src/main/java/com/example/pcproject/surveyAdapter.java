@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/*
+    An Adapter to place the proper elements into the proper components in each of the
+    love language survey question fragments
+ */
+
 public class surveyAdapter extends RecyclerView.Adapter<surveyAdapter.surveyViewHolder>{
 
     private List<surveyItem> surveyItems;
@@ -29,11 +34,13 @@ public class surveyAdapter extends RecyclerView.Adapter<surveyAdapter.surveyView
         );
     }
 
+    //get's the current surveyItem position
     @Override
     public void onBindViewHolder(@NonNull surveyAdapter.surveyViewHolder holder, int position) {
         holder.setSurveyData(surveyItems.get(position));
     }
 
+    //Returns the total number of surveyItems
     @Override
     public int getItemCount() {
         return surveyItems.size();
@@ -52,6 +59,7 @@ public class surveyAdapter extends RecyclerView.Adapter<surveyAdapter.surveyView
             choice2 = itemView.findViewById(R.id.choice2);
         }
 
+        //Sets the proper information to the components of each love language survey question fragment
         void setSurveyData(surveyItem surveyItem)
         {
             question.setText(surveyItem.getQuestion());

@@ -1,5 +1,10 @@
 package com.example.pcproject;
 
+/*
+    Serves as accessor and mutator methods for all love language
+    survey questions in fragment activities
+ */
+
 public class surveyItem {
     private String question;
     private String choice1;

@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    Serves as accessor and mutator methods for all partner events
+ */
+
 public class Partner {
 
     private static final String TAG = "Partner";

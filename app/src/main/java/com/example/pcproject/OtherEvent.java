@@ -1,5 +1,9 @@
 package com.example.pcproject;
 
+/*
+    Serves as accessor and mutator methods for other Event
+ */
+
 public class OtherEvent {
     //Attributes
     private String eventStatus;

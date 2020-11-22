@@ -20,12 +20,17 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.List;
 
+/*
+    partnerRecyclerViewAdapter connects and places the proper information in ViewHolder for Partner Page
+ */
+
 public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecyclerViewAdapter.Viewholder> {
 
     Context context;
     private List<partnerRecyclerViewItem> partners;
     Dialog myDialog;
 
+    //Instantiate partners List and context
     public partnerRecyclerViewAdapter(Context context, List<partnerRecyclerViewItem> partners)
     {
         this.context = context;
@@ -39,6 +44,7 @@ public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecy
         return new Viewholder(view);
     }
 
+    //get's the position of ViewHolder
     @Override
     public void onBindViewHolder(@NonNull partnerRecyclerViewAdapter.Viewholder holder, int position) {
         Bitmap res = partners.get(position).getImg();
@@ -61,11 +67,13 @@ public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecy
 
     }
 
+    //Returns the number of partners
     @Override
     public int getItemCount() {
         return partners.size();
     }
 
+    //Creates Partner ViewHolder for Recycler View
     class Viewholder extends RecyclerView.ViewHolder
     {
         private TextView partnerName;
@@ -74,6 +82,7 @@ public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecy
         private ConstraintLayout partnerProfile;
         CircularImageView partnerProfilePic;
 
+        //Find's the appropriate elements from xml files
         public Viewholder(@NonNull View itemView)
         {
             super(itemView);
@@ -84,6 +93,7 @@ public class partnerRecyclerViewAdapter extends RecyclerView.Adapter<partnerRecy
             partnerProfilePic = itemView.findViewById(R.id.partnerProfilePic);
         }
 
+        //Set's the proper partner text
         private void setItem(Bitmap partnerPicIndex, String name, String numEvents, String status)
         {
             partnerProfilePic.setImageBitmap(partnerPicIndex);

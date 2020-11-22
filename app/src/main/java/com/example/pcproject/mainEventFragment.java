@@ -29,6 +29,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/*
+    Initial main page for adding an event. This mainEventFragment gets general information
+    for all events added, such as event name, partner name, event date, love language
+    measure, new traits, and any pictures.
+ */
+
 public class mainEventFragment extends Fragment {
     private mainEventFragmentListener mainEventFragmentListener;
     private static final String TAG = "mainEventFragment";
@@ -79,6 +85,7 @@ public class mainEventFragment extends Fragment {
         sbPhysicalTouch = v.findViewById(R.id.touchsBar);
         mEventPictures = v.findViewById(R.id.eventPicture);
 
+        //Enables the ability to add a new trait learned
         addTraitB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +93,7 @@ public class mainEventFragment extends Fragment {
             }
         });
 
+        //Enables a user to add a picture either from camera or cameraRoll
         addPictureB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +102,7 @@ public class mainEventFragment extends Fragment {
             }
         });
 
+        //Allows a date picker to appear for user to select a date
         eventDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +120,8 @@ public class mainEventFragment extends Fragment {
                 dialog.show();
             }
         });
+
+        //Displays the event date the user choose
         onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -129,6 +140,8 @@ public class mainEventFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = (Spinner) v.findViewById(R.id.spinnerEvent);
         spinner.setAdapter(adapter);
+
+        //enables the ability for user to select an evenet type, such as date, fight, or other
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -148,6 +161,8 @@ public class mainEventFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
+        //Captures the information inputed by users
         nextEventB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -192,6 +207,7 @@ public class mainEventFragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -202,6 +218,8 @@ public class mainEventFragment extends Fragment {
                     + "The activity must implement mainEventFragmentListener");
         }
     }
+
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

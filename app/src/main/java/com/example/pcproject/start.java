@@ -21,6 +21,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    Beginning onboarding pages for the app. This page also allows users to either
+    sign in to the app or create a new account
+ */
+
 public class start extends AppCompatActivity {
     private onBoardingAdapter onBoardingAdapter;
     private LinearLayout layoutOnboardingIndicators;
@@ -46,6 +51,7 @@ public class start extends AppCompatActivity {
         onBoardingIndicators();
         setCurrentOnboardingIndicator(0);
 
+        //Get's and set's the current position of the ViewPager a user's is currently on
         onboardingViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -54,6 +60,7 @@ public class start extends AppCompatActivity {
             }
         });
 
+        //Determines button text to be "next" or "start" depending on user's ViewHolder position
         buttonOnboardingAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +75,7 @@ public class start extends AppCompatActivity {
             }
         });
 
+        //Starts the Sign Up Activity
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +83,7 @@ public class start extends AppCompatActivity {
             }
         });
 
+        //Starts the Login Activity
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +93,7 @@ public class start extends AppCompatActivity {
 
     }
 
+    //Sets each onBoarding Item
     private void setupOnboardingItems() {
         List<onBoardingItem> onBoardingItems = new ArrayList<>();
         onBoardingItem layout1 = new onBoardingItem();
@@ -105,6 +115,7 @@ public class start extends AppCompatActivity {
         onBoardingAdapter = new onBoardingAdapter(onBoardingItems);
     }
 
+    //Creates the number of indicator dots for the onboarding items
     private void onBoardingIndicators(){
         ImageView[] indicators = new ImageView[onBoardingAdapter.getItemCount()];
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -123,6 +134,7 @@ public class start extends AppCompatActivity {
         }
     }
 
+    //Set's the indicator position to what ViewHolder the user is at currently
     private void setCurrentOnboardingIndicator(int index){
         int childCount = layoutOnboardingIndicators.getChildCount();
         for (int i = 0; i < childCount; i ++)

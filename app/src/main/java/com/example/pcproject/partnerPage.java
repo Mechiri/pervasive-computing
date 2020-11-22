@@ -31,6 +31,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    Partner Page that conains access to user profile, event tab, and partner profile tab
+ */
+
 public class partnerPage extends AppCompatActivity {
 
     private static final String TAG = "partnerPage";
@@ -65,6 +69,8 @@ public class partnerPage extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: PartnerProfileName = "+partnerProfileName);
         userProfileB = findViewById(R.id.userProfileB);
+
+        //Starts user profile class
         userProfileB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +88,7 @@ public class partnerPage extends AppCompatActivity {
 
         Log.d(TAG,"Map Size: "+eventMap.size()+" coming......................1");
 
+        //Recognizes which tab the user selected
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -110,12 +117,4 @@ public class partnerPage extends AppCompatActivity {
 
         partnerViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
-
-
-
-
-    /*
-
-
-     */
 }

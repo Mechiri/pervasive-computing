@@ -20,12 +20,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/*
+    partnerEventRecyclerViewAdapter connects and places the proper information in ViewHolder for eventTab Page
+ */
+
 public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partnerEventRecyclerViewAdapter.Viewholder> {
 
     private static final String TAG = "partnerEventRecyclerVie";
     private List<partnerEventRecyclerViewItem> partnerEvents;
     private Context context;
 
+    //Instantiate partnerEventRecyclerViewItem List and context
     public partnerEventRecyclerViewAdapter(List<partnerEventRecyclerViewItem> partnerEvents, Context context)
     {
         this.partnerEvents = partnerEvents;
@@ -39,6 +44,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
         return new partnerEventRecyclerViewAdapter.Viewholder(view);
     }
 
+    //get's the position of ViewHolder
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         final Bitmap res = partnerEvents.get(position).getEventImg();
@@ -72,11 +78,13 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
         });
     }
 
+    //Returns the number of partner event items
     @Override
     public int getItemCount() {
         return partnerEvents.size();
     }
 
+    //Creates Event Tab ViewHolder for Recycler View
     class Viewholder extends RecyclerView.ViewHolder
     {
         private TextView eventTitle;
@@ -91,6 +99,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
         //Note sure where to set an onClickListener for this button, but at least it exists
         private Button moreInfoB;
 
+        //Find's the appropriate elements from xml files
         public Viewholder(@NonNull final View itemView) {
             super(itemView);
 
@@ -126,6 +135,7 @@ public class partnerEventRecyclerViewAdapter extends RecyclerView.Adapter<partne
             qualityTime.setEnabled(false);
         }
 
+        //Set's the proper partner event tab text
         private void setItem(Bitmap eventPicIndex,
                              String title,
                              String date,

@@ -29,6 +29,10 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
+/*
+    Partner Profile Tab page that displays information about a given partner
+ */
+
 public class partnerProfileTab extends Fragment {
 
     private static final String TAG = "partnerProfileTab";
@@ -57,6 +61,7 @@ public class partnerProfileTab extends Fragment {
     private ProgressBar QT;
     private Bitmap profileImg; //This should be for partner profile image
 
+    //Instantiate partnerProfileName and context)
     public partnerProfileTab(String partnerProfileName, Context context) {
         // Required empty public constructor
         this.partnerProfileName = partnerProfileName;
@@ -85,7 +90,6 @@ public class partnerProfileTab extends Fragment {
 
         getPartnerProfilePic(partnerProfileName);
 
-
         return v;
     }
 
@@ -100,6 +104,7 @@ public class partnerProfileTab extends Fragment {
         db = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
+        //Get information from firebase firestore
         String userId = mAuth.getCurrentUser().getEmail();
         db.collection(userId)
                 .document("PartnerProfiles")
@@ -130,6 +135,7 @@ public class partnerProfileTab extends Fragment {
                 });
     }
 
+    //Get's partner profile picture from firebase storage
     void getPartnerProfilePic(final String partnerProfileName)
     {
         Log.d(TAG, "getPartnerProfilePic.................coming..............1");
@@ -176,6 +182,7 @@ public class partnerProfileTab extends Fragment {
         }
     }
 
+    //adds all the proper information to the partner profile tab
     protected void displayPartnerProfileTab(Bitmap bitmap)
     {
         partnerProfileImage.setImageBitmap(bitmap);

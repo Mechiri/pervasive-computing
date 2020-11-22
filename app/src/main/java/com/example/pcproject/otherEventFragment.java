@@ -15,6 +15,11 @@ import android.widget.SeekBar;
 
 import java.sql.DataTruncation;
 
+/*
+    Other event type in the add event form. otherEventFragment appears during add event form
+    when user select's the event type to be "other"
+ */
+
 public class otherEventFragment extends Fragment {
     private static final String TAG = "otherEventFragment";
     private otherEventFragment.otherEventFragmentListener otherEventFragmentListener;
@@ -72,6 +77,7 @@ public class otherEventFragment extends Fragment {
             }
         });
 
+        //Records the information inputed by users
         nextB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +94,7 @@ public class otherEventFragment extends Fragment {
         return v;
     }
 
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -98,6 +105,8 @@ public class otherEventFragment extends Fragment {
                     + "The activity must implement otherEventFragmentListener");
         }
     }
+
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

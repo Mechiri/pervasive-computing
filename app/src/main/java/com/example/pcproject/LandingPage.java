@@ -34,6 +34,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+    LandingPage serves as the apps dashboard, displaying all partners for a given user. This
+    page also allows a user to navigate to user profile page and and add a new partner.
+    Lastly, each partner is clickable to send user to partner page with event and
+    partner profile page.
+ */
+
 public class LandingPage extends AppCompatActivity {
 
 
@@ -69,6 +76,7 @@ public class LandingPage extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         getPartnerProfileCount();
 
+        //Start's user profile page
         userProfileB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +84,7 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        //Start's add new partner form
         addPartnerB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +119,7 @@ public class LandingPage extends AppCompatActivity {
         //getPartnerProfileCount();
     }
 
+    //Accesses the database to get the total number of partner profiles
     void getPartnerProfileCount()
     {
         String userId = mAuth.getCurrentUser().getEmail();
@@ -167,6 +177,7 @@ public class LandingPage extends AppCompatActivity {
     }
      */
 
+    //Accesses Firebase Firestore to get the data for a given partner
     void getPartnerProfileData(Integer totalNoOfProfileCount)
     {
         Log.d(TAG, "getPartnerProfileData: "+ totalNoOfProfileCount);
@@ -206,6 +217,7 @@ public class LandingPage extends AppCompatActivity {
         }
     }
 
+    //Access Firebase Storage to get the profile picture for a given partner
     void getPartnerProfilePic(Integer totalNoOfProfileCount)
     {
         String userId = mAuth.getCurrentUser().getEmail();
@@ -263,6 +275,7 @@ public class LandingPage extends AppCompatActivity {
         }
     }
 
+    //Add's the proper information to a list of partnerRecyclerViewItems to display
     void displayProfiles()
     {
         List<partnerRecyclerViewItem> partnersOld = new ArrayList<>();

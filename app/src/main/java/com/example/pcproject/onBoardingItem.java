@@ -1,5 +1,9 @@
 package com.example.pcproject;
 
+/*
+    Serves as accessor and mutator methods for initial onboarding view pages
+ */
+
 public class onBoardingItem {
     private String initial;
     private String second;

@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*
+    Reflection aspect to adding event. This Reflection form appears as the last step to adding
+    a new event, asking questions to help a user reflection on their experience
+ */
+
 public class reflectionEventFragment extends Fragment {
     private static final String TAG = "reflectionEventFragment";
     private reflectionEventFragmentListener reflectionEventFragmentListener;
@@ -36,6 +41,8 @@ public class reflectionEventFragment extends Fragment {
         reflectionActionsLiked = v.findViewById(R.id.reflectionActionsLiked);
         reflectionActionsNotLiked = v.findViewById(R.id.reflectionActionsNotLiked);
         reflectionNotableEvents = v.findViewById(R.id.reflectionNotableEvents);
+
+        //Gets the information the user inputs and stores it
         finishEventB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +57,8 @@ public class reflectionEventFragment extends Fragment {
         });
         return v;
     }
+
+    //Attaches the appropriate fragment
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -60,6 +69,8 @@ public class reflectionEventFragment extends Fragment {
                     + "The activity must implement reflectionEventFragmentListener");
         }
     }
+
+    //Removes the fragment from UI
     @Override
     public void onDetach() {
         super.onDetach();

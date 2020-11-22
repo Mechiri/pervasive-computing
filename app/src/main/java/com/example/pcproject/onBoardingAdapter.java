@@ -10,9 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/*
+   onBoardingAdapter connects and places the proper information in ViewHolder for start page
+ */
+
 public class onBoardingAdapter extends RecyclerView.Adapter<onBoardingAdapter.onBoardingViewHolder>{
     private List<onBoardingItem> onBoardingItems;
 
+    //Instantiate partners List
     public onBoardingAdapter(List<onBoardingItem> onBoardingItems) {
         this.onBoardingItems = onBoardingItems;
     }
@@ -27,20 +32,24 @@ public class onBoardingAdapter extends RecyclerView.Adapter<onBoardingAdapter.on
         );
     }
 
+    //get's the position of ViewHolder
     @Override
     public void onBindViewHolder(@NonNull onBoardingViewHolder holder, int position) {
         holder.setOnboardingData(onBoardingItems.get(position));
     }
 
+    //Returns the number of onBoardingItems
     @Override
     public int getItemCount() {
         return onBoardingItems.size();
     }
 
+    //Creates onBoarding ViewHolder for Recycler View
     class onBoardingViewHolder extends RecyclerView.ViewHolder{
         private TextView initial;
         private TextView second;
 
+        //Find's the appropriate elements from xml files
         onBoardingViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -48,6 +57,7 @@ public class onBoardingAdapter extends RecyclerView.Adapter<onBoardingAdapter.on
             second = itemView.findViewById(R.id.secondText);
         }
 
+        //Set's the proper partner text
         void setOnboardingData(onBoardingItem onBoardingItem)
         {
             initial.setText(onBoardingItem.getInitial());
