@@ -57,33 +57,33 @@ start - Starting Page
 	|
 	ActiveLogin - Login Page
 		|
-		LandingPage - where user can add partner profiles.---------------
-		|				|				|
-* ->	partnerPage		          userProfile			addPartnerForm
+		LandingPage - where user can add partner profiles.------------
+		|			      |				     |
+* ->	partnerPage		          userProfile		      addPartnerForm
 		{partnerRecyclerViewAdapter}
 			|
-			{TAB LAYOUT- Page Adapter}------------------------------------------------------------
-			|										     |
-			eventTab-----------------------				   	                       partnerProfileTab				
-			|			      |
-			EventForm		EventDetail
-			{eventTab}		{partnerEventRecyclerViewAdapter}
+			{TAB LAYOUT- Page Adapter}-----------------------------------------------
+			|						                        |
+			eventTab---------------------------------	                partnerProfileTab				
+			|			                |
+			EventForm		            EventDetail
+			{eventTab}		  {partnerEventRecyclerViewAdapter}
 			|
 			Event Fragments
 			{eventMainLayout}
 			|
-			mainEvent Fragment-------------------------------------------------------
-			|				|					|
-			dateFragment             fightFragment		                  otherFragment
-			|				|					|
-			-------------------------------------------------------------------------
-							|
-							reflectionFragment
-							|
-							eventAddedFragment
-							|
-							LandingPage
-							|
-							* (same activities as shown the above picture)
+			mainEvent Fragment--------------------------------------------------
+			|			       |		                   |
+			dateFragment             fightFragment		              otherFragment
+			|			       |				   |
+			--------------------------------------------------------------------
+						       |
+					        reflectionFragment
+						       |
+					        eventAddedFragment
+						       |
+					           LandingPage
+						       |
+						       * (same activities as shown the above picture)
 ```							
 
