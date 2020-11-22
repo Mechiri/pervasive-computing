@@ -63,20 +63,20 @@ start - Starting Page
 		{partnerRecyclerViewAdapter}
 			|
 			{TAB LAYOUT- Page Adapter}------------------------------------------------------------
-			|																	|
-			eventTab------------				   						                       partnerProfileTab				
-			|				|
+			|										     |
+			eventTab-----------------------				   	                       partnerProfileTab				
+			|			      |
 			EventForm		EventDetail
 			{eventTab}		{partnerEventRecyclerViewAdapter}
 			|
 			Event Fragments
 			{eventMainLayout}
 			|
-			mainEvent Fragment--------------------------
+			mainEvent Fragment-------------------------------------------------------
 			|				|					|
-			dateFragment    fightFragment		otherFragment
+			dateFragment             fightFragment		                  otherFragment
 			|				|					|
-			--------------------------------------------------
+			-------------------------------------------------------------------------
 							|
 							reflectionFragment
 							|
