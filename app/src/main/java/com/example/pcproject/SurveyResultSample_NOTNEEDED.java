@@ -18,7 +18,7 @@ import java.util.ArrayList;
     Initial sample page to test out user love language survey results
  */
 
-public class SurveyResultSample extends AppCompatActivity {
+public class SurveyResultSample_NOTNEEDED extends AppCompatActivity {
 
     //Pie Chart
     private PieChart piechart;

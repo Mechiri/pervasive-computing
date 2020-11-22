@@ -11,11 +11,8 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity_NOTNEEDED extends AppCompatActivity {
 
     //TAG
     private static final String TAG = "ProfileActivity";
@@ -44,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this, EventForm.class));
+                startActivity(new Intent(ProfileActivity_NOTNEEDED.this, EventForm.class));
             }
         });
 
@@ -52,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         bProfileOutput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, SampleProfileActivity.class));
+                startActivity(new Intent(ProfileActivity_NOTNEEDED.this, SampleProfileActivity_NOTNEEDED.class));
             }
         });
         bLogout.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null)
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainActivity_NOTNEEDED.class));
         else
         {
             String email = currentUser.getEmail();
@@ -80,6 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void logout()
     {
         mAuth.signOut();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity_NOTNEEDED.class));
     }
 }

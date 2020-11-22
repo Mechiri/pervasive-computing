@@ -26,6 +26,10 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
+/*
+EventDetail Activity is to show event details in events display page
+*/
+
 public class EventDetail extends AppCompatActivity {
 
     private static final String TAG = "EventDetail";
@@ -99,6 +103,7 @@ public class EventDetail extends AppCompatActivity {
         });
     }
 
+    //Fetch Event Details from Database
     protected void getEventDetails(final String partnerProfileName, final String eventName)
     {
         String userId = mAuth.getCurrentUser().getEmail();
@@ -143,6 +148,7 @@ public class EventDetail extends AppCompatActivity {
                 });
     }
 
+    //Fetch Event Picture from Database
     protected void getEventPic(String partnerProfileName, String eventName)
     {
         Log.d(TAG, "partnerProfileName: "+partnerProfileName);

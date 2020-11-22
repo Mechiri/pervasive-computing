@@ -27,7 +27,7 @@
         <activity android:name=".LandingPage" />
         <activity android:name=".WelcomePage" />
         <activity android:name=".SurveyResult" />
-        <activity android:name=".SurveyResultSample" />
+        <activity android:name=".SurveyResultSample_NOTNEEDED" />
         <activity android:name=".start">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,12 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SampleProfileActivity" />
+        <activity android:name=".SampleProfileActivity_NOTNEEDED" />
         <activity android:name=".EventForm" />
-        <activity android:name=".ProfileOutput" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ProfileOutput_NOTNEEDED" />
+        <activity android:name=".SignUpActivity_NOTNEEDED" />
+        <activity android:name=".ProfileActivity_NOTNEEDED" />
+        <activity android:name=".MainActivity_NOTNEEDED" />
         <activity android:name=".ActiveLogin" />
         <activity android:name=".ActivePassword" />
         <activity android:name=".ActiveSignUp" />

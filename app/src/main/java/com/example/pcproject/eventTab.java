@@ -37,6 +37,9 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+/*
+Event Details Tab - Displays All the events on the page
+ */
 public class eventTab extends Fragment {
 
     private static final String TAG = "eventTab";
@@ -173,6 +176,7 @@ public class eventTab extends Fragment {
 
     }
 
+    //Function to retrieve Count of events
     void retrieveTotalEventCounts(final String partnerProfileName)
     {
         Log.d(TAG, "Partner: retrieveTotalEventCounts.............Coming!");
@@ -210,6 +214,7 @@ public class eventTab extends Fragment {
                 });
     }
 
+    //Get Partner Event Details
     void getPartnerEventsData(final String partnerProfileName, final Integer totalEvents)
     {
         Log.d(TAG, "Total no of events: "+ totalEvents);
@@ -259,6 +264,7 @@ public class eventTab extends Fragment {
         }
     }
 
+    //Fetch Event Picture from Database
     void getEventPic(String partnerProfileName, Integer totalNoOfEventCount)
     {
         Log.d(TAG, "onCreate Coming: getEventPic: "+eventMap.size()+"..................Coming!!!HURRAY........4");
@@ -313,6 +319,7 @@ public class eventTab extends Fragment {
         }
     }
 
+    //Display Events Pictures on Activity
     void displayEvents(String Key)
     {
         Log.d(TAG, "onCreate Coming: displayEvents: "+eventMap.size()+"..................Coming!!!HURRAY........5");

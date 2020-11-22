@@ -13,6 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
+/*
+
+Dating Event Fragments
+
+*/
+
 public class dateEventFragment extends Fragment {
     private static final String TAG = "dataEventFragment";
     private dateEventFragment.dateEventFragmentListener dateEventFragmentListener;

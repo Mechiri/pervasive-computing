@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
     Initial Temporary Sign Up activity
  */
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity_NOTNEEDED extends AppCompatActivity {
 
     //TAG
     private static final String TAG = "SignUpActivity";
@@ -62,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                startActivity(new Intent(SignUpActivity_NOTNEEDED.this, MainActivity_NOTNEEDED.class));
             }
         });
     }
@@ -124,11 +124,11 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "User created Successfully");
-                                Toast.makeText(SignUpActivity.this, "Successful! Please go to login page for login", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity_NOTNEEDED.this, "Successful! Please go to login page for login", Toast.LENGTH_SHORT).show();
                                 //mAuth.signOut();
                             } else {
                                 Log.d(TAG, "User creation UnSuccessful");
-                                Toast.makeText(SignUpActivity.this, "User creation UnSuccessful, Please try again", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity_NOTNEEDED.this, "User creation UnSuccessful, Please try again", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

@@ -13,6 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
+/*
+
+Fight Event Fragment
+
+*/
+
 public class fightEventFragment extends Fragment {
     private static final String TAG = "fightEventFragment";
     private fightEventFragment.fightEventFragmentListener fightEventFragmentListener;

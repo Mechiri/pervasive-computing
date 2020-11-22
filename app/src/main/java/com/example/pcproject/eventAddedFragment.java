@@ -15,6 +15,9 @@ import android.widget.Button;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/*
+Event Fragments
+*/
 
 public class eventAddedFragment extends Fragment {
     Timer timer;

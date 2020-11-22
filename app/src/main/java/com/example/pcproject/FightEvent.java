@@ -2,6 +2,12 @@ package com.example.pcproject;
 
 import java.util.ArrayList;
 
+/*
+
+Fight Event Data Class
+
+*/
+
 public class FightEvent {
     //Attributes
     private String fightAbout;

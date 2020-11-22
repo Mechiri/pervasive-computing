@@ -17,10 +17,17 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/*
+
+Login Page Activity
+
+*/
+
 public class ActiveLogin extends AppCompatActivity {
 
     private static final String TAG = "ActiveLogin";
 
+    //Login Attributes
     private TextInputLayout textLayoutUsername;
     private TextInputLayout textLayoutPassword;
     private Button buttonLogin;
@@ -57,6 +64,7 @@ public class ActiveLogin extends AppCompatActivity {
         });
     }
 
+    //CheckIn Functionality
     protected void SignIn()
     {
         //get the credentials

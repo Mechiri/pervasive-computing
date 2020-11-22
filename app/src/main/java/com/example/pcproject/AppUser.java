@@ -16,6 +16,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+
+User Class
+
+*/
+
 public class AppUser {
 
     //TAG
@@ -144,6 +150,7 @@ public class AppUser {
         this.relationshipDesire = relationshipDesire;
     }
 
+    //Upload Userdata to database
     public void uploadAllData(final Context context)
     {
         String userId = mAuth.getCurrentUser().getEmail();
@@ -189,6 +196,7 @@ public class AppUser {
                 });
     }
 
+    //Calculate Love Languages Ratio
     public void calculateLoveLanguagesRatio()
     {
         Map<String, Integer> result;
@@ -202,6 +210,7 @@ public class AppUser {
         physicalTouch = result.get("physicalTouch");
     }
 
+    //Retrieve Total Count Partner Profiles
     void retrieveTotalCountPartnerProfiles()
     {
         String userId = mAuth.getCurrentUser().getEmail();
@@ -230,6 +239,7 @@ public class AppUser {
                 });
     }
 
+    //update Total Count Partner Profiles to database
     void updateTotalCountPartnerProfiles(final Context context)
     {
         String userId = mAuth.getCurrentUser().getEmail();

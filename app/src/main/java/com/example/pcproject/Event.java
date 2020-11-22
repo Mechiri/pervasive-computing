@@ -18,6 +18,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+Event Class Details
+*/
+
 public class Event {
     private static final String TAG = "Event";
     //Attribute
@@ -244,6 +248,8 @@ public class Event {
     {
 
     }
+
+    //upload Event Data To Database
     void uploadDataToDatabase(final Context context,String partnerProfileName, String eventName1)
     {
         String userId = mAuth.getCurrentUser().getEmail();

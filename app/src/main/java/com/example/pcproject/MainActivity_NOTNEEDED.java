@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity_NOTNEEDED extends AppCompatActivity {
 
     //TAG
     private static final String TAG = "MainActivity";
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                startActivity(new Intent(MainActivity_NOTNEEDED.this, SignUpActivity_NOTNEEDED.class));
             }
         });
     }
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null)
         {
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, ProfileActivity_NOTNEEDED.class));
         }
     }
 
@@ -84,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Log.d(TAG, "Login Successful");
-                            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                            startActivity(new Intent(MainActivity_NOTNEEDED.this, ProfileActivity_NOTNEEDED.class));
                         }
                         else
                         {
                             Log.w(TAG,"Login Unsuccessful", task.getException());
-                            Toast.makeText(MainActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity_NOTNEEDED.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

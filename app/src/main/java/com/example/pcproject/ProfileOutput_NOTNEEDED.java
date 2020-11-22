@@ -34,7 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ProfileOutput extends AppCompatActivity {
+public class ProfileOutput_NOTNEEDED extends AppCompatActivity {
 
     //TAG
     private static final String TAG = "ProfileOutput";
@@ -91,7 +91,7 @@ public class ProfileOutput extends AppCompatActivity {
                         {
                             Log.d(TAG, "Document sanpshot exists........-------");
                             Map<String, Object> profileData = documentSnapshot.getData();
-                            ProfileOutput.this.seekBarValues = (ArrayList<Integer>) profileData.get("SeekBarValues");
+                            ProfileOutput_NOTNEEDED.this.seekBarValues = (ArrayList<Integer>) profileData.get("SeekBarValues");
                             Log.d(TAG, "Document sanpshot exists........-------2");
                             for(int i = 0; i < seekBarValues.size(); i++)
                             {
@@ -99,23 +99,23 @@ public class ProfileOutput extends AppCompatActivity {
                                 Log.d(TAG, "Document sanpshot exists........-------3");
                                 Log.d(TAG, "Bar Chart Values:-> " +var.toString()+ ";");
                             }
-                            ProfileOutput.this.logs = (String) profileData.get("Logs");
+                            ProfileOutput_NOTNEEDED.this.logs = (String) profileData.get("Logs");
                             Log.d(TAG, "Log Data: " +logs+ ";");
                             barChartDisplay();
                             pieChartDisplay();
                             radarChartDisplay();
-                            Toast.makeText(ProfileOutput.this, "Profile Data Fetched", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileOutput_NOTNEEDED.this, "Profile Data Fetched", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
-                            Toast.makeText(ProfileOutput.this, "Profile Data Not Exist", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileOutput_NOTNEEDED.this, "Profile Data Not Exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfileOutput.this, "Loading Data Base Error!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileOutput_NOTNEEDED.this, "Loading Data Base Error!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -21,6 +21,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+
+UserName Page Activity during SignUp
+
+*/
+
 public class ActiveUserName extends AppCompatActivity {
 
     //TAG
@@ -58,6 +64,7 @@ public class ActiveUserName extends AppCompatActivity {
         });
     }
 
+    //Check the entered UserName is Valid
     protected void checkUserName()
     {
         String userName = editTextUserName.getText().toString();

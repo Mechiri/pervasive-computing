@@ -1,6 +1,13 @@
 package com.example.pcproject;
 
+/*
+
+Dating Event Class
+
+*/
+
 public class DateEvent {
+
     //Attributes
     private String whereDidYouGo;
     private String whatDidYouDo;

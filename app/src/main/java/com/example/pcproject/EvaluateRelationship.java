@@ -5,6 +5,10 @@ import android.util.Log;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+Evaluate the Partner Relationship
+*/
+
 public class EvaluateRelationship {
 
     private static final String TAG = "EvaluateRelationship";
@@ -59,6 +63,7 @@ public class EvaluateRelationship {
         return result;
     }
 
+    //Calculate Overall Dating Experience of a Partner
     public Integer getOverallExperience(Integer overallDateRate, Integer otherOverallExperience, Integer totalEvents, Integer totalFights)
     {
         Integer eventsWithoutFight = totalEvents - totalFights;
@@ -69,6 +74,7 @@ public class EvaluateRelationship {
         return overallExperience;
     }
 
+    //Calculate Love Languages Ratio of a Partner
     public Integer getLoveLanguagesRatio(Integer loveLanguages, Integer totalEvents)
     {
         float result = loveLanguages / ( totalEvents * 100.0f);

@@ -32,6 +32,12 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 
+/*
+
+Event Form which displays the activity of Events Adding
+
+*/
+
 public class EventForm extends AppCompatActivity implements
         mainEventFragment.mainEventFragmentListener,
         reflectionEventFragment.reflectionEventFragmentListener,
@@ -103,6 +109,7 @@ public class EventForm extends AppCompatActivity implements
         SelectImage();
     }
 
+    //Select Image from Phone
     private void SelectImage()
     {
         final CharSequence[] items = {"Camera", "Gallery", "Cancel"};
@@ -155,6 +162,7 @@ public class EventForm extends AppCompatActivity implements
 
     }
 
+    //Upload Event Image to Database
     private void uploadPicture(String partnerProfileName, String eventName) {
 
         final ProgressDialog pd = new ProgressDialog(this);
@@ -201,6 +209,7 @@ public class EventForm extends AppCompatActivity implements
         }
     }
 
+    //On Main Event Fragment Fuctionality
     @Override
     public void onInputMainEventSent(String eventName, String partnerName, String Date1, Integer wordsOfAffirmation,Integer qualityTime,Integer receivingGifts, Integer actsOfService,Integer physicalTouch, String newTraits) {
         Log.d(TAG, "onInputMainEventSent...............coming1");
@@ -256,6 +265,7 @@ public class EventForm extends AppCompatActivity implements
     }
 
 
+    //Event Creation Fragment
     @Override
     public void onEventCreationCompleted() {
         Intent intent = new Intent(EventForm.this, LandingPage.class);
@@ -264,6 +274,7 @@ public class EventForm extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    //On Input Reflection Event
     @Override
     public void onInputReflectionEventSent(String talkAbout, String youReallyLiked, String youDidNotLiked, String notable) {
         Log.d(TAG,"onReflectionEventSent coming.....3");
@@ -314,6 +325,7 @@ public class EventForm extends AppCompatActivity implements
 
     }
 
+    //Date Event Details from User
     @Override
     public void onInputDateEventSent( String whereDidYouGo, String whatDidYouDo, String howLongDate, Integer dateRate, Integer conversationRate, String otherNotes ) {
 
@@ -341,6 +353,7 @@ public class EventForm extends AppCompatActivity implements
 
     }
 
+    //Fight Event Details from User
     @Override
     public void onInputFightEventSent(String fightAbout, String resolution, Integer madePersonal, Integer fightHurtful, Integer theyHandleFight, Integer youHandledFight, String otherNotes) {
 
@@ -370,6 +383,7 @@ public class EventForm extends AppCompatActivity implements
                 .commit();
     }
 
+    //Other Event Details from User
     @Override
     public void onInputOtherEventSent(String eventStatus, String title, String describeEvent, Integer rateOverallExperience, String otherNotes) {
         Log.d(TAG, "onInputDateEventSent coming....2");

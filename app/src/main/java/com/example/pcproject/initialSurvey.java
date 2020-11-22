@@ -8,6 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+/*
+
+Pages for Initial Survey - Activities which displays all the 15 survey questions
+
+*/
+
 public class initialSurvey extends AppCompatActivity implements
         surveyPage1Fragment.surveyPage1FragmentListener,
         surveypage2fragment.surveyPage2FragmentListener,
@@ -84,6 +90,7 @@ public class initialSurvey extends AppCompatActivity implements
         super.onStart();
     }
 
+    //Fetch Data from Survey Page1
     @Override
     public void onInputPage1Sent() {
         Log.d(TAG,"onInputPage1Sent coming.....1");
@@ -94,6 +101,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Page2
     @Override
     public void onInputPage2Sent(String mString) {
         Log.d(TAG,"onInputPage2Sent coming.....1");
@@ -125,6 +133,7 @@ public class initialSurvey extends AppCompatActivity implements
         }
     }
 
+    //Fetch Data from Survey Page3
     @Override
     public void onInputPage3Next(String mString) {
         Log.d(TAG,"onInputPage3Sent coming.....1");
@@ -143,6 +152,7 @@ public class initialSurvey extends AppCompatActivity implements
         }
     }
 
+    //Fetch Data from Survey Page4
     @Override
     public void onInputPage4Next(String mString) {
         Log.d(TAG,"onInputPage4Sent coming.....1");
@@ -161,6 +171,7 @@ public class initialSurvey extends AppCompatActivity implements
         }
     }
 
+    //Fetch Data from Survey Page5
     @Override
     public void onInputPage5Next() {
         Log.d(TAG,"onInputPage5Sent coming.....1");
@@ -170,6 +181,7 @@ public class initialSurvey extends AppCompatActivity implements
                 .commit();
     }
 
+    //Fetch Data from Survey Page6
     @Override
     public void onInputPage6Next() {
         Log.d(TAG,"onInputPage6Sent coming.....1");
@@ -202,6 +214,7 @@ public class initialSurvey extends AppCompatActivity implements
         appUser.setPhysicalTouch( appUser.getPhysicalTouch() + 1 );
     }
 
+    //Fetch Data from Survey Question1
     @Override
     public void calledQ1A(String string) {
         Log.d(TAG,"Q1A coming.....1");
@@ -241,6 +254,7 @@ public class initialSurvey extends AppCompatActivity implements
                         +appUser.getPhysicalTouch() + " End");
     }
 
+    //Fetch Data from Survey Question2
     @Override
     public void calledQ2B(String string) {
         Log.d(TAG,"Q2B coming.....1");
@@ -280,6 +294,7 @@ public class initialSurvey extends AppCompatActivity implements
                 +appUser.getPhysicalTouch() + " End");
     }
 
+    //Fetch Data from Survey Question3
     @Override
     public void calledQ3C(String string) {
         Log.d(TAG,"Q3C coming.....1");
@@ -320,6 +335,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question4
     @Override
     public void calledQ4D(String string) {
         Log.d(TAG,"Q4D coming.....1");
@@ -360,6 +376,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question5
     @Override
     public void calledQ5E(String string) {
         Log.d(TAG,"Q5E coming.....1");
@@ -400,6 +417,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question6
     @Override
     public void calledQ6B(String string) {
         Log.d(TAG,"Q6B coming.....1");
@@ -440,6 +458,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question7
     @Override
     public void calledQ7A(String string) {
         Log.d(TAG,"Q7A coming.....1");
@@ -476,8 +495,10 @@ public class initialSurvey extends AppCompatActivity implements
                 +appUser.getQualityTime() + " RG:"
                 +appUser.getReceivingGifts() + " AS:"
                 +appUser.getActsOfService() + " PT"
-                +appUser.getPhysicalTouch() + " End");    }
+                +appUser.getPhysicalTouch() + " End");
+    }
 
+    //Fetch Data from Survey Question8
     @Override
     public void calledQ8E(String string) {
         Log.d(TAG,"Q8E coming.....1");
@@ -516,6 +537,7 @@ public class initialSurvey extends AppCompatActivity implements
                 +appUser.getActsOfService() + " PT"
                 +appUser.getPhysicalTouch() + " End");    }
 
+    //Fetch Data from Survey Question9
     @Override
     public void calledQ9B(String string) {
         Log.d(TAG,"Q9B coming.....1");
@@ -556,6 +578,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question10
     @Override
     public void calledQ10D(String string) {
         Log.d(TAG,"Q10D coming.....1");
@@ -595,6 +618,7 @@ public class initialSurvey extends AppCompatActivity implements
                 +appUser.getPhysicalTouch() + " End");
     }
 
+    //Fetch Data from Survey Question11
     @Override
     public void calledQ11B(String string) {
         Log.d(TAG,"Q11B coming.....1");
@@ -635,6 +659,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question12
     @Override
     public void calledQ12E(String string) {
         Log.d(TAG,"Q12E coming.....1");
@@ -675,6 +700,7 @@ public class initialSurvey extends AppCompatActivity implements
     }
 
 
+    //Fetch Data from Survey Question13
     @Override
     public void calledQ13A(String string) {
         Log.d(TAG,"Q13A coming.....1");
@@ -714,6 +740,7 @@ public class initialSurvey extends AppCompatActivity implements
                 +appUser.getPhysicalTouch() + " End");
     }
 
+    //Fetch Data from Survey Question14
     @Override
     public void calledQ14E(String string) {
         Log.d(TAG,"Q14E coming.....1");
@@ -753,6 +780,7 @@ public class initialSurvey extends AppCompatActivity implements
                 +appUser.getPhysicalTouch() + " End");
     }
 
+    //Fetch Data from Survey Question15
     @Override
     public void calledQ15A(String string) {
         Log.d(TAG,"Q15A coming.....1");

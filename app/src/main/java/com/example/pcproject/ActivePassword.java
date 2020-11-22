@@ -16,6 +16,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/*
+
+Password Page Activity during Username Creation
+
+*/
+
 public class ActivePassword extends AppCompatActivity {
 
     //TAG
@@ -48,6 +54,7 @@ public class ActivePassword extends AppCompatActivity {
         });
     }
 
+    //Function checking Password input during signUp
     protected void createUser()
     {
         String password = textInputPassword.getText().toString();

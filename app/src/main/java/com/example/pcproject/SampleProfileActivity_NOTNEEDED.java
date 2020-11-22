@@ -1,7 +1,6 @@
 package com.example.pcproject;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -11,10 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import com.google.android.gms.common.internal.Constants;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,17 +36,12 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SampleProfileActivity extends AppCompatActivity {
+public class SampleProfileActivity_NOTNEEDED extends AppCompatActivity {
 
     private static final String TAG = "SampleProfileActivity";
 
@@ -102,7 +92,7 @@ public class SampleProfileActivity extends AppCompatActivity {
         bOutput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SampleProfileActivity.this, ProfileOutput.class));
+                startActivity(new Intent(SampleProfileActivity_NOTNEEDED.this, ProfileOutput_NOTNEEDED.class));
             }
         });
         button11.setOnClickListener(new View.OnClickListener() {
@@ -139,13 +129,13 @@ public class SampleProfileActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(SampleProfileActivity.this, "Uploaded Data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SampleProfileActivity_NOTNEEDED.this, "Uploaded Data", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SampleProfileActivity.this, "Error in Uploading Data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SampleProfileActivity_NOTNEEDED.this, "Error in Uploading Data", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Database: Upload Failure");
                     }
                 });
@@ -169,7 +159,7 @@ public class SampleProfileActivity extends AppCompatActivity {
     {
         final CharSequence[] items = {"Camera", "Gallery", "Cancel"};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(SampleProfileActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(SampleProfileActivity_NOTNEEDED.this);
         builder.setTitle("Add Image");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -244,7 +234,7 @@ public class SampleProfileActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             // Handle unsuccessful uploads
-                            Toast.makeText(SampleProfileActivity.this, "Failed to Upload", Toast.LENGTH_LONG).show();   // ...
+                            Toast.makeText(SampleProfileActivity_NOTNEEDED.this, "Failed to Upload", Toast.LENGTH_LONG).show();   // ...
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -271,7 +261,7 @@ public class SampleProfileActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             // Handle unsuccessful uploads
-                            Toast.makeText(SampleProfileActivity.this, "Failed to Upload", Toast.LENGTH_LONG).show();   // ...
+                            Toast.makeText(SampleProfileActivity_NOTNEEDED.this, "Failed to Upload", Toast.LENGTH_LONG).show();   // ...
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {

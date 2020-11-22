@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".SurveyResultSample">
+    tools:context=".SurveyResultSample_NOTNEEDED">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/loveLanguagesDisplay1"

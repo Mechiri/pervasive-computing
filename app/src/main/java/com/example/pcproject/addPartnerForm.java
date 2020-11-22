@@ -40,6 +40,13 @@ import java.awt.font.TextAttribute;
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
+
+/*
+
+Activity is for creating the Partner for Users
+
+*/
+
 public class addPartnerForm extends AppCompatActivity {
     private static final String TAG = "addPartnerForm";
     private TextView addPartnerBirthday;
@@ -85,6 +92,7 @@ public class addPartnerForm extends AppCompatActivity {
         //retrieve partner profile counts
         appUser.retrieveTotalCountPartnerProfiles();
 
+        //Adding Partner Traits
         Log.d(TAG, "onCreate.....Coming....................1");
         addPartnerTraits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +100,8 @@ public class addPartnerForm extends AppCompatActivity {
                 editTextPartnerTraits.setVisibility(View.VISIBLE);
             }
         });
+
+        //Add Partner Image
         addPartnerPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +110,8 @@ public class addPartnerForm extends AppCompatActivity {
             }
         });
         Log.d(TAG, "onCreate.....Coming....................2");
+
+        //Add Partner Birthdate
         addPartnerBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,6 +128,7 @@ public class addPartnerForm extends AppCompatActivity {
                 dialog.show();
             }
         });
+
         onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -126,6 +139,8 @@ public class addPartnerForm extends AppCompatActivity {
             }
         };
         Log.d(TAG, "onCreate.....Coming....................3");
+
+        //Add Partner in to Database
         addPartnerFormB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,6 +192,7 @@ public class addPartnerForm extends AppCompatActivity {
         });
     }
 
+    //Select Image from the phone
     private void SelectImage()
     {
         final CharSequence[] items = {"Camera", "Gallery", "Cancel"};
@@ -228,6 +244,7 @@ public class addPartnerForm extends AppCompatActivity {
         }
     }
 
+    //Upload Partner Image to Database
     private void uploadPicture(String partnerName, String id) {
 
         final ProgressDialog pd = new ProgressDialog(this);

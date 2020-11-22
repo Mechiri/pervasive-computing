@@ -16,6 +16,12 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
 
+/*
+
+SignUp Page Activity during Username Creation
+
+*/
+
 public class ActiveSignUp extends AppCompatActivity {
 
     //TAG
@@ -46,6 +52,7 @@ public class ActiveSignUp extends AppCompatActivity {
         });
     }
 
+    //Function to check email entered during user creation is valid or not
     protected  void checkValidEmail()
     {
         //Get String from user
