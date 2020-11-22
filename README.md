@@ -57,9 +57,9 @@ start - Starting Page
 	|
 	ActiveLogin - Login Page
 		|
-		LandingPage - where user can add partner profiles.
-		|				|					|
-* ->	partnerPage		userProfile			addPartnerForm
+		LandingPage - where user can add partner profiles.---------------
+		|				|				|
+* ->	partnerPage		          userProfile			addPartnerForm
 		{partnerRecyclerViewAdapter}
 			|
 			{TAB LAYOUT- Page Adapter}------------------------------------------------------------
