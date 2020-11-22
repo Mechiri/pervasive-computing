@@ -30,6 +30,10 @@ user can see their relationship expectations and love languages, which is gather
 survey, along with the ability to logout of the app. Logging out of the app will bring a user
 directly to the login page.
 
+**Repo Links**
+Github link: https://github.com/Mechiri/pervasive-computing/tree/working (Branch: Working)
+Commit: afc04dff3553b28d06b0b4f897cb4dd804983b4f
+
 ##### Activity LifeCycle of *Rote*
 
 ```
@@ -86,4 +90,3 @@ start - Starting Page
 						       |
 						       * (same activities as shown the above picture)
 ```							
-
